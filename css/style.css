@@ -19,6 +19,10 @@ body {
     margin: 20px auto;
     text-align: center;
     color: #ccc;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
 }
 
 a:link {
@@ -44,7 +48,7 @@ a:active {
     margin: 25px;
     width: 250px;
     padding: 25px;
-    background-color: #ddd;
+    background-color: #e0e0e0;
     border-radius: 20px;
     float: left;
     height: 545px;
@@ -93,7 +97,8 @@ a:active {
 
 .name_cont {
     height: 200px;
-    line-height: 200px;
+    display: flex;
+    align-items: center;
 }
 
 .name {
@@ -108,6 +113,13 @@ a:active {
     margin: 10px 0;
 }
 
+.exp_title::after {
+    content: " ▼";
+    font-size: 16px;
+    font-weight: normal;
+    color: #999;
+}
+
 .school {
     margin: 10px 0;
     font-size: 16px;
@@ -116,6 +128,7 @@ a:active {
 .school_name {
     font-size: 18px;
     color: #333;
+    line-height: 28px;
 }
 
 .school_duration {
@@ -125,14 +138,18 @@ a:active {
 .school_description {
     color: #555;
     padding: 0 0 0 1.5rem;
-    line-height: 24px;
+    line-height: 26px;
 }
 
-.corp {
+.school_description::before {
+    content: "· ";
+}
+
+.proj {
     margin: 10px 0;
 }
 
-.corp_name {
+.proj_name {
     font-size: 18px;
     color: #333;
 }
