@@ -10,3 +10,39 @@ body {
     background-color: var(--bgc-light-main);
     color: var(--txtc-lv1-light);
 }
+
+.main-container {
+    margin: 24px;
+}
+
+.page-title {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.page-nav {
+    margin-top: 36px;
+}
+
+.nav-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 12px 0;
+}
+
+.nav-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 16px;
+    max-width: 616px;
+    transition-duration: 0s;
+}
+
+.page-link {
+    height: 120px;
+    width: 100%;
+    border-radius: 16px;
+    background-color: var(--bgc-light-box);
+    padding: 16px;
+    box-sizing: border-box;
+}

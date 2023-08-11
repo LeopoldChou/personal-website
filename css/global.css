@@ -17,3 +17,15 @@
     --txtc-lv2-dark-bg: #ccc;
     --txtc-lv3-dark-bg: #aaa;
 }
+
+.btn-animation {
+    transition-duration: 0.5s;
+}
+
+.btn-animation:hover {
+    filter: brightness(1.05);
+}
+
+.btn-animation:active {
+    filter: brightness(0.95);
+}

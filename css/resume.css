@@ -11,7 +11,7 @@ body {
     color: var(--txtc-lv1-light);
 }
 
-.main_cont {
+.main-container {
     width: 1000px;
     margin: 20px auto;
 }
@@ -28,7 +28,7 @@ body {
     transform: translate(-50%, 0);
 }
 
-.left_cont {
+.left-container {
     margin: 25px;
     width: 250px;
     padding: 25px;
@@ -38,7 +38,7 @@ body {
     height: 545px;
 }
 
-.right_cont {
+.right-container {
     margin: 25px;
     width: 550px;
     padding: 25px;
@@ -46,21 +46,21 @@ body {
     float: left;
 }
 
-.m_name_cont {
+.m-name-container {
     display: none;
 }
 
-.img_cont {
+.img-container {
     height: 200px;
 }
 
-.profile_img {
+.profile-img {
     float: right;
     margin: 25px 0;
     height: 150px;
 }
 
-.info_cont {
+.info-container {
     text-align: right;
 }
 
@@ -70,17 +70,17 @@ body {
     word-break: break-all;
 }
 
-.info_title {
+.info-title {
     color: var(--txtc-lv2-light-bg);
     font-size: 16px;
 }
 
-.info_content {
+.info-content {
     font-size: 20px;
     color: var(--txtc-lv1-light-bg);
 }
 
-.name_cont {
+.name-container {
     height: 200px;
     display: flex;
     align-items: center;
@@ -90,13 +90,13 @@ body {
     font-size: 60px;
 }
 
-.exp_title {
+.exp-title {
     font-size: 24px;
     font-weight: bold;
     margin: 10px 0;
 }
 
-.exp_title::after {
+.exp-title::after {
     content: " ▼";
     font-size: 16px;
     font-weight: normal;
@@ -108,22 +108,22 @@ body {
     font-size: 16px;
 }
 
-.school_name {
+.school-name {
     font-size: 18px;
     line-height: 28px;
 }
 
-.school_duration {
+.school-duration {
     color: var(--txtc-lv3-light);
 }
 
-.school_description {
+.school-description {
     color: var(--txtc-lv2-light);
     padding: 0 0 0 1.5rem;
     line-height: 26px;
 }
 
-.school_description::before {
+.school-description::before {
     content: "· ";
 }
 
@@ -131,7 +131,7 @@ body {
     margin: 10px 0;
 }
 
-.proj_name {
+.proj-name {
     font-size: 18px;
 }
 
@@ -147,22 +147,22 @@ body {
     .copyright {
         color: #555;
     }
-    .left_cont {
+    .left-container {
         background-color: var(--bgc-dark-box);
     }
-    .profile_img {
+    .profile-img {
         filter: brightness(0.85);
     }
-    .info_title {
+    .info-title {
         color: var(--txtc-lv2-dark-bg);
     }
-    .info_content {
+    .info-content {
         color: var(--txtc-lv1-dark-bg);
     }
-    .school_duration {
+    .school-duration {
         color: var(--txtc-lv3-dark);
     }
-    .school_description {
+    .school-description {
         color: var(--txtc-lv2-dark);
     }
     .position {
