@@ -1,3 +1,23 @@
+:root {
+    --bgc-light-main: #eee;
+    --bgc-light-box: #ddd;
+    --txtc-lv1-light: #444;
+    --txtc-lv2-light: #666;
+    --txtc-lv3-light: #888;
+    --txtc-lv1-light-bg: #333;
+    --txtc-lv2-light-bg: #555;
+    --txtc-lv3-light-bg: #777;
+
+    --bgc-dark-main: #333;
+    --bgc-dark-box: #555;
+    --txtc-lv1-dark: #ddd;
+    --txtc-lv2-dark: #bbb;
+    --txtc-lv3-dark: #999;
+    --txtc-lv1-dark-bg: #eee;
+    --txtc-lv2-dark-bg: #ccc;
+    --txtc-lv3-dark-bg: #aaa;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,7 +25,8 @@
 }
 
 body {
-    background: #ededed;
+    background-color: var(--bgc-light-main);
+    color: var(--txtc-lv1-light);
 }
 
 .main_cont {
@@ -25,30 +46,11 @@ body {
     transform: translate(-50%, 0);
 }
 
-a:link {
-    color: #ccc;
-    text-decoration: none;
-}
-
-a:visited {
-    color: #ccc;
-    text-decoration: none;
-}
-a:hover{
-    color: #ccc;
-    text-decoration: none;
-}
-
-a:active {
-    color: #ccc;
-    text-decoration: none;
-}
-
 .left_cont {
     margin: 25px;
     width: 250px;
     padding: 25px;
-    background-color: #e0e0e0;
+    background-color: var(--bgc-light-box);
     border-radius: 20px;
     float: left;
     height: 545px;
@@ -87,13 +89,13 @@ a:active {
 }
 
 .info_title {
-    color: #777;
+    color: var(--txtc-lv2-light-bg);
     font-size: 16px;
 }
 
 .info_content {
-    color: #333;
     font-size: 20px;
+    color: var(--txtc-lv1-light-bg);
 }
 
 .name_cont {
@@ -103,12 +105,10 @@ a:active {
 }
 
 .name {
-    color: #333;
     font-size: 60px;
 }
 
 .exp_title {
-    color: #333;
     font-size: 24px;
     font-weight: bold;
     margin: 10px 0;
@@ -118,7 +118,7 @@ a:active {
     content: " ▼";
     font-size: 16px;
     font-weight: normal;
-    color: #999;
+    color: #888;
 }
 
 .school {
@@ -128,16 +128,15 @@ a:active {
 
 .school_name {
     font-size: 18px;
-    color: #333;
     line-height: 28px;
 }
 
 .school_duration {
-    color: #777;
+    color: var(--txtc-lv3-light);
 }
 
 .school_description {
-    color: #555;
+    color: var(--txtc-lv2-light);
     padding: 0 0 0 1.5rem;
     line-height: 26px;
 }
@@ -152,9 +151,39 @@ a:active {
 
 .proj_name {
     font-size: 18px;
-    color: #333;
 }
 
 .position {
-    color: #777;
+    color: var(--txtc-lv2-light);
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: var(--bgc-dark-main);
+        color: var(--txtc-lv1-dark);
+    }
+    .copyright {
+        color: #555;
+    }
+    .left_cont {
+        background-color: var(--bgc-dark-box);
+    }
+    .profile_img {
+        filter: brightness(0.85);
+    }
+    .info_title {
+        color: var(--txtc-lv2-dark-bg);
+    }
+    .info_content {
+        color: var(--txtc-lv1-dark-bg);
+    }
+    .school_duration {
+        color: var(--txtc-lv3-dark);
+    }
+    .school_description {
+        color: var(--txtc-lv2-dark);
+    }
+    .position {
+        color: var(--txtc-lv2-dark);
+    }
 }
