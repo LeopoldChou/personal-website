@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/home.css">
 </head>
 <body>
+<div class="page-bg"></div>
 <div class="main-container">
     <div class="page-title">欢迎来到 Leopold 的页面</div>
     <div class="page-nav">
@@ -21,6 +22,73 @@
             <div class="page-link btn-animation">4</div>
         </div>
     </div>
+    <div class="themes-selector">
+        <div class="theme-title">主题</div>
+        <div class="theme-option-border" onclick="changeTheme('purple', this)">
+            <div class="theme-option theme-option-purple"></div>
+        </div>
+        <div class="theme-option-border" onclick="changeTheme('blue', this)">
+            <div class="theme-option theme-option-blue"></div>
+        </div>
+        <div class="theme-option-border" onclick="changeTheme('green', this)">
+            <div class="theme-option theme-option-green"></div>
+        </div>
+        <div class="theme-option-border" onclick="changeTheme('yellow', this)">
+            <div class="theme-option theme-option-yellow"></div>
+        </div>
+        <div class="theme-option-border" onclick="changeTheme('orange', this)">
+            <div class="theme-option theme-option-orange"></div>
+        </div>
+        <div class="theme-option-border" onclick="changeTheme('red', this)">
+            <div class="theme-option theme-option-red"></div>
+        </div>
+        <div class="theme-option-border" onclick="changeTheme('grey', this)">
+            <div class="theme-option theme-option-grey"></div>
+        </div>
+    </div>
 </div>
 </body>
+<script type="text/javascript">
+    const themeColors = {
+        "bgc": {
+            "light": {
+                "box": {
+                    "purple": "#ddd5f7",
+                    "blue": "#c5daf6",
+                    "green": "#bbe9e5",
+                    "yellow": "#f6e3b9",
+                    "orange": "#f7cdbb",
+                    "red": "#f7c9ca",
+                    "grey": "#cdd3dd",
+                },
+            },
+            // "dark": {
+            //     "box": {
+            //         "purple": "",
+            //         "blue": "",
+            //         "green": "",
+            //         "yellow": "",
+            //         "orange": "",
+            //         "red": "",
+            //         "grey": "",
+            //     },
+            // },
+        },
+    }
+
+    function changeTheme(color, element) {
+        if (!color || !element) return;
+        let lightBgimgPath = color + "-light.jpg";
+        let darkBgimgPath = color + "-dark.jpg";
+        let themeVariables = "--theme-bg-light: url('/img/bgimg/" + lightBgimgPath + "');" +
+                             "--theme-bg-dark: url('/img/bgimg/" + darkBgimgPath + "');" +
+                             "--bgc-light-box: " + themeColors.bgc.light.box[color] + ";";
+                             // "--bgc-dark-box: " + themeColors.bgc.dark.box[color] + ";";
+        document.getElementsByTagName("body")[0].setAttribute("style", themeVariables);
+
+        let optElements = document.getElementsByClassName("theme-option-border");
+        for (let i = 0; i < optElements.length; ++i) optElements[i].className = "theme-option-border";
+        element.className += " theme-option-border-selected";
+    }
+</script>
 </html>

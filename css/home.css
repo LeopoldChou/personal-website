@@ -9,10 +9,29 @@
 body {
     background-color: var(--bgc-light-main);
     color: var(--txtc-lv1-light);
+    height: 100vh;
+    width: 100vw;
+
+    --theme-bg-light: "";
+}
+
+.page-bg {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    background-image: var(--theme-bg-light);
+    opacity: 0.5;
+    filter: blur(8px);
+    transition-duration: 0.5s;
 }
 
 .main-container {
-    margin: 24px;
+    margin: 0 auto;
+    width: 496px;
+    padding: 24px 0;
+    position: relative;
 }
 
 .page-title {
@@ -21,7 +40,7 @@ body {
 }
 
 .page-nav {
-    margin-top: 36px;
+    margin-top: 24px;
 }
 
 .nav-title {
@@ -32,9 +51,8 @@ body {
 
 .nav-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 240px);
     grid-gap: 16px;
-    max-width: 616px;
     transition-duration: 0s;
 }
 
@@ -42,7 +60,85 @@ body {
     height: 120px;
     width: 100%;
     border-radius: 16px;
-    background-color: var(--bgc-light-box);
     padding: 16px;
     box-sizing: border-box;
+    background-color: var(--bgc-light-box);
+    /*backdrop-filter: saturate(180%) blur(16px);*/
+    opacity: 0.8;
+}
+
+.themes-selector {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: auto repeat(7, 36px);
+    grid-gap: 16px;
+    justify-content: center;
+}
+
+.theme-title {
+    line-height: 36px;
+}
+
+.theme-option-border {
+    width: 36px;
+    height: 36px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.theme-option-border-selected {
+    border: #0071e3 solid 2px;
+}
+
+.theme-option {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+
+    --red: #b72c31;
+    --orange: #e36942;
+    --yellow: #d48207;
+    --green: #10505b;
+    --blue: #25476d;
+    --purple: #353a71;
+    --grey: #626060;
+    --red-light: #eeb8b0;
+    --orange-light: #e9aa95;
+    --yellow-light: #eaca96;
+    --green-light: #a4beb2;
+    --blue-light: #a8bed2;
+    --purple-light: #abacca;
+    --grey-light: #c7c8ca;
+}
+
+.theme-option.theme-option-purple {
+    background: linear-gradient(to right, var(--purple) 50%, var(--purple-light) 50%);
+}
+
+.theme-option.theme-option-blue {
+    background: linear-gradient(to right, var(--blue) 50%, var(--blue-light) 50%);
+}
+
+.theme-option.theme-option-green {
+    background: linear-gradient(to right, var(--green) 50%, var(--green-light) 50%);
+}
+
+.theme-option.theme-option-yellow {
+    background: linear-gradient(to right, var(--yellow) 50%, var(--yellow-light) 50%);
+}
+
+.theme-option.theme-option-orange {
+    background: linear-gradient(to right, var(--orange) 50%, var(--orange-light) 50%);
+}
+
+.theme-option.theme-option-red {
+    background: linear-gradient(to right, var(--red) 50%, var(--red-light) 50%);
+}
+
+.theme-option.theme-option-grey {
+    background: linear-gradient(to right, var(--grey) 50%, var(--grey-light) 50%);
 }
