@@ -1,79 +1,60 @@
 <!DOCTYPE html>
 <html lang="zh-Hans">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="renderer" content="webkit">
-    <title>周骏</title>
-    <meta name="keywords" content="周骏,个人简介,私人网站">
-    <meta name="description" content="周骏的个人信息">
-    <link rel="shortcut icon" href="img/resume_page/favicon.png">
-    <link rel="bookmark" href="img/resume_page/favicon.png">
-    <link rel="stylesheet" href="css/resume.css">
-<!--    <link rel="stylesheet" media="screen and (min-width: 1024px)" href="css/style.css">-->
-<!--    <link rel="stylesheet" media="screen and (max-width: 1023px)" href="css/style-m.css">-->
+    <title>导航</title>
+    <link rel="shortcut icon" href="img/home_page/favicon.png">
+    <link rel="bookmark" href="img/home_page/favicon.png">
+
+    <link rel="stylesheet" href="css/home.css">
 </head>
+
 <body>
+<div class="page-bg"></div>
 <div class="main-container">
-    <div class="left-container">
-        <div class="img-container">
-            <img class="profile-img" src="img/resume_page/profile.jpg" alt="个人证件照">
-        </div>
-        <div class="info-container">
-            <p class="info">
-                <span class="info-title">性别：</span><span class="info-content">男</span>
-            </p>
-            <p class="info">
-                <span class="info-title">年龄：</span><span class="info-content">21 周岁</span>
-            </p>
-            <p class="info">
-                <span class="info-title">现就读于：</span><span class="info-content">华南理工大学</span>
-            </p>
-            <p class="info">
-                <span class="info-title">班级：</span><span class="info-content">20 计科 2 班</span>
-            </p>
-            <p class="info">
-                <span class="info-title">学号：</span><span class="info-content">202030444100</span>
-            </p>
-            <p class="info">
-                <span class="info-title">手机号：</span><span class="info-content">151 0202 1166</span>
-            </p>
-            <p class="info">
-                <span class="info-title">邮箱：</span><span class="info-content" style="font-size: 16px">leopoldchou@foxmail.com</span>
-            </p>
+    <div class="page-title">欢迎来到 Leopold 的页面</div>
+    <div class="page-nav">
+        <div class="nav-title">页面导航</div>
+        <div class="nav-container">
+            <div class="nav-link btn-animation" onclick="window.open('resume.html', '_blank')">
+                <img src="img/resume_page/favicon.png" alt="resume_page/favicon" class="nav-icon">
+                个人简历
+            </div>
+            <div class="nav-link btn-animation"></div>
+            <div class="nav-link btn-animation"></div>
+            <div class="nav-link btn-animation"></div>
         </div>
     </div>
-    <div class="right-container">
-        <div class="name-container">
-            <p class="name">周骏</p>
+    <div class="themes-selector">
+        <div class="theme-title">主题</div>
+        <div class="theme-option-border" onclick="changeTheme('purple', this)">
+            <div class="theme-option theme-option-purple"></div>
         </div>
-        <div class="exp">
-            <div class="edu-exp">
-                <p class="exp-title">教育背景</p>
-                <hr/>
-                <div class="school">
-                    <p class="school-name">华南理工大学</p>
-                    <p class="school-duration">2020.9 – 2024.6</p>
-                    <p class="school-description">英语四级听力满分，六级 590 分；</p>
-                    <p class="school-description">C++ 课程设计满分，Java 程序设计、Python 程序设计满绩。</p>
-                </div>
-            </div>
-            <br/>
-            <div class="proj-exp">
-                <p class="exp-title">项目经验</p>
-                <hr/>
-                <p class="proj">
-                    <span class="proj-name">在校期间曾获得 “三创赛” 校赛一等奖，省赛二等奖</span>
-                    <span class="position"> - 2021 年 8 月</span>
-                </p>
-                <p class="proj">
-                    <span class="proj-name">SRP 项目：“面向听觉刺激的脑机接口研究” 已结题</span>
-                    <span class="position"> - 唐洁老师</span>
-                </p>
-            </div>
+        <div class="theme-option-border" onclick="changeTheme('blue', this)">
+            <div class="theme-option theme-option-blue"></div>
+        </div>
+        <div class="theme-option-border" onclick="changeTheme('green', this)">
+            <div class="theme-option theme-option-green"></div>
+        </div>
+        <div class="theme-option-border" onclick="changeTheme('yellow', this)">
+            <div class="theme-option theme-option-yellow"></div>
+        </div>
+        <div class="theme-option-border" onclick="changeTheme('orange', this)">
+            <div class="theme-option theme-option-orange"></div>
+        </div>
+        <div class="theme-option-border" onclick="changeTheme('red', this)">
+            <div class="theme-option theme-option-red"></div>
+        </div>
+        <div class="theme-option-border" onclick="changeTheme('grey', this)">
+            <div class="theme-option theme-option-grey"></div>
         </div>
     </div>
 </div>
-<div class="copyright">Copyright &copy; Leopold 2022. All rights reserved.</div>
 </body>
+
+<script src="js/change_theme.js"></script>
+
 </html>
