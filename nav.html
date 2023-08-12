@@ -16,10 +16,10 @@
     <div class="page-nav">
         <div class="nav-title">页面导航</div>
         <div class="nav-container">
-            <div class="page-link btn-animation">1</div>
-            <div class="page-link btn-animation">2</div>
-            <div class="page-link btn-animation">3</div>
-            <div class="page-link btn-animation">4</div>
+            <div class="nav-link btn-animation">1</div>
+            <div class="nav-link btn-animation">2</div>
+            <div class="nav-link btn-animation">3</div>
+            <div class="nav-link btn-animation">4</div>
         </div>
     </div>
     <div class="themes-selector">
@@ -62,17 +62,17 @@
                     "grey": "#cdd3dd",
                 },
             },
-            // "dark": {
-            //     "box": {
-            //         "purple": "",
-            //         "blue": "",
-            //         "green": "",
-            //         "yellow": "",
-            //         "orange": "",
-            //         "red": "",
-            //         "grey": "",
-            //     },
-            // },
+            "dark": {
+                "box": {
+                    "purple": "#514080",
+                    "blue": "#0d567c",
+                    "green": "#00676d",
+                    "yellow": "#8e6531",
+                    "orange": "#94432c",
+                    "red": "#803137",
+                    "grey": "#5f6467",
+                },
+            },
         },
     }
 
@@ -82,8 +82,8 @@
         let darkBgimgPath = color + "-dark.jpg";
         let themeVariables = "--theme-bg-light: url('/img/bgimg/" + lightBgimgPath + "');" +
                              "--theme-bg-dark: url('/img/bgimg/" + darkBgimgPath + "');" +
-                             "--bgc-light-box: " + themeColors.bgc.light.box[color] + ";";
-                             // "--bgc-dark-box: " + themeColors.bgc.dark.box[color] + ";";
+                             "--bgc-light-box: " + themeColors.bgc.light.box[color] + ";" +
+                             "--bgc-dark-box: " + themeColors.bgc.dark.box[color] + ";";
         document.getElementsByTagName("body")[0].setAttribute("style", themeVariables);
 
         let optElements = document.getElementsByClassName("theme-option-border");
