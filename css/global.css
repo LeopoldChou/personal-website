@@ -23,9 +23,19 @@
 }
 
 .btn-animation:hover {
-    filter: brightness(1.08);
+    filter: brightness(1.05);
 }
 
 .btn-animation:active {
-    filter: brightness(0.92);
+    filter: brightness(0.95);
+}
+
+@media (prefers-color-scheme: dark) {
+    .btn-animation:hover {
+        filter: brightness(1.08);
+    }
+
+    .btn-animation:active {
+        filter: brightness(0.92);
+    }
 }

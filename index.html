@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="renderer" content="webkit">
-    <title>导航</title>
+    <title>Leopold Chou</title>
     <link rel="shortcut icon" href="img/home_page/favicon.png">
     <link rel="bookmark" href="img/home_page/favicon.png">
 
@@ -23,32 +23,38 @@
                 <img src="img/resume_page/favicon.png" alt="resume_page/favicon" class="nav-icon">
                 个人简历
             </div>
-            <div class="nav-link btn-animation"></div>
-            <div class="nav-link btn-animation"></div>
-            <div class="nav-link btn-animation"></div>
+            <div class="nav-link btn-animation" onclick="setCookie('testCookie', 'testContent')">
+                (test) 设置 cookie
+            </div>
+            <div class="nav-link btn-animation" onclick="removeCookie()">
+                (test) 移除 cookie
+            </div>
+            <div class="nav-link btn-animation" onclick="showCookie()">
+                (test) 显示 cookie
+            </div>
         </div>
     </div>
     <div class="themes-selector">
         <div class="theme-title">主题</div>
-        <div class="theme-option-border" onclick="changeTheme('purple', this)">
+        <div class="theme-option-border" id="theme-btn-purple" onclick="onclickChangeTheme('purple', this)">
             <div class="theme-option theme-option-purple"></div>
         </div>
-        <div class="theme-option-border" onclick="changeTheme('blue', this)">
+        <div class="theme-option-border" id="theme-btn-blue" onclick="onclickChangeTheme('blue', this)">
             <div class="theme-option theme-option-blue"></div>
         </div>
-        <div class="theme-option-border" onclick="changeTheme('green', this)">
+        <div class="theme-option-border" id="theme-btn-green" onclick="onclickChangeTheme('green', this)">
             <div class="theme-option theme-option-green"></div>
         </div>
-        <div class="theme-option-border" onclick="changeTheme('yellow', this)">
+        <div class="theme-option-border" id="theme-btn-yellow" onclick="onclickChangeTheme('yellow', this)">
             <div class="theme-option theme-option-yellow"></div>
         </div>
-        <div class="theme-option-border" onclick="changeTheme('orange', this)">
+        <div class="theme-option-border" id="theme-btn-orange" onclick="onclickChangeTheme('orange', this)">
             <div class="theme-option theme-option-orange"></div>
         </div>
-        <div class="theme-option-border" onclick="changeTheme('red', this)">
+        <div class="theme-option-border" id="theme-btn-red" onclick="onclickChangeTheme('red', this)">
             <div class="theme-option theme-option-red"></div>
         </div>
-        <div class="theme-option-border" onclick="changeTheme('grey', this)">
+        <div class="theme-option-border" id="theme-btn-grey" onclick="onclickChangeTheme('grey', this)">
             <div class="theme-option theme-option-grey"></div>
         </div>
     </div>
@@ -56,5 +62,43 @@
 </body>
 
 <script src="js/change_theme.js"></script>
+<script src="js/js.cookie/js.cookie.min.js"></script>
+<script>
+    const pos = window.location.pathname;
+    const path = pos.substring(0, pos.lastIndexOf("/") + 1);
+
+    function setCookie(name, value, exp = 30) {
+        Cookies.set(name, value, { expires: exp, path: "/" });
+    }
+
+    function removeCookie(name) {
+        if (!name) {
+            let cookies = Cookies.get();
+            for (let name in cookies) {
+                Cookies.remove(name, { path: "/" })
+            }
+            return;
+        }
+        Cookies.remove(name, { path: "/" });
+    }
+
+    function showCookie() {
+        let cookies = Cookies.get();
+        console.log(cookies);
+        // for (let name in cookies) console.log(name + ": " + cookies[name]);
+    }
+
+    function onclickChangeTheme(color, element) {
+        changeTheme(color, element);
+        setCookie("themeColor", color);
+    }
+
+    window.onload = function () {
+        let color = Cookies.get("themeColor");
+        if (color)
+            changeTheme(color, document.getElementById("theme-btn-" + color));
+        console.log(path);
+    }
+</script>
 
 </html>
