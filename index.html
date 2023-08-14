@@ -10,6 +10,23 @@
     <link rel="bookmark" href="img/home_page/favicon.png">
 
     <link rel="stylesheet" href="css/home.css">
+
+    <style>
+        .test-btns-container {
+            margin-top: 400px;
+            display: none;
+        }
+        .test-btn {
+            width: 180px;
+            height: 30px;
+            line-height: 30px;
+            background-color: var(--bgc-dark-box);
+            margin: 12px;
+            text-align: center;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
@@ -22,15 +39,6 @@
             <div class="nav-link btn-animation" onclick="window.open('resume.html', '_blank')">
                 <img src="img/resume_page/favicon.png" alt="resume_page/favicon" class="nav-icon">
                 个人简历
-            </div>
-            <div class="nav-link btn-animation" onclick="setCookie('testCookie', 'testContent')">
-                (test) 设置 cookie
-            </div>
-            <div class="nav-link btn-animation" onclick="removeCookie()">
-                (test) 移除 cookie
-            </div>
-            <div class="nav-link btn-animation" onclick="showCookie()">
-                (test) 显示 cookie
             </div>
         </div>
     </div>
@@ -58,28 +66,33 @@
             <div class="theme-option theme-option-grey"></div>
         </div>
     </div>
+    <div class="test-btns-container">
+        <div class="test-btn btn-animation" onclick="setCookie('testCookie', 'testContent')">设置 test cookie</div>
+        <div class="test-btn btn-animation" onclick="removeCookie()">移除所有 cookie</div>
+        <div class="test-btn btn-animation" onclick="showCookie()">显示 cookie</div>
+    </div>
 </div>
 </body>
 
 <script src="js/change_theme.js"></script>
 <script src="js/js.cookie/js.cookie.min.js"></script>
 <script>
-    const pos = window.location.pathname;
-    const path = pos.substring(0, pos.lastIndexOf("/") + 1);
+    const pagePos = window.location.pathname;
+    const projRootPath = pagePos.substring(0, pagePos.lastIndexOf("/") + 1);
 
     function setCookie(name, value, exp = 30) {
-        Cookies.set(name, value, { expires: exp, path: "/" });
+        Cookies.set(name, value, { expires: exp, path: projRootPath });
     }
 
     function removeCookie(name) {
         if (!name) {
             let cookies = Cookies.get();
             for (let name in cookies) {
-                Cookies.remove(name, { path: "/" })
+                Cookies.remove(name, { path: projRootPath })
             }
             return;
         }
-        Cookies.remove(name, { path: "/" });
+        Cookies.remove(name, { path: projRootPath });
     }
 
     function showCookie() {
@@ -97,8 +110,23 @@
         let color = Cookies.get("themeColor");
         if (color)
             changeTheme(color, document.getElementById("theme-btn-" + color));
-        console.log(path);
+        console.log(projRootPath);
     }
+
+    // function testCookies() {
+    //     Cookies.set("testCookieName-Proj", "testCookieValue-Proj", { expires: 7, path: projRootPath });
+    //     Cookies.set("testCookieName-Root", "testCookieValue-Root", { expires: 7, path: "/" });
+    //     showCookie();
+    //     removeCookie();
+    //     console.log("project cookies removed.");
+    //     showCookie();
+    //     let cookies = Cookies.get();
+    //     for (let name in cookies) {
+    //         Cookies.remove(name, { path: "/" })
+    //     }
+    //     console.log("root cookies removed.");
+    //     showCookie();
+    // }
 </script>
 
 </html>
