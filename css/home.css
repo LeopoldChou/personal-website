@@ -82,7 +82,7 @@ body {
     margin-top: 48px;
     display: grid;
     grid-template-columns: auto repeat(7, 36px);
-    grid-gap: 12px;
+    grid-gap: 6px;
     justify-content: center;
 }
 
@@ -168,5 +168,17 @@ body {
     .nav-link {
         background-color: var(--bgc-dark-box);
         color: var(--txtc-lv1-dark-bg);
+    }
+}
+
+@media (max-width: 800px) {
+    .nav-container {
+        grid-template-columns: 1fr;
+    }
+    .main-container {
+        width: 320px;
+    }
+    .themes-selector {
+        grid-gap: 4px;
     }
 }

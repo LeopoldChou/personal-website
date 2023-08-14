@@ -13,18 +13,24 @@
 
     <style>
         .test-btns-container {
-            margin-top: 400px;
+            margin-top: 240px;
+            opacity: 0.25;
             display: none;
         }
         .test-btn {
-            width: 180px;
+            width: 160px;
             height: 30px;
             line-height: 30px;
-            background-color: var(--bgc-dark-box);
+            background-color: var(--bgc-light-box);
             margin: 12px;
             text-align: center;
             border-radius: 6px;
             cursor: pointer;
+        }
+        @media (prefers-color-scheme: dark) {
+            .test-btn {
+                background-color: var(--bgc-dark-box);
+            }
         }
     </style>
 </head>
@@ -36,9 +42,12 @@
     <div class="page-nav">
         <div class="nav-title">页面导航</div>
         <div class="nav-container">
-            <div class="nav-link btn-animation" onclick="window.open('resume.html', '_blank')">
+            <div class="nav-link btn-animation" onclick="window.open('resume.html', '_self')">
                 <img src="img/resume_page/favicon.png" alt="resume_page/favicon" class="nav-icon">
                 个人简历
+            </div>
+            <div class="nav-link btn-animation" onclick="window.open('#', '_blank')">
+                按钮 2
             </div>
         </div>
     </div>
