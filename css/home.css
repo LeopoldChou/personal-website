@@ -12,7 +12,7 @@ body {
     height: 100vh;
     width: 100vw;
 
-    --theme-bg-light: url("/img/bgimg/_default-light.png");
+    --theme-bg-light: url("../img/bgimg/_default-light.png");
 }
 
 .page-bg {
@@ -160,7 +160,7 @@ body {
         background-color: var(--bgc-dark-main);
         color: var(--txtc-lv1-dark);
 
-        --theme-bg-dark: url("/img/bgimg/_default-dark.png");
+        --theme-bg-dark: url("../img/bgimg/_default-dark.png");
     }
     .page-bg {
         background-image: var(--theme-bg-dark);

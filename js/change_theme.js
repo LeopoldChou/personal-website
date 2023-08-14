@@ -29,8 +29,8 @@ function changeTheme(color, element) {
     if (!color || !element) return;
     let lightBgimgPath = color + "-light.jpg";
     let darkBgimgPath = color + "-dark.jpg";
-    let themeVariables = "--theme-bg-light: url('/img/bgimg/" + lightBgimgPath + "');" +
-        "--theme-bg-dark: url('/img/bgimg/" + darkBgimgPath + "');" +
+    let themeVariables = "--theme-bg-light: url('../img/bgimg/" + lightBgimgPath + "');" +
+        "--theme-bg-dark: url('../img/bgimg/" + darkBgimgPath + "');" +
         "--bgc-light-box: " + themeColors.bgc.light.box[color] + ";" +
         "--bgc-dark-box: " + themeColors.bgc.dark.box[color] + ";";
     document.getElementsByTagName("body")[0].setAttribute("style", themeVariables);
