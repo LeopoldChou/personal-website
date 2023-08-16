@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8>
+    <meta name=x5-fullscreen content=true>
+    <meta name=full-screen content=yes>
+    <meta http-equiv=X-UA-Compatible content="IE=edge">
+    <meta name=viewport content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv=cache-control content="max-age=0">
+    <meta http-equiv=cache-control content=no-cache>
+    <meta http-equiv=expires content="Tue, 01 Jan 1980 1:00:00 GMT">
+    <meta http-equiv=Cache-Control content="no-cache, no-store, must-revalidate">
+    <meta http-equiv=Pragma content=no-cache>
+    <meta http-equiv=Expires content=0>
+    <title>首页</title>
+    <link rel="stylesheet" href="css/mypass_home.css">
+    <style>
+        a:link {
+            color: #000000;
+            text-decoration: none;
+        }
+        a:visited {
+            color: #000000;
+            text-decoration: none;
+        }
+    </style>
+    <link rel=canonical href=https://enroll.scut.edu.cn/door/index_h5.html>
+    <!-- <meta http-equiv=content-security-policy content="default-src 'none'; font-src 'self' data:; img-src 'self' data:; style-src 'unsafe-inline'; media-src 'self' data:; script-src 'unsafe-inline' data:;"> -->
+</head>
+
+<body>
+    <div id=container class=bg>
+        <!-- <div class=loading_mask style=display:none></div> -->
+        <!-- <div class=loading_tip style=display:none></div> -->
+        <div class=main>
+            <div class=main_box>
+                <div class=main_title>
+                    <img src="img/title_left.png">
+                    采集
+                    <img src="img/title_right.png">
+                </div>
+                <div class=main_section>
+                    <div class=item url=/feature/h5/feature.html>
+                        <img class=item_icon src="img/900113.png" alt>
+                        <div class=text>人脸采集</div>
+                    </div>
+                    <div class=item url=/safe/h5/safe.html>
+                        <img class=item_icon src="img/869860.png" alt>
+                        <div class=text>使用授权</div>
+                    </div>
+                </div>
+            </div>
+            <div class=main_box>
+                <div class=main_title>
+                    <img src="img/title_left.png">
+                    在校
+                    <img src="img/title_right.png">
+                </div>
+                <div class=main_section>
+                    <div class=item>
+                        <a class="to-be-redirected" href="mypass_apply.html">
+                            <img class=item_icon src="img/826119.png" alt>
+                        </a>
+                        <div class=text>
+                            <a class="to-be-redirected" href="mypass_apply.html">外出申请</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class=main_box>
+                <div class=main_title>
+                    <img src="img/title_left.png">
+                    离校·返校
+                    <img src="img/title_right.png">
+                </div>
+                <div class=main_section>
+                    <div class=item url=/leave/h5/leave.html>
+                        <img class=item_icon src="img/98100.png" alt>
+                        <div class=text>离校登记</div>
+                    </div>
+                    <div class=item url=/rtn/h5/apply.html>
+                        <a href='mypass_return_apply.html'>
+                            <img class=item_icon src='img/990622.png' alt>
+                        </a>
+                        <div class=text>
+                            <a href='mypass_return_apply.html'>返校申请</a>
+                        </div>
+                    </div>
+                    <div class=item url=/rtn/h5/passsite.html>
+                        <img class=item_icon src="img/537993.png" alt>
+                        <div class=text>返程填报</div>
+                    </div>
+                </div>
+            </div>
+            <div class=main_box>
+                <div class=main_title>
+                    <img src="img/title_left.png">
+                    报到
+                    <img src="img/title_right.png">
+                </div>
+                <div class=main_section>
+                    <div class=item url=/register/h5/register.html>
+                        <img class=item_icon src="img/572323.png" alt>
+                        <div class=text>开学报到</div>
+                    </div>
+                </div>
+            </div>
+            <div class=main_box>
+                <div class=main_title>
+                    <img src="img/title_left.png">
+                    健康信息
+                    <img src="img/title_right.png">
+                </div>
+                <div class=main_section>
+                    <div class=item url=/health/h5/health.html>
+                        <img class=item_icon src="img/856151.png" alt>
+                        <div class=text>健康填报</div>
+                    </div>
+                    <div class=item url=/health/h5/fever.html>
+                        <img class=item_icon src="img/874776.png" alt>
+                        <div class=text>排查登记</div>
+                    </div>
+                </div>
+            </div>
+            <div class=back_btn>退出登录</div>
+        </div>
+        <div class=footer_text>粤ICP备05084312号</div>
+        <div class="tips sf-hidden"></div>
+    </div>
+</body>
+
+<script>
+    let visitorID;
+    window.onload = function() {
+        // Initialize the agent at application startup.
+        const fpPromise = import('https://openfpcdn.io/fingerprintjs/v3')
+            .then(FingerprintJS => FingerprintJS.load())
+        // Get the visitor identifier when you need it.
+        fpPromise
+            .then(fp => fp.get())
+            .then(result => {
+                // This is the visitor identifier:
+                visitorID = result.visitorId
+                console.log(visitorID);
+                redirect();
+            })
+    }
+
+    function redirect() {
+    //     const tbrATags = document.getElementsByClassName("to-be-redirected");
+    //     if (visitorID == "1ee56ce00046db55367bba8879343811") {
+    //         console.log("zj");
+    //         tbrATags[0].setAttribute("href", "mypass_apply_zj.html");
+    //         tbrATags[1].setAttribute("href", "mypass_apply_zj.html");
+    //     }
+    //     else if (visitorID == "91ffb51581159549a65717835cb2b0d9") {
+    //         console.log("xhq");
+    //         tbrATags[0].setAttribute("href", "mypass_apply_xhq.html");
+    //         tbrATags[1].setAttribute("href", "mypass_apply_xhq.html");
+    //     }
+    //     else if (visitorID == "3982e5a9015d5fe9352d7c76355db58c") {
+    //         console.log("gxn");
+    //         tbrATags[0].setAttribute("href", "mypass_apply_gxn.html");
+    //         tbrATags[1].setAttribute("href", "mypass_apply_gxn.html");
+    //     }
+    //     else {
+    //         console.log("NotFound");
+    //     }
+    }
+</script>
+</html>
