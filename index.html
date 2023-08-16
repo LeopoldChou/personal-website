@@ -36,49 +36,53 @@
 </head>
 
 <body>
-<div class="page-bg"></div>
-<div class="main-container">
-    <div class="page-title">欢迎来到 Leopold 的页面</div>
-    <div class="page-nav">
-        <div class="nav-title">页面导航</div>
-        <div class="nav-container">
-            <div class="nav-link btn-animation" onclick="window.open('resume.html', '_self')">
-                <img src="img/resume_page/favicon.png" alt="resume_page/favicon" class="nav-icon">
-                个人简历
+<div class="page-container">
+    <div class="page-bg"></div>
+    <div class="page-view">
+        <div class="main-container">
+            <div class="page-title">欢迎来到 Leopold 的页面</div>
+            <div class="page-nav">
+                <div class="nav-title">页面导航</div>
+                <div class="nav-container">
+                    <div class="nav-link btn-animation" onclick="window.open('resume.html', '_self')">
+                        <img src="img/resume_page/favicon.png" alt="resume_page/favicon" class="nav-icon">
+                        个人简历
+                    </div>
+                    <div class="nav-link btn-animation" onclick="window.open('#', '_blank')">
+                        按钮 2
+                    </div>
+                </div>
             </div>
-            <div class="nav-link btn-animation" onclick="window.open('#', '_blank')">
-                按钮 2
+            <div class="themes-selector">
+                <div class="theme-title">主题</div>
+                <div class="theme-option-border" id="theme-btn-purple" onclick="onclickChangeTheme('purple', this)">
+                    <div class="theme-option theme-option-purple"></div>
+                </div>
+                <div class="theme-option-border" id="theme-btn-blue" onclick="onclickChangeTheme('blue', this)">
+                    <div class="theme-option theme-option-blue"></div>
+                </div>
+                <div class="theme-option-border" id="theme-btn-green" onclick="onclickChangeTheme('green', this)">
+                    <div class="theme-option theme-option-green"></div>
+                </div>
+                <div class="theme-option-border" id="theme-btn-yellow" onclick="onclickChangeTheme('yellow', this)">
+                    <div class="theme-option theme-option-yellow"></div>
+                </div>
+                <div class="theme-option-border" id="theme-btn-orange" onclick="onclickChangeTheme('orange', this)">
+                    <div class="theme-option theme-option-orange"></div>
+                </div>
+                <div class="theme-option-border" id="theme-btn-red" onclick="onclickChangeTheme('red', this)">
+                    <div class="theme-option theme-option-red"></div>
+                </div>
+                <div class="theme-option-border" id="theme-btn-grey" onclick="onclickChangeTheme('grey', this)">
+                    <div class="theme-option theme-option-grey"></div>
+                </div>
+            </div>
+            <div class="test-btns-container">
+                <div class="test-btn btn-animation" onclick="setCookie('testCookie', 'testContent')">设置 test cookie</div>
+                <div class="test-btn btn-animation" onclick="removeCookie()">移除所有 cookie</div>
+                <div class="test-btn btn-animation" onclick="showCookie()">显示 cookie</div>
             </div>
         </div>
-    </div>
-    <div class="themes-selector">
-        <div class="theme-title">主题</div>
-        <div class="theme-option-border" id="theme-btn-purple" onclick="onclickChangeTheme('purple', this)">
-            <div class="theme-option theme-option-purple"></div>
-        </div>
-        <div class="theme-option-border" id="theme-btn-blue" onclick="onclickChangeTheme('blue', this)">
-            <div class="theme-option theme-option-blue"></div>
-        </div>
-        <div class="theme-option-border" id="theme-btn-green" onclick="onclickChangeTheme('green', this)">
-            <div class="theme-option theme-option-green"></div>
-        </div>
-        <div class="theme-option-border" id="theme-btn-yellow" onclick="onclickChangeTheme('yellow', this)">
-            <div class="theme-option theme-option-yellow"></div>
-        </div>
-        <div class="theme-option-border" id="theme-btn-orange" onclick="onclickChangeTheme('orange', this)">
-            <div class="theme-option theme-option-orange"></div>
-        </div>
-        <div class="theme-option-border" id="theme-btn-red" onclick="onclickChangeTheme('red', this)">
-            <div class="theme-option theme-option-red"></div>
-        </div>
-        <div class="theme-option-border" id="theme-btn-grey" onclick="onclickChangeTheme('grey', this)">
-            <div class="theme-option theme-option-grey"></div>
-        </div>
-    </div>
-    <div class="test-btns-container">
-        <div class="test-btn btn-animation" onclick="setCookie('testCookie', 'testContent')">设置 test cookie</div>
-        <div class="test-btn btn-animation" onclick="removeCookie()">移除所有 cookie</div>
-        <div class="test-btn btn-animation" onclick="showCookie()">显示 cookie</div>
     </div>
 </div>
 </body>
