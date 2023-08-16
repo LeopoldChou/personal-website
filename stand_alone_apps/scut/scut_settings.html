@@ -6,8 +6,140 @@
     <link rel="shortcut icon" href="img/favicon.png">
     <link rel="bookmark" href="img/favicon.png">
     <title>SCUT 应用设置</title>
+    <style>
+        @import "../../css/global.css";
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "SF Pro Display", "PingFang SC", "MicrosoftYaHei", sans-serif;
+        }
+        body {
+            background-color: var(--bgc-light-main);
+            color: var(--txtc-lv1-light);
+        }
+        .page-container {
+            width: 100vw;
+            min-height: 100vh;
+            position: relative;
+        }
+        .main-container {
+            margin: 0 auto;
+            padding: 24px 0;
+            width: 320px;
+        }
+        .subtitle {
+            font-size: 20px;
+            margin-top: 24px;
+            color: var(--txtc-lv2-light);
+        }
+        .title {
+            font-size: 32px;
+            font-weight: bold;
+        }
+        .option-bar {
+            background-color: var(--bgc-light-box);
+            height: 24px;
+            line-height: 24px;
+            padding: 12px;
+            font-size: 18px;
+            display: grid;
+            grid-template-columns: auto auto;
+            grid-gap: 12px;
+        }
+        .bar-single {
+            margin-top: 16px;
+            border-radius: 16px;
+        }
+        .bar-top {
+            margin-top: 16px;
+            border-radius: 16px 16px 0 0;
+        }
+        .bar-middle {
+            border-top: var(--txtc-lv3-light) 1px solid;
+        }
+        .bar-bottom {
+            border-top: var(--txtc-lv3-light) 1px solid;
+            border-radius: 0 0 16px 16px;
+        }
+        .bar-name {
+            color: var(--txtc-lv2-light-bg);
+            white-space: nowrap;
+        }
+        .btn-bar {
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .btn-bar:active {
+            filter: brightness(0.85);
+        }
+        .btn-bar-name {
+            color: #337af6;
+            white-space: nowrap;
+        }
+        .bar-value {
+            color: var(--txtc-lv3-light-bg);
+            text-align: right;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+        .description {
+            margin-top: 4px;
+            padding: 0 12px;
+            color: var(--txtc-lv3-light);
+        }
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: var(--bgc-dark-main);
+                color: var(--txtc-lv1-dark);
+            }
+            .subtitle {
+                color: var(--txtc-lv2-dark);
+            }
+            .option-bar {
+                background-color: var(--bgc-dark-box);
+            }
+            .bar-middle {
+                border-top: var(--txtc-lv3-dark) 1px solid;
+            }
+            .bar-bottom {
+                border-top: var(--txtc-lv3-dark) 1px solid;
+                border-radius: 0 0 16px 16px;
+            }
+            .bar-name {
+                color: var(--txtc-lv2-dark-bg);
+            }
+            .btn-bar-name {
+                color: #3c89ff;
+            }
+            .bar-value {
+                color: var(--txtc-lv3-dark-bg);
+            }
+            .description {
+                color: var(--txtc-lv3-dark);
+            }
+        }
+    </style>
 </head>
 <body>
-
+<div class="page-container">
+    <div class="main-container">
+        <div class="title">SCUT 应用设置</div>
+        <div class="subtitle">identity 设置</div>
+        <div class="option-bar bar-single">
+            <div class="bar-name">当前 id</div>
+            <div class="bar-value">20171025</div>
+        </div>
+        <div class="description">My Pass 页面的姓名和学号、校园一卡通页面的个人信息由该 identity 决定。</div>
+        <div class="option-bar bar-top">
+            <div class="bar-name">更改 id</div>
+            <div class="bar-value">目前暂时无法更改</div>
+        </div>
+        <div class="option-bar btn-bar bar-bottom">
+            <div class="btn-bar-name">应用更改</div>
+        </div>
+        <div class="description">更改后即可回到 My Pass 页面或校园一卡通页面。如页面信息未变更，</div>
+    </div>
+</div>
 </body>
 </html>

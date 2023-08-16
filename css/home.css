@@ -1,9 +1,10 @@
 @import "global.css";
 
+
 * {
     margin: 0;
     padding: 0;
-    font-family: "PingFang SC", "MicrosoftYaHei", sans-serif;
+    font-family: "SF Pro Display", "PingFang SC", "MicrosoftYaHei", sans-serif;
 }
 body {
     background-color: var(--bgc-light-main);
