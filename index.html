@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="zh-Hans">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,26 +11,6 @@
     <link rel="stylesheet" href="css/home.css">
 
     <style>
-        .test-btns-container {
-            margin-top: 240px;
-            opacity: 0.25;
-            display: none;
-        }
-        .test-btn {
-            width: 160px;
-            height: 30px;
-            line-height: 30px;
-            background-color: var(--bgc-light-box);
-            margin: 12px;
-            text-align: center;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-        @media (prefers-color-scheme: dark) {
-            .test-btn {
-                background-color: var(--bgc-dark-box);
-            }
-        }
     </style>
 </head>
 
@@ -40,7 +19,7 @@
     <div class="page-bg"></div>
     <div class="page-view">
         <div class="main-container">
-            <div class="page-title">欢迎来到 Leopold 的页面</div>
+            <div class="page-title">欢迎来到 <span class="debugger" onclick="activate_debugger()">Leopold</span> 的页面</div>
             <div class="page-nav">
                 <div class="nav-title">页面导航</div>
                 <div class="nav-container">
@@ -48,8 +27,8 @@
                         <img src="img/resume_page/favicon.png" alt="resume_page/favicon" class="nav-icon">
                         个人简历
                     </div>
-                    <div class="nav-link btn-animation" onclick="window.open('#', '_blank')">
-                        按钮 2
+                    <div class="nav-link btn-animation" onclick="">
+                        按钮: do nothing
                     </div>
                 </div>
             </div>
@@ -77,10 +56,11 @@
                     <div class="theme-option theme-option-grey"></div>
                 </div>
             </div>
-            <div class="test-btns-container">
+            <div class="debugger-container" id="debugger-container" style="display: none;">
                 <div class="test-btn btn-animation" onclick="setCookie('testCookie', 'testContent')">设置 test cookie</div>
                 <div class="test-btn btn-animation" onclick="removeCookie()">移除所有 cookie</div>
                 <div class="test-btn btn-animation" onclick="showCookie()">显示 cookie</div>
+                <div class="debugger-log" id="debugger-log"># log</div>
             </div>
         </div>
     </div>
@@ -90,6 +70,10 @@
 <script src="js/change_theme.js"></script>
 <script src="js/js.cookie/js.cookie.min.js"></script>
 <script>
+    function log_to_custom(logMsg) {
+        document.getElementById("debugger-log").innerText += "\n" + logMsg;
+    }
+
     const pagePos = window.location.pathname;
     const projRootPath = pagePos.substring(0, pagePos.lastIndexOf("/") + 1);
 
@@ -110,8 +94,20 @@
 
     function showCookie() {
         let cookies = Cookies.get();
+
         console.log(cookies);
-        // for (let name in cookies) console.log(name + ": " + cookies[name]);
+        log_to_custom("cookies: {");
+        for (let name in cookies) log_to_custom(name + ": " + cookies[name] + ",");
+        log_to_custom("}");
+    }
+
+    window.onload = function () {
+        let color = Cookies.get("themeColor");
+        if (color)
+            changeTheme(color, document.getElementById("theme-btn-" + color));
+
+        console.log(projRootPath);
+        log_to_custom(projRootPath);
     }
 
     function onclickChangeTheme(color, element) {
@@ -119,27 +115,17 @@
         setCookie("themeColor", color);
     }
 
-    window.onload = function () {
-        let color = Cookies.get("themeColor");
-        if (color)
-            changeTheme(color, document.getElementById("theme-btn-" + color));
-        console.log(projRootPath);
+    let debuggerClickedTimes = 0;
+    function activate_debugger() {
+        if (debuggerClickedTimes == -1) {
+            document.getElementById("debugger-container").setAttribute("style", "display: none;");
+            debuggerClickedTimes = 0;
+            return;
+        }
+        if (++debuggerClickedTimes == 10) {
+            document.getElementById("debugger-container").setAttribute("style", "");
+            debuggerClickedTimes = -1;
+        }
     }
-
-    // function testCookies() {
-    //     Cookies.set("testCookieName-Proj", "testCookieValue-Proj", { expires: 7, path: projRootPath });
-    //     Cookies.set("testCookieName-Root", "testCookieValue-Root", { expires: 7, path: "/" });
-    //     showCookie();
-    //     removeCookie();
-    //     console.log("project cookies removed.");
-    //     showCookie();
-    //     let cookies = Cookies.get();
-    //     for (let name in cookies) {
-    //         Cookies.remove(name, { path: "/" })
-    //     }
-    //     console.log("root cookies removed.");
-    //     showCookie();
-    // }
 </script>
-
 </html>
