@@ -178,6 +178,7 @@ body {
     padding: 8px;
     border-radius: 8px;
     background-color: #808080;
+    word-break: break-word;
 }
 
 
