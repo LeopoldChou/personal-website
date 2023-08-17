@@ -25,7 +25,7 @@
         .main-container {
             margin: 0 auto;
             padding: 24px 0;
-            width: 340px;
+            width: 320px;
         }
         .subtitle {
             font-size: 20px;
@@ -152,7 +152,7 @@
         <div class="subtitle">identity 设置</div>
         <div class="option-bar bar-single">
             <div class="bar-name">当前 id</div>
-            <div class="bar-value" id="bar-value-identity">20171000</div>
+            <div class="bar-value" id="bar-value-identity">0000</div>
         </div>
         <div class="description">My Pass 页面的姓名和学号、校园一卡通页面的个人信息由该 id 决定。</div>
         <div class="option-bar bar-top">
@@ -181,11 +181,12 @@
 
 <script src="../../js/js.cookie/js.cookie.min.js"></script>
 <script type="text/javascript">
-    const scutRootPath = "/Personal-Website/stand_alone_apps/scut/";
+    // const scutRootPath = "/Personal-Website/stand_alone_apps/scut/";
+    const projRootPath = "/Personal-Website/";
 
 
     function setCookie(name, value, exp = 7) {
-        Cookies.set(name, value, { expires: exp, path: scutRootPath });
+        Cookies.set(name, value, { expires: exp, path: projRootPath });
     }
 
 
@@ -193,11 +194,11 @@
         if (!name) {
             let cookies = Cookies.get();
             for (let name in cookies) {
-                Cookies.remove(name, { path: scutRootPath })
+                Cookies.remove(name, { path: projRootPath })
             }
             return;
         }
-        Cookies.remove(name, { path: scutRootPath });
+        Cookies.remove(name, { path: projRootPath });
     }
 
 
