@@ -25,7 +25,7 @@
         .main-container {
             margin: 0 auto;
             padding: 24px 0;
-            width: 320px;
+            width: 340px;
         }
         .subtitle {
             font-size: 20px;
@@ -43,23 +43,23 @@
             padding: 12px;
             font-size: 18px;
             display: grid;
-            grid-template-columns: auto auto;
+            grid-template-columns: auto 1fr;
             grid-gap: 12px;
         }
         .bar-single {
             margin-top: 16px;
-            border-radius: 16px;
+            border-radius: 12px;
         }
         .bar-top {
             margin-top: 16px;
-            border-radius: 16px 16px 0 0;
+            border-radius: 12px 12px 0 0;
         }
         .bar-middle {
             border-top: var(--txtc-lv3-light) 1px solid;
         }
         .bar-bottom {
             border-top: var(--txtc-lv3-light) 1px solid;
-            border-radius: 0 0 16px 16px;
+            border-radius: 0 0 12px 12px;
         }
         .bar-name {
             color: var(--txtc-lv2-light-bg);
@@ -72,8 +72,12 @@
         .btn-bar:active {
             filter: brightness(0.85);
         }
-        .btn-bar-name {
-            color: #337af6;
+        .btn-bar-name-blue {
+            color: #0079ff;
+            white-space: nowrap;
+        }
+        .btn-bar-name-red {
+            color: #fe3b30;
             white-space: nowrap;
         }
         .bar-value {
@@ -83,11 +87,24 @@
             white-space: nowrap;
             text-overflow: ellipsis;
         }
+        .bar-input-label {
+        }
+        .bar-input {
+            background-color: transparent;
+            border:none;
+            outline: none;
+            width: 100%;
+            height: 100%;
+            text-align: right;
+            font-size: 18px;
+            color: var(--txtc-lv3-light-bg);
+        }
         .description {
             margin-top: 4px;
             padding: 0 12px;
             color: var(--txtc-lv3-light);
         }
+
         @media (prefers-color-scheme: dark) {
             body {
                 background-color: var(--bgc-dark-main);
@@ -104,15 +121,21 @@
             }
             .bar-bottom {
                 border-top: var(--txtc-lv3-dark) 1px solid;
-                border-radius: 0 0 16px 16px;
+                border-radius: 0 0 12px 12px;
             }
             .bar-name {
                 color: var(--txtc-lv2-dark-bg);
             }
-            .btn-bar-name {
-                color: #3c89ff;
+            .btn-bar-name-blue {
+                color: #0b84fe;
+            }
+            .btn-bar-name-red {
+                color: #ff443a;
             }
             .bar-value {
+                color: var(--txtc-lv3-dark-bg);
+            }
+            .bar-input {
                 color: var(--txtc-lv3-dark-bg);
             }
             .description {
@@ -121,6 +144,7 @@
         }
     </style>
 </head>
+
 <body>
 <div class="page-container">
     <div class="main-container">
@@ -128,18 +152,100 @@
         <div class="subtitle">identity 设置</div>
         <div class="option-bar bar-single">
             <div class="bar-name">当前 id</div>
-            <div class="bar-value">20171025</div>
+            <div class="bar-value" id="bar-value-identity">20171000</div>
         </div>
-        <div class="description">My Pass 页面的姓名和学号、校园一卡通页面的个人信息由该 identity 决定。</div>
+        <div class="description">My Pass 页面的姓名和学号、校园一卡通页面的个人信息由该 id 决定。</div>
         <div class="option-bar bar-top">
             <div class="bar-name">更改 id</div>
-            <div class="bar-value">目前暂时无法更改</div>
+            <label class="bar-input-label">
+                <input type="text" class="bar-input" id="bar-input-identity" placeholder="点击输入 id">
+            </label>
         </div>
-        <div class="option-bar btn-bar bar-bottom">
-            <div class="btn-bar-name">应用更改</div>
+        <div class="option-bar bar-bottom btn-bar" onclick="changeID()">
+            <div class="btn-bar-name-blue">应用更改</div>
         </div>
-        <div class="description">更改后即可回到 My Pass 页面或校园一卡通页面。如页面信息未变更，</div>
+        <div class="description">
+            id 为 8 位的高中学号。<br/>
+            成功应用更改后即可回到 My Pass 页面或校园一卡通页面。如页面信息未变更，请刷新重试。</div>
+        <div class="option-bar bar-single btn-bar" onclick="removeID()">
+            <div class="btn-bar-name-red">移除 id</div>
+        </div>
+        <div class="description">
+            点击此按钮可以移除 id。<br/>
+            移除 id 后，My Pass 页面和校园一卡通页面将不会显示个人信息。<br/>
+            id 会自动过期，设置好的 id 在 7 天后会因过期而被移除。
+        </div>
     </div>
 </div>
 </body>
+
+<script src="../../js/js.cookie/js.cookie.min.js"></script>
+<script type="text/javascript">
+    const scutRootPath = "/Personal-Website/stand_alone_apps/scut/";
+
+
+    function setCookie(name, value, exp = 7) {
+        Cookies.set(name, value, { expires: exp, path: scutRootPath });
+    }
+
+
+    function removeCookie(name) {
+        if (!name) {
+            let cookies = Cookies.get();
+            for (let name in cookies) {
+                Cookies.remove(name, { path: scutRootPath })
+            }
+            return;
+        }
+        Cookies.remove(name, { path: scutRootPath });
+    }
+
+
+    function showCookie() {
+        console.log(Cookies.get());
+    }
+
+
+    function readIdentity() {
+        const id = Cookies.get("identity");
+        if (!id) {
+            document.getElementById("bar-value-identity").innerText = "未设置 id";
+            return;
+        }
+        document.getElementById("bar-value-identity").innerText = id;
+    }
+
+    window.onload = function () {
+        readIdentity();
+    }
+
+
+    function changeID() {
+        const newID = document.getElementById("bar-input-identity").value;
+        if (!newID) {
+            window.alert("id 不能更改为空，请重试");
+            return;
+        }
+        if (newID.length != 8) {
+            window.alert("输入内容有误，请输入 8 位的学号");
+            return;
+        }
+        if (window.confirm("确定要将 id 更改为 " + newID + " 吗？")) {
+            setCookie("identity", newID);
+            window.alert("成功更改 id");
+            document.getElementById("bar-input-identity").value = "";
+            readIdentity();
+        }
+        showCookie();
+    }
+
+
+    function removeID() {
+        if (window.confirm("确定要移除 id？")) {
+            removeCookie();
+            readIdentity();
+        }
+        showCookie();
+    }
+</script>
 </html>

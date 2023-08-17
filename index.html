@@ -72,12 +72,15 @@
         document.getElementById("debugger-log").innerText += "\n" + logMsg;
     }
 
+
     const pagePos = window.location.pathname;
     const projRootPath = pagePos.substring(0, pagePos.lastIndexOf("/") + 1);
+
 
     function setCookie(name, value, exp = 30) {
         Cookies.set(name, value, { expires: exp, path: projRootPath });
     }
+
 
     function removeCookie(name) {
         if (!name) {
@@ -90,6 +93,7 @@
         Cookies.remove(name, { path: projRootPath });
     }
 
+
     function showCookie() {
         let cookies = Cookies.get();
 
@@ -98,6 +102,7 @@
         for (let name in cookies) log_to_custom(name + ": " + cookies[name] + ",");
         log_to_custom("}");
     }
+
 
     window.onload = function () {
         let color = Cookies.get("themeColor");
@@ -108,10 +113,12 @@
         log_to_custom(projRootPath);
     }
 
+
     function onclickChangeTheme(color, element) {
         changeTheme(color, element);
         setCookie("themeColor", color);
     }
+
 
     let debuggerClickedTimes = 0;
     function activate_debugger() {

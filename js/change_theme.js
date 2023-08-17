@@ -25,6 +25,7 @@ const themeColors = {
     },
 }
 
+
 function changeTheme(color, element) {
     if (!color || !element) return;
     let lightBgimgPath = color + "-light.jpg";
