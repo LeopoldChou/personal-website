@@ -181,12 +181,11 @@
 
 <script src="../../js/js.cookie/js.cookie.min.js"></script>
 <script type="text/javascript">
-    // const scutRootPath = "/Personal-Website/stand_alone_apps/scut/";
-    const projRootPath = "/Personal-Website/";
+    const scutRootPath = "/personal-website/stand_alone_apps/scut/";
 
 
     function setCookie(name, value, exp = 7) {
-        Cookies.set(name, value, { expires: exp, path: projRootPath });
+        Cookies.set(name, value, { expires: exp, path: scutRootPath });
     }
 
 
@@ -194,11 +193,11 @@
         if (!name) {
             let cookies = Cookies.get();
             for (let name in cookies) {
-                Cookies.remove(name, { path: projRootPath })
+                Cookies.remove(name, { path: scutRootPath })
             }
             return;
         }
-        Cookies.remove(name, { path: projRootPath });
+        Cookies.remove(name, { path: scutRootPath });
     }
 
 
