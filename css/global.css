@@ -1,15 +1,15 @@
 :root {
     --bgc-light-main: #eee;
     --bgc-light-box: #ddd;
-    --txtc-lv1-light: #444;
-    --txtc-lv2-light: #666;
-    --txtc-lv3-light: #888;
-    --txtc-lv1-light-bg: #333;
-    --txtc-lv2-light-bg: #555;
-    --txtc-lv3-light-bg: #777;
+    --txtc-lv1-light: #222;
+    --txtc-lv2-light: #444;
+    --txtc-lv3-light: #666;
+    --txtc-lv1-light-bg: #111;
+    --txtc-lv2-light-bg: #333;
+    --txtc-lv3-light-bg: #555;
 
-    --bgc-dark-main: #333;
-    --bgc-dark-box: #555;
+    --bgc-dark-main: #111;
+    --bgc-dark-box: #222;
     --txtc-lv1-dark: #ddd;
     --txtc-lv2-dark: #bbb;
     --txtc-lv3-dark: #999;

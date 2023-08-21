@@ -27,14 +27,14 @@
             padding: 24px 0;
             width: 320px;
         }
+        .title {
+            font-size: 32px;
+            font-weight: bold;
+        }
         .subtitle {
             font-size: 20px;
             margin-top: 24px;
             color: var(--txtc-lv2-light);
-        }
-        .title {
-            font-size: 32px;
-            font-weight: bold;
         }
         .option-bar {
             background-color: var(--bgc-light-box);
@@ -55,10 +55,10 @@
             border-radius: 12px 12px 0 0;
         }
         .bar-middle {
-            border-top: #808080 1px solid;
+            border-top: #bbb 1px solid;
         }
         .bar-bottom {
-            border-top: #808080 1px solid;
+            border-top: #bbb 1px solid;
             border-radius: 0 0 12px 12px;
         }
         .bar-name {
@@ -116,6 +116,12 @@
             .option-bar {
                 background-color: var(--bgc-dark-box);
             }
+            .bar-middle {
+                border-top: #444 1px solid;
+            }
+            .bar-bottom {
+                border-top: #444 1px solid;
+            }
             .bar-name {
                 color: var(--txtc-lv2-dark-bg);
             }
@@ -142,32 +148,29 @@
 <div class="page-container">
     <div class="main-container">
         <div class="title">SCUT 应用设置</div>
-        <div class="subtitle">identity 设置</div>
-        <div class="option-bar bar-single">
+        <div class="subtitle" onclick="activateEditing()">identity 设置</div>
+
+        <div class="option-bar bar-top" id="dynamic-bar">
             <div class="bar-name">当前 id</div>
-            <div class="bar-value" id="bar-value-identity">0000</div>
+            <div id="dynamic-bar-content">
+                <label class="bar-input-label">
+                    <input type="text" class="bar-input" id="bar-input-identity" placeholder="未设置 id">
+                </label>
+            </div>
         </div>
-        <div class="description">My Pass 页面的姓名和学号、校园一卡通页面的个人信息由该 id 决定。</div>
-        <div class="option-bar bar-top">
-            <div class="bar-name">更改 id</div>
-            <label class="bar-input-label">
-                <input type="text" class="bar-input" id="bar-input-identity" placeholder="点击输入 id">
-            </label>
-        </div>
-        <div class="option-bar bar-bottom btn-bar" onclick="changeID()">
-            <div class="btn-bar-name-blue">应用更改</div>
+        <div class="option-bar bar-bottom btn-bar" id="dynamic-btn-bar-change" onclick="setID()">
+            <div class="btn-bar-name-blue">设置 id</div>
         </div>
         <div class="description">
-            id 为 8 位的高中学号。<br/>
-            成功应用更改后即可回到 My Pass 页面或校园一卡通页面。如页面信息未变更，请刷新重试。</div>
-        <div class="option-bar bar-single btn-bar" onclick="removeID()">
-            <div class="btn-bar-name-red">移除 id</div>
-        </div>
-        <div class="description">
-            点击此按钮可以移除 id。<br/>
-            移除 id 后，My Pass 页面和校园一卡通页面将不会显示个人信息。<br/>
+            注意：id 为 8 位的高中学号。<br/>
+            My Pass 页面的姓名和学号、校园一卡通页面的个人信息由该 id 决定。<br/>
             id 会自动过期，设置好的 id 在 7 天后会因过期而被移除。
         </div>
+
+        <div class="option-bar bar-single btn-bar" id="dynamic-btn-bar-remove" onclick="removeID()" style="display: none;">
+            <div class="btn-bar-name-red">移除 id</div>
+        </div>
+
     </div>
 </div>
 </body>
@@ -199,21 +202,23 @@
     }
 
 
-    function readIdentity() {
+    function readID() {
         const id = Cookies.get("identity");
-        if (!id) {
-            document.getElementById("bar-value-identity").innerText = "未设置 id";
-            return;
-        }
-        document.getElementById("bar-value-identity").innerText = id;
+        if (!id) return;
+        document.getElementById("dynamic-bar-content")
+            .innerHTML = "<div class='bar-value' id='bar-value-identity'>" + id + "</div>";
+        document.getElementById("dynamic-bar").setAttribute("class", "option-bar bar-single");
+        document.getElementById("dynamic-btn-bar-change").setAttribute("style", "display: none;");
+        document.getElementById("dynamic-btn-bar-remove").setAttribute("style", "display: none;");
     }
+
 
     window.onload = function () {
-        readIdentity();
+        readID();
     }
 
 
-    function changeID() {
+    function setID() {
         const newID = document.getElementById("bar-input-identity").value;
         if (!newID) {
             window.alert("id 不能更改为空，请重试");
@@ -227,18 +232,38 @@
             setCookie("identity", newID);
             window.alert("成功更改 id");
             document.getElementById("bar-input-identity").value = "";
-            readIdentity();
+            readID();
         }
         showCookie();
+    }
+
+
+    function showChangeID() {
+        let id = Cookies.get("identity");
+        if (!id) id = "未设置 id";
+        document.getElementById("dynamic-bar-content").innerHTML = "<label class='bar-input-label'>" +
+            "<input type='text' class='bar-input' id='bar-input-identity' placeholder='" + id + "'></label>";
+        document.getElementById("dynamic-bar").setAttribute("class", "option-bar bar-top");
+        document.getElementById("dynamic-btn-bar-change").setAttribute("style", "");
+        document.getElementById("dynamic-btn-bar-remove").setAttribute("style", "");
     }
 
 
     function removeID() {
         if (window.confirm("确定要移除 id？")) {
             removeCookie();
-            readIdentity();
+            showChangeID();
         }
         showCookie();
+    }
+
+
+    let clicked = 0;
+    function activateEditing() {
+        if (++clicked == 10) {
+            showChangeID();
+            clicked = 0;
+        }
     }
 </script>
 </html>
