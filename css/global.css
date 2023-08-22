@@ -16,6 +16,34 @@
     --txtc-lv1-dark-bg: #eee;
     --txtc-lv2-dark-bg: #ccc;
     --txtc-lv3-dark-bg: #aaa;
+
+    /*--light-bgc-main: #eee;*/
+    /*--light-bgc-box: #ddd;*/
+    /*--light-txtc-lv1: #222;*/
+    /*--light-txtc-lv2: #444;*/
+    /*--light-txtc-lv3: #666;*/
+    /*--light-txtc-lv1-bg: #111;*/
+    /*--light-txtc-lv2-bg: #333;*/
+    /*--light-txtc-lv3-bg: #555;*/
+
+    /*--dark-bgc-main: #111;*/
+    /*--dark-bgc-box: #222;*/
+    /*--dark-txtc-lv1: #ddd;*/
+    /*--dark-txtc-lv2: #bbb;*/
+    /*--dark-txtc-lv3: #999;*/
+    /*--dark-txtc-lv1-bg: #eee;*/
+    /*--dark-txtc-lv2-bg: #ccc;*/
+    /*--dark-txtc-lv3-bg: #aaa;*/
+
+    --ios-bgc-main: #f2f2f6;
+    --ios-bgc-box: #fefefe;
+    --ios-txtc-lv1: #000000;
+    --ios-txtc-lv2: #85858a;
+    --ios-txtc-lv1-inbox: #000000;
+    --ios-txtc-lv2-inbox: #8a8a8d;
+    --ios-txtc-lv3-inbox: #c6c6c8;
+    --ios-txtc-confirm: #3478f6;
+    --ios-txtc-warn: #ea4e3d;
 }
 
 .btn-animation {
@@ -31,6 +59,18 @@
 }
 
 @media (prefers-color-scheme: dark) {
+    :root {
+        --ios-bgc-main: #000000;
+        --ios-bgc-box: #1c1c1e;
+        --ios-txtc-lv1: #fefefe;
+        --ios-txtc-lv2: #8d8d92;
+        --ios-txtc-lv1-inbox: #fefefe;
+        --ios-txtc-lv2-inbox: #98989e;
+        --ios-txtc-lv3-inbox: #3d3d40;
+        --ios-txtc-confirm: #3b82f6;
+        --ios-txtc-warn: #eb5545;
+    }
+
     .btn-animation:hover {
         filter: brightness(1.1);
     }

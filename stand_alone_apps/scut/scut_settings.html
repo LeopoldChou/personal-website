@@ -14,8 +14,8 @@
             font-family: "SF Pro Display", "PingFang SC", "MicrosoftYaHei", sans-serif;
         }
         body {
-            background-color: var(--bgc-light-main);
-            color: var(--txtc-lv1-light);
+            background-color: var(--ios-bgc-main);
+            color: var(--ios-txtc-lv1);
         }
         .page-container {
             width: 100vw;
@@ -34,10 +34,10 @@
         .subtitle {
             font-size: 20px;
             margin-top: 24px;
-            color: var(--txtc-lv2-light);
+            color: var(--ios-txtc-lv2);
         }
         .option-bar {
-            background-color: var(--bgc-light-box);
+            background-color: var(--ios-bgc-box);
             height: 24px;
             line-height: 24px;
             padding: 12px;
@@ -55,14 +55,14 @@
             border-radius: 12px 12px 0 0;
         }
         .bar-middle {
-            border-top: #bbb 1px solid;
+            border-top: var(--ios-txtc-lv3-inbox) 1px solid;
         }
         .bar-bottom {
-            border-top: #bbb 1px solid;
+            border-top: var(--ios-txtc-lv3-inbox) 1px solid;
             border-radius: 0 0 12px 12px;
         }
         .bar-name {
-            color: var(--txtc-lv2-light-bg);
+            color: var(--ios-txtc-lv1-inbox);
             white-space: nowrap;
         }
         .btn-bar {
@@ -73,15 +73,15 @@
             filter: brightness(0.85);
         }
         .btn-bar-name-blue {
-            color: #0079ff;
+            color: var(--ios-txtc-confirm);
             white-space: nowrap;
         }
         .btn-bar-name-red {
-            color: #fe3b30;
+            color: var(--ios-txtc-warn);
             white-space: nowrap;
         }
         .bar-value {
-            color: var(--txtc-lv3-light-bg);
+            color: var(--ios-txtc-lv2-inbox);
             text-align: right;
             overflow: hidden;
             white-space: nowrap;
@@ -97,49 +97,12 @@
             height: 100%;
             text-align: right;
             font-size: 18px;
-            color: var(--txtc-lv3-light-bg);
+            color: var(--ios-txtc-lv2-inbox);
         }
         .description {
             margin-top: 4px;
             padding: 0 12px;
-            color: var(--txtc-lv3-light);
-        }
-
-        @media (prefers-color-scheme: dark) {
-            body {
-                background-color: var(--bgc-dark-main);
-                color: var(--txtc-lv1-dark);
-            }
-            .subtitle {
-                color: var(--txtc-lv2-dark);
-            }
-            .option-bar {
-                background-color: var(--bgc-dark-box);
-            }
-            .bar-middle {
-                border-top: #444 1px solid;
-            }
-            .bar-bottom {
-                border-top: #444 1px solid;
-            }
-            .bar-name {
-                color: var(--txtc-lv2-dark-bg);
-            }
-            .btn-bar-name-blue {
-                color: #0b84fe;
-            }
-            .btn-bar-name-red {
-                color: #ff443a;
-            }
-            .bar-value {
-                color: var(--txtc-lv3-dark-bg);
-            }
-            .bar-input {
-                color: var(--txtc-lv3-dark-bg);
-            }
-            .description {
-                color: var(--txtc-lv3-dark);
-            }
+            color: var(--ios-txtc-lv2);
         }
     </style>
 </head>
