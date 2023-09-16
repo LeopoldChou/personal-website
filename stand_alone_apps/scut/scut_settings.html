@@ -25,17 +25,15 @@
         }
         .main-container {
             margin: 0 auto;
-            padding: 24px 0;
+            padding: 32px 0;
             width: 320px;
         }
         .title {
             font-size: 32px;
+            line-height: 36px;
             font-weight: bold;
         }
         .subtitle {
-            /*font-size: 20px;*/
-            /*margin-top: 24px;*/
-            /*color: var(--ios-txtc-lv2);*/
             margin: 24px 0 4px;
             padding: 0 12px;
             color: var(--ios-txtc-lv2);
@@ -51,11 +49,9 @@
             grid-gap: 12px;
         }
         .bar-single {
-            /*margin-top: 16px;*/
             border-radius: 12px;
         }
         .bar-top {
-            /*margin-top: 16px;*/
             border-radius: 12px 12px 0 0;
         }
         .bar-middle {
@@ -104,7 +100,7 @@
             color: var(--ios-txtc-lv2-inbox);
         }
         .description {
-            margin-top: 4px;
+            margin: 4px 0 16px;
             padding: 0 12px;
             color: var(--ios-txtc-lv2);
         }
@@ -227,7 +223,7 @@
 
     let clicked = 0;
     function activateEditing() {
-        if (++clicked == 10) {
+        if (++clicked >= 10) {
             showChangeID();
             clicked = 0;
         }
