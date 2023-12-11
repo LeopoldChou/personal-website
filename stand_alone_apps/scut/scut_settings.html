@@ -8,10 +8,46 @@
     <title>SCUT 应用设置</title>
     <style>
         @import "../../css/global.css";
+        @font-face {
+            font-family: "SF Pro Display";
+            font-weight: normal;
+            src: url("./font/SF-Pro-Display_regular.woff2") format("woff2");
+            font-display: swap;
+        }
+        @font-face {
+            font-family: "SF Pro Display";
+            font-weight: bold;
+            src: url("./font/SF-Pro-Display_semibold.woff2") format("woff2");
+            font-display: swap;
+        }
+        @font-face {
+            font-family: "SF Pro Text";
+            font-weight: normal;
+            src: url("./font/SF-Pro-Text_regular.woff2") format("woff2");
+            font-display: swap;
+        }
+        @font-face {
+            font-family: "SF Pro Text";
+            font-weight: bold;
+            src: url("./font/SF-Pro-Text_semibold.woff2") format("woff2");
+            font-display: swap;
+        }
+        @font-face {
+            font-family: "PingFang SC";
+            font-weight: normal;
+            src: url("./font/PingFangSC-regular.woff2") format("woff2");
+            font-display: swap;
+        }
+        @font-face {
+            font-family: "PingFang SC";
+            font-weight: bold;
+            src: url("./font/PingFangSC-semibold.woff2") format("woff2");
+            font-display: swap;
+        }
         * {
             margin: 0;
             padding: 0;
-            font-family: "SF Pro SC", "SF Pro Text", "PingFang SC",
+            font-family: "SF Pro Display", "PingFang SC",
                          "Helvetica Neue", "Helvetica", "Microsoft YaHei UI", "Arial", sans-serif;
         }
         body {
@@ -26,7 +62,7 @@
         .main-container {
             margin: 0 auto;
             padding: 32px 0;
-            width: 320px;
+            width: 340px;
         }
         .title {
             font-size: 32px;
@@ -102,6 +138,7 @@
         .description {
             margin: 4px 0 16px;
             padding: 0 12px;
+            font-size: 14px;
             color: var(--ios-txtc-lv2);
         }
     </style>
