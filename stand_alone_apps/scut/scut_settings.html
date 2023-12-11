@@ -65,20 +65,21 @@
             width: 340px;
         }
         .title {
-            font-size: 32px;
-            line-height: 36px;
+            font-size: 36px;
+            line-height: 40px;
             font-weight: bold;
+            margin-bottom: 12px;
         }
         .subtitle {
             margin: 24px 0 4px;
-            padding: 0 12px;
+            padding: 0 16px;
             color: var(--ios-txtc-lv2);
         }
         .option-bar {
             background-color: var(--ios-bgc-box);
             height: 24px;
             line-height: 24px;
-            padding: 10px 12px;
+            padding: 10px 16px;
             font-size: 18px;
             display: grid;
             grid-template-columns: auto 1fr;
@@ -137,7 +138,7 @@
         }
         .description {
             margin: 4px 0 16px;
-            padding: 0 12px;
+            padding: 0 16px;
             font-size: 14px;
             line-height: 18px;
             color: var(--ios-txtc-lv2);
@@ -149,13 +150,13 @@
 <div class="page-container">
     <div class="main-container">
         <div class="title">SCUT 应用设置</div>
-        <div class="subtitle" onclick="activateEditing()">identity 设置</div>
+<!--        <div class="subtitle" onclick="activateEditing()">id 设置</div>-->
 
         <div class="option-bar bar-top" id="dynamic-bar">
             <div class="bar-name">当前 id</div>
             <div id="dynamic-bar-content">
                 <label class="bar-input-label">
-                    <input type="text" class="bar-input" id="bar-input-identity" placeholder="未设置 id">
+                    <input type="text" class="bar-input" id="bar-input-identity" placeholder="未设置">
                 </label>
             </div>
         </div>
@@ -164,7 +165,7 @@
         </div>
         <div class="description">
             注意：id 为 8 位的高中学号。<br/>
-            My Pass 页面的姓名和学号、校园一卡通页面的个人信息由该 id 决定。<br/>
+            <span onclick="activateEditing()">My Pass</span> 页面的姓名和学号、校园一卡通页面的个人信息由该 id 决定。<br/>
             id 会自动过期，设置好的 id 在 7 天后会因过期而被移除。
         </div>
 
@@ -231,7 +232,7 @@
         }
         if (window.confirm("确定要将 id 更改为 " + newID + " 吗？")) {
             setCookie("identity", newID);
-            window.alert("成功更改 id");
+            // window.alert("成功更改 id");
             document.getElementById("bar-input-identity").value = "";
             readID();
         }
@@ -241,7 +242,7 @@
 
     function showChangeID() {
         let id = Cookies.get("identity");
-        if (!id) id = "未设置 id";
+        if (!id) id = "未设置";
         document.getElementById("dynamic-bar-content").innerHTML = "<label class='bar-input-label'>" +
             "<input type='text' class='bar-input' id='bar-input-identity' placeholder='" + id + "'></label>";
         document.getElementById("dynamic-bar").setAttribute("class", "option-bar bar-top");
