@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--    <link rel="shortcut icon" href="img/favicon.png">-->
+<!--    <link rel="bookmark" href="img/favicon.png">-->
+    <title>2024 考研</title>
+    <style>
+        @import "../../css/global.css";
+        @font-face {
+            font-family: "SF Pro Icons";
+            font-weight: normal;
+            src: url("../../css/font/SF-Pro-Icons_regular.woff2") format("woff2");
+            font-display: swap;
+        }
+        @font-face {
+            font-family: "SF Pro Display";
+            font-weight: normal;
+            src: url("../../css/font/SF-Pro-Display_regular.woff2") format("woff2");
+            font-display: swap;
+        }
+        @font-face {
+            font-family: "SF Pro Display";
+            font-weight: bold;
+            src: url("../../css/font/SF-Pro-Display_semibold.woff2") format("woff2");
+            font-display: swap;
+        }
+        @font-face {
+            font-family: "SF Pro Text";
+            font-weight: normal;
+            src: url("../../css/font/SF-Pro-Text_regular.woff2") format("woff2");
+            font-display: swap;
+        }
+        @font-face {
+            font-family: "SF Pro Text";
+            font-weight: bold;
+            src: url("../../css/font/SF-Pro-Text_semibold.woff2") format("woff2");
+            font-display: swap;
+        }
+        @font-face {
+            font-family: "PingFang SC";
+            font-weight: normal;
+            src: url("../../css/font/PingFangSC-regular.woff2") format("woff2");
+            font-display: swap;
+        }
+        @font-face {
+            font-family: "PingFang SC";
+            font-weight: bold;
+            src: url("../../css/font/PingFangSC-semibold.woff2") format("woff2");
+            font-display: swap;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "SF Pro Display", "PingFang SC",
+                         "Helvetica Neue", "Helvetica", "Microsoft YaHei UI", "Arial", sans-serif;
+        }
+        a, a:link, a:visited, a:hover, a:active, a:focus {
+            text-decoration: none;
+        }
+        html {
+            font-size: 16px;
+        }
+        body {
+            background-color: var(--ios-bgc-main);
+            color: var(--ios-txtc-lv1);
+        }
+        .main-container {
+            width: 100vw;
+            /*height: 100vh;*/
+            min-width: 300px;
+            position: relative;
+            padding: 1rem 0;
+        }
+        .main-title {
+            display: block;
+            width: 100%;
+            text-align: center;
+            font-size: 2.5rem;
+            margin: 3rem 0;
+            color: var(--ios-txtc-lv1);
+        }
+        .subject {
+            margin-top: 2rem;
+        }
+        .subject-description {
+            padding: 0 1rem;
+            font-size: 1rem;
+            color: var(--ios-txtc-lv2);
+        }
+        .subject-detail {
+            padding: 0 1rem;
+            font-size: 1.25rem;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            grid-gap: 0.5rem;
+            height: 5rem;
+            align-items: center;
+            background-color: var(--ios-bgc-box);
+        }
+        .subject-select {
+            white-space: nowrap;
+        }
+        .subject-name {
+            font-size: 1.5rem;
+        }
+        .change-subject-btn {
+            color: var(--ios-txtc-confirm);
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        .change-subject-btn::after {
+            font-family: "SF Pro Icons";
+            content: " ";
+            position: relative;
+            top: -0.075rem
+        }
+        .score {
+            color: var(--ios-txtc-confirm);
+            font-size: 2.5rem;
+            text-align: right;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+        .score::after {
+            font-family: "SF Pro Icons";
+            content: " ";
+            font-size: 2rem;
+            position: relative;
+            top: -0.4rem
+        }
+        .pop-up-mask {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            backdrop-filter: blur(1rem);
+            transition-duration: 0.5s;
+        }
+        .pop-up {
+            width: 80%;
+            background-color: var(--ios-bgc-main);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 0.75rem;
+            box-sizing: border-box;
+            border: #aaaaaa20 solid 0.2rem;
+            padding: 1rem;
+            transition-duration: 0.5s;
+        }
+        .pop-up-title {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            margin-bottom: 1rem;
+        }
+        .pop-up-description {
+            font-size: 1.5rem;
+        }
+        .close-btn {
+            background-color: #7f7f7f25;
+            border-radius: 50%;
+            height: 2rem;
+            width: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        svg {
+            height: 1.2rem;
+            fill: var(--ios-txtc-lv2);
+        }
+        .select-options {
+            max-height: 6rem;
+        }
+        .option {
+            color: var(--ios-txtc-lv1-inbox);
+            margin-top: 0.5rem;
+            background-color: var(--ios-bgc-box);
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container">
+
+        <h1 class="main-title">2024 考研</h1>
+
+        <div class="all-subjects">
+            <div class="subject">
+                <h2 class="subject-description">第一科</h2>
+                <div class="subject-detail">
+                    <div class="subject-select">
+                        <div class="subject-name" id="subject1-name">政治 (101)</div>
+                        <div class="change-subject-btn" onclick="show_pop_up(1)">更改科目</div>
+                    </div>
+                    <div class="blank"></div>
+                    <a class="score" id="score1" href="#">63</a>
+                </div>
+            </div>
+            <div class="subject">
+                <h2 class="subject-description">第二科</h2>
+                <div class="subject-detail">
+                    <div class="subject-select">
+                        <div class="subject-name" id="subject2-name">英语一 (201)</div>
+                        <div class="change-subject-btn" onclick="show_pop_up(2)">更改科目</div>
+                    </div>
+                    <div class="blank"></div>
+                    <a class="score" id="score2" href="#">82</a>
+                </div>
+            </div>
+            <div class="subject">
+                <h2 class="subject-description">第三科</h2>
+                <div class="subject-detail">
+                    <div class="subject-select">
+                        <div class="subject-name" id="subject3-name">数学一 (301)</div>
+                        <div class="change-subject-btn" onclick="show_pop_up(3)">更改科目</div>
+                    </div>
+                    <div class="blank"></div>
+                    <a class="score" id="score3" href="#">45</a>
+                </div>
+            </div>
+            <div class="subject">
+                <h2 class="subject-description">第四科</h2>
+                <div class="subject-detail">
+                    <div class="subject-select">
+                        <div class="subject-name" id="subject4-name">暂未开放</div>
+<!--                        <div class="change-subject-btn" onclick="show_pop_up(4)">更改科目</div>-->
+                    </div>
+                    <div class="blank"></div>
+                    <div class="blank"></div>
+<!--                    <a class="score" id="score4" href="#">未估分</a>-->
+                </div>
+            </div>
+        </div>
+
+        <div class="pop-up-mask" id="pop-up-mask" style="display: none"></div>
+        <div class="pop-up" id="pop-up" style="display: none">
+            <div class="pop-up-title">
+                <div class="pop-up-description">选择科目</div>
+                <div class="close-btn" onclick="hide_pop_up()">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M12.12,10l4.07-4.06a1.5,1.5,0,1,0-2.11-2.12L10,7.88,5.94,3.81A1.5,1.5,0,1,0,3.82,5.93L7.88,10,3.81,14.06a1.5,1.5,0,0,0,0,2.12,1.51,1.51,0,0,0,2.13,0L10,12.12l4.06,4.07a1.45,1.45,0,0,0,1.06.44,1.5,1.5,0,0,0,1.06-2.56Z"></path></svg>
+                </div>
+            </div>
+            <div class="select-options" id="select-options">
+<!--                <div class="option" onclick="change_subject(101)">政治 (101)</div>-->
+<!--                <div class="option" onclick="change_subject(199)">管综 (199)</div>-->
+            </div>
+        </div>
+
+    </div>
+</body>
+
+<script type="text/javascript" src="../../js/js.cookie/js.cookie.min.js"></script>
+<script type="text/javascript">
+    const pagePos = window.location.pathname;
+    const projRootPath = pagePos.substring(0, pagePos.lastIndexOf("/") + 1);
+
+
+    function setCookie(name, value, exp = 30) {
+        Cookies.set(name, value, { expires: exp, path: projRootPath });
+    }
+
+
+    function removeCookie(name) {
+        if (!name) {
+            let cookies = Cookies.get();
+            for (let name in cookies) {
+                Cookies.remove(name, { path: projRootPath })
+            }
+            return;
+        }
+        Cookies.remove(name, { path: projRootPath });
+    }
+
+
+    function showCookie() {
+        console.log(Cookies.get());
+    }
+
+
+    const popUpMask = document.getElementById("pop-up-mask");
+    const popUpWindow = document.getElementById("pop-up");
+    const selectOptions = document.getElementById("select-options");
+
+
+    function show_pop_up(exam) {
+        if (!exam) return;
+        switch (exam) {
+            case 1:
+                selectOptions.innerHTML =
+                    "<div class='option' onclick='change_subject(101)'>政治 (101)</div>" +
+                    "<div class='option' onclick='change_subject(199)'>管综 (199)</div>";
+                break;
+            case 2:
+                selectOptions.innerHTML =
+                    "<div class='option' onclick='change_subject(201)'>英语一 (201)</div>" +
+                    "<div class='option' onclick='change_subject(202)'>英语二 (202)</div>";
+                break;
+            case 3:
+                selectOptions.innerHTML =
+                    "<div class='option' onclick='change_subject(301)'>数学一 (301)</div>" +
+                    "<div class='option' onclick='change_subject(302)'>数学二 (302)</div>" +
+                    "<div class='option' onclick='change_subject(303)'>数学三 (303)</div>";
+                break;
+            default: return;
+        }
+        popUpMask.setAttribute("style", "opacity: 0");
+        popUpWindow.setAttribute("style", "opacity: 0");
+        setTimeout(() => {
+            popUpMask.setAttribute("style", "opacity: 100");
+            popUpWindow.setAttribute("style", "opacity: 100");
+        }, 10)
+    }
+
+
+    function hide_pop_up() {
+        popUpMask.setAttribute("style", "opacity: 0");
+        popUpWindow.setAttribute("style", "opacity: 0");
+        setTimeout(() => {
+            popUpMask.setAttribute("style", "display: none");
+            popUpWindow.setAttribute("style", "display: none");
+        }, 510)
+        showCookie();
+    }
+
+
+    function change_score(exam) {
+        if (!exam) return;
+        let elem = undefined, score = undefined;
+        switch (exam) {
+            case 1:
+                elem = document.getElementById("score1");
+                score = Cookies.get("score1");
+                break;
+            case 2:
+                elem = document.getElementById("score2");
+                score = Cookies.get("score2");
+                break;
+            case 3:
+                elem = document.getElementById("score3");
+                score = Cookies.get("score3");
+                break;
+            default: return;
+        }
+        if (!score) elem.innerHTML = "未估分";
+        else elem.innerHTML = score;
+    }
+
+
+    function change_subject(subject) {
+        if (!subject) return;
+        switch (subject) {
+            case 101:
+                document.getElementById("subject1-name").innerHTML = "政治 (101)";
+                change_score(1);
+                break;
+            case 199:
+                document.getElementById("subject1-name").innerHTML = "管综 (199)";
+                change_score(1);
+                break;
+            case 201:
+                document.getElementById("subject2-name").innerHTML = "英语一 (201)";
+                change_score(2);
+                break;
+            case 202:
+                document.getElementById("subject2-name").innerHTML = "英语二 (202)";
+                change_score(2);
+                break;
+            case 301:
+                document.getElementById("subject3-name").innerHTML = "数学一 (301)";
+                change_score(3);
+                break;
+            case 302:
+                document.getElementById("subject3-name").innerHTML = "数学二 (302)";
+                change_score(3);
+                break;
+            case 303:
+                document.getElementById("subject3-name").innerHTML = "数学三 (303)";
+                change_score(3);
+                break;
+            default: return;
+        }
+        hide_pop_up();
+    }
+</script>
+
+</html>
