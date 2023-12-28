@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--    <link rel="shortcut icon" href="img/favicon.png">-->
+    <!--    <link rel="bookmark" href="img/favicon.png">-->
+    <title>单项选择题</title>
+    <style>
+        @import "../../css/global.css";
+        @font-face {
+            font-family: "SF Pro Icons";
+            font-weight: normal;
+            src: url("../../css/font/SF-Pro-Icons_regular.woff2") format("woff2");
+            font-display: swap;
+        }
+        @font-face {
+            font-family: "SF Pro Display";
+            font-weight: normal;
+            src: url("../../css/font/SF-Pro-Display_regular.woff2") format("woff2");
+            font-display: swap;
+        }
+        @font-face {
+            font-family: "SF Pro Display";
+            font-weight: bold;
+            src: url("../../css/font/SF-Pro-Display_semibold.woff2") format("woff2");
+            font-display: swap;
+        }
+        @font-face {
+            font-family: "SF Pro Text";
+            font-weight: normal;
+            src: url("../../css/font/SF-Pro-Text_regular.woff2") format("woff2");
+            font-display: swap;
+        }
+        @font-face {
+            font-family: "SF Pro Text";
+            font-weight: bold;
+            src: url("../../css/font/SF-Pro-Text_semibold.woff2") format("woff2");
+            font-display: swap;
+        }
+        @font-face {
+            font-family: "PingFang SC";
+            font-weight: normal;
+            src: url("../../css/font/PingFangSC-regular.woff2") format("woff2");
+            font-display: swap;
+        }
+        @font-face {
+            font-family: "PingFang SC";
+            font-weight: bold;
+            src: url("../../css/font/PingFangSC-semibold.woff2") format("woff2");
+            font-display: swap;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "SF Pro Display", "PingFang SC",
+            "Helvetica Neue", "Helvetica", "Microsoft YaHei UI", "Arial", sans-serif;
+        }
+        a, a:link, a:visited, a:hover, a:active, a:focus {
+            text-decoration: none;
+        }
+        html {
+            font-size: 16px;
+        }
+        body {
+            background-color: var(--ios-bgc-main);
+            color: var(--ios-txtc-lv1);
+            min-width: 300px;
+        }
+        /* 屏幕顶部 */
+        .header {
+            width: 100%;
+            height: 3rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            backdrop-filter: blur(1rem);
+            background-color: var(--ios-bgc-blury);
+            -webkit-backdrop-filter: blur(1rem);
+            display: grid;
+            grid-template-columns: auto 1fr 1.75rem auto 1.75rem 1fr auto;
+            align-items: center;
+            justify-content: center;
+            padding: 0 0.75rem;
+            box-sizing: border-box;
+            z-index: 996;
+        }
+        .all-questions {
+            height: 1.5rem;
+            width: 1.5rem;
+            margin-right: 0.25rem;
+            cursor: pointer;
+        }
+        svg#all {
+            fill: none;
+            stroke: var(--ios-txtc-lv2-inbox);
+            opacity: 0.5;
+        }
+        .title {
+            font-size: 1.25rem;
+        }
+        .prev-next {
+            height: 1.75rem;
+            width: 1.75rem;
+            border-radius: 50%;
+            background-color: #ededed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        svg#prev {
+            fill: var(--ios-txtc-lv2-inbox);
+        }
+        svg#next {
+            fill: var(--ios-txtc-lv2-inbox);
+        }
+        /* 主体内容 */
+        .main-container {
+            width: 100vw;
+            position: relative;
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+            padding: 3rem 0;
+        }
+        .question-text {
+            padding: 0 1rem;
+            font-size: 1.25rem;
+            text-indent: 2.25rem;
+        }
+        .choices {
+            margin-top: 2rem;
+            font-size: 1.25rem;
+        }
+        .single-choice {
+            margin-top: 1rem;
+            padding: 0.75rem 1rem;
+            background-color: var(--ios-bgc-box);
+            display: grid;
+            grid-template-columns: 2rem 1fr;
+            align-items: center;
+        }
+        .single-choice::before {
+            content: attr(id);
+        }
+        .correct-choice {
+            background-color: #ada;
+        }
+        /* 屏幕底部 */
+        .footer {
+            width: 100%;
+            height: 3rem;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            backdrop-filter: blur(1rem);
+            -webkit-backdrop-filter: blur(1rem);
+            background-color: var(--ios-bgc-blury);
+            z-index: 997;
+            display: grid;
+            grid-template-columns: 1fr 0.1rem 1fr;
+        }
+        .option-wrong {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            color: var(--ios-txtc-warn);
+            cursor: pointer;
+        }
+        .option-right {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            color: var(--ios-txtc-confirm);
+            cursor: pointer;
+        }
+        /* 弹出窗口 */
+        .pop-up-mask {
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            backdrop-filter: blur(1rem);
+            -webkit-backdrop-filter: blur(1rem);
+            transition-duration: 0.5s;
+            z-index: 998;
+        }
+        .pop-up {
+            width: 80vw;
+            background-color: var(--ios-bgc-main);
+            position: fixed;
+            top: 50vh;
+            left: 50vw;
+            transform: translate(-50%, -50%);
+            border-radius: 0.75rem;
+            box-sizing: border-box;
+            border: #aaaaaa20 solid 0.2rem;
+            padding: 1rem;
+            transition-duration: 0.5s;
+            z-index: 999;
+        }
+        .pop-up-title {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            margin-bottom: 1rem;
+        }
+        .pop-up-description {
+            font-size: 1.5rem;
+        }
+        .close-btn {
+            background-color: #7f7f7f25;
+            border-radius: 50%;
+            height: 2rem;
+            width: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        svg#cross {
+            height: 1.2rem;
+            fill: var(--ios-txtc-lv2);
+        }
+        .select-questions {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            grid-gap: 0.5rem;
+        }
+        .question-number {
+            position: relative;  /* 这个设置好像没有效果，设不设都能实现固定宽高比的效果 */
+            width: 100%;
+            display: flex;  /* 不写 display: flex 会有问题，内容会出现在伪类元素的下面，但是所有教程里都没有提到这个 */
+            /*aspect-ratio: 1/1;*/
+            align-items: center;
+            justify-content: center;
+            border-radius: 0.5rem;
+            background-color: var(--ios-bgc-box);
+            cursor: pointer;
+        }
+        .question-number::before {
+            content: "";
+            display: block;
+            padding-top: 100%;
+        }
+        .question-right {
+            background-color: #ada;
+        }
+        .question-wrong {
+            background-color: #fcc;
+        }
+        /* 加载动画 */
+        .loading {
+            position: fixed;
+            top: 50vh;
+            left: 50vw;
+            transform: translate(-50%, -50%);
+            z-index: 999;
+        }
+        .loading-animation {
+            width: 100px;
+            height: 100px;
+            position: relative;
+            transform: scale(0.5);
+        }
+        .loading-line {
+            position: absolute;
+            left: 46px;
+            top: 0;
+            width: 8px;
+            height: 100px;
+        }
+        .loading-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            display:block;
+            width: 8px;
+            height: 26px;
+            background-color: var(--ios-txtc-lv1);
+            border-radius: 4px;
+            opacity: 0;
+        }
+        .loading-line::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            display:block;
+            width: 8px;
+            height: 26px;
+            background-color: var(--ios-txtc-lv1);
+            border-radius: 4px;
+            opacity: 0;
+        }
+        @keyframes fade-out {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+        .loading-line:nth-child(2) { transform: rotate(30deg); }
+        .loading-line:nth-child(3) { transform: rotate(60deg); }
+        .loading-line:nth-child(4) { transform: rotate(90deg); }
+        .loading-line:nth-child(5) { transform: rotate(120deg); }
+        .loading-line:nth-child(6) { transform: rotate(150deg); }
+        .loading-line:nth-child(1)::before { animation: fade-out 0.6s linear 0s infinite; }
+        .loading-line:nth-child(2)::before { animation: fade-out 0.6s linear 0.05s infinite; }
+        .loading-line:nth-child(3)::before { animation: fade-out 0.6s linear 0.1s infinite; }
+        .loading-line:nth-child(4)::before { animation: fade-out 0.6s linear 0.15s infinite; }
+        .loading-line:nth-child(5)::before { animation: fade-out 0.6s linear 0.2s infinite; }
+        .loading-line:nth-child(6)::before { animation: fade-out 0.6s linear 0.25s infinite; }
+        .loading-line:nth-child(1)::after { animation: fade-out 0.6s linear 0.3s infinite; }
+        .loading-line:nth-child(2)::after { animation: fade-out 0.6s linear 0.35s infinite; }
+        .loading-line:nth-child(3)::after { animation: fade-out 0.6s linear 0.4s infinite; }
+        .loading-line:nth-child(4)::after { animation: fade-out 0.6s linear 0.45s infinite; }
+        .loading-line:nth-child(5)::after { animation: fade-out 0.6s linear 0.5s infinite; }
+        .loading-line:nth-child(6)::after { animation: fade-out 0.6s linear 0.55s infinite; }
+        /* 深色模式 */
+        @media (prefers-color-scheme: dark) {
+            .prev-next {
+                background-color: #2d2d2f;
+            }
+            .correct-choice {
+                background-color: #252;
+            }
+            .question-right {
+                background-color: #252;
+            }
+            .question-wrong {
+                background-color: #522;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="prev-next" onclick="change_question(-1)">
+            <svg id="prev" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36">
+                <path d="M21.559,12.062 L15.618,17.984 L21.5221,23.944 C22.105,24.533 22.1021,25.482 21.5131,26.065 C21.2211,26.355 20.8391,26.4999987 20.4571,26.4999987 C20.0711,26.4999987 19.6851,26.352 19.3921,26.056 L12.4351,19.034 C11.8531,18.446 11.8551,17.4999987 12.4411,16.916 L19.4411,9.938 C20.0261,9.353 20.9781,9.354 21.5621,9.941 C22.1471,10.528 22.1451,11.478 21.5591,12.062 L21.559,12.062 Z"></path>
+            </svg>
+        </div>
+        <div class="blank"></div>
+        <div class="all-questions" onclick="show_pop_up()">
+            <svg id="all" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#000000">
+                <path d="M4 5C4 4.44772 4.44772 4 5 4H9C9.55228 4 10 4.44772 10 5V9C10 9.55228 9.55228 10 9 10H5C4.44772 10 4 9.55228 4 9V5Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M4 15C4 14.4477 4.44772 14 5 14H9C9.55228 14 10 14.4477 10 15V19C10 19.5523 9.55228 20 9 20H5C4.44772 20 4 19.5523 4 19V15Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M14 5C14 4.44772 14.4477 4 15 4H19C19.5523 4 20 4.44772 20 5V9C20 9.55228 19.5523 10 19 10H15C14.4477 10 14 9.55228 14 9V5Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M14 15C14 14.4477 14.4477 14 15 14H19C19.5523 14 20 14.4477 20 15V19C20 19.5523 19.5523 20 19 20H15C14.4477 20 14 19.5523 14 19V15Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+        <div class="title" id="title">第 1 题 (1 分)</div>
+        <div class="blank"></div>
+        <div class="blank"></div>
+        <div class="prev-next" onclick="change_question(0)">
+            <svg id="next" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36">
+                <path d="M23.5587,16.916 C24.1447,17.4999987 24.1467,18.446 23.5647,19.034 L16.6077,26.056 C16.3147,26.352 15.9287,26.4999987 15.5427,26.4999987 C15.1607,26.4999987 14.7787,26.355 14.4867,26.065 C13.8977,25.482 13.8947,24.533 14.4777,23.944 L20.3818,17.984 L14.4408,12.062 C13.8548,11.478 13.8528,10.5279 14.4378,9.941 C15.0218,9.354 15.9738,9.353 16.5588,9.938 L23.5588,16.916 L23.5587,16.916 Z"></path>
+            </svg>
+        </div>
+    </div>
+    <div class="main-container">
+        <div class="question-text" id="question-text">
+            <p>题目文字</p>
+        </div>
+        <div class="choices">
+            <div class="single-choice correct-choice" id="A">选项 A</div>
+            <div class="single-choice" id="B">选项 B</div>
+            <div class="single-choice" id="C">选项 C</div>
+            <div class="single-choice" id="D">选项 D</div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="option-wrong">答错了 (未实装)</div>
+        <div class="blank" style="background-color: var(--ios-bgc-main);"></div>
+        <div class="option-right">答对了 (未实装)</div>
+    </div>
+
+    <div class="pop-up-mask" id="pop-up-mask"></div>
+    <div class="pop-up" id="pop-up" style="display: none">
+        <div class="pop-up-title">
+            <div class="pop-up-description">所有题目</div>
+            <div class="close-btn" onclick="hide_pop_up()">
+                <svg id="cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path d="M12.12,10l4.07-4.06a1.5,1.5,0,1,0-2.11-2.12L10,7.88,5.94,3.81A1.5,1.5,0,1,0,3.82,5.93L7.88,10,3.81,14.06a1.5,1.5,0,0,0,0,2.12,1.51,1.51,0,0,0,2.13,0L10,12.12l4.06,4.07a1.45,1.45,0,0,0,1.06.44,1.5,1.5,0,0,0,1.06-2.56Z"></path>
+                </svg>
+            </div>
+        </div>
+        <div class="select-questions" id="select-questions">
+            <div class="question-number question-right" id="1" onclick="change_question(1)">1</div>
+        </div>
+    </div>
+    <div class="loading" id="loading">
+        <div class="loading-animation">
+            <div class="loading-line"></div>
+            <div class="loading-line"></div>
+            <div class="loading-line"></div>
+            <div class="loading-line"></div>
+            <div class="loading-line"></div>
+            <div class="loading-line"></div>
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript" src="./js/101.js"></script>
+<script type="text/javascript">
+    // 显示或隐藏弹出窗口
+    const popUpMask = document.getElementById("pop-up-mask");
+    const popUpWindow = document.getElementById("pop-up");
+    let popUpShown = false;
+
+
+    function show_pop_up() {
+        popUpShown = true;
+        popUpMask.setAttribute("style", "opacity: 0");
+        popUpWindow.setAttribute("style", "opacity: 0");
+        setTimeout(() => {
+            popUpMask.setAttribute("style", "opacity: 100");
+            popUpWindow.setAttribute("style", "opacity: 100");
+        }, 10)
+    }
+
+
+    function hide_pop_up() {
+        popUpShown = false;
+        popUpMask.setAttribute("style", "opacity: 0");
+        popUpWindow.setAttribute("style", "opacity: 0");
+        setTimeout(() => {
+            popUpMask.setAttribute("style", "display: none");
+            popUpWindow.setAttribute("style", "display: none");
+        }, 510)
+    }
+
+
+    // 更换显示的题目（需要先引入题库的 js，qLength 在 window.onload 中初始化）
+    let curr_q = 0;
+    let qLength = 0;
+    const questionText = document.getElementById("question-text");
+    const choices = [document.getElementById("A"), document.getElementById("B"), document.getElementById("C"), document.getElementById("D")];
+    const title = document.getElementById("title");
+
+
+    function change_question(number) {
+        let obj = undefined;
+        if (number < 0) obj = questions[--curr_q];
+        else if (number == 0) obj = questions[++curr_q];
+        else { curr_q = number - 1; obj = questions[curr_q]; }
+        if (!obj) {
+            if (curr_q < 0) curr_q = 0;
+            else if (curr_q >= qLength) curr_q = qLength - 1;
+            return;
+        }
+
+        title.innerHTML = "第 " + (curr_q + 1) + " 题 (" + obj.score + " 分)";
+        let qText = "";
+        for(let p of obj.text) qText += "<p>" + p + "</p>";
+        questionText.innerHTML = qText;
+        for(let i = 0; i < 4; ++i) choices[i].innerHTML = obj.choice[i];
+        for(let i = 0; i < 4; ++i) {
+            if (obj.correct[i]) choices[i].setAttribute("class", "single-choice correct-choice");
+            else choices[i].setAttribute("class", "single-choice");
+        }
+        if (popUpShown) hide_pop_up();
+    }
+
+
+    // 初始化弹出窗口的列表内容
+    function init_select() {
+        let html = "";
+        for (let i = 1; i <= qLength; ++i)
+            html += "<div class='question-number' id='" + i + "' onclick='change_question(" + i + ")'>" + i + "</div>";
+        document.getElementById("select-questions").innerHTML = html;
+    }
+
+
+    // 初始化
+    window.onload = () => {
+        qLength = questions.length;
+        change_question(1);
+        init_select();
+        setTimeout(() => {
+            document.getElementById("loading").remove();
+            hide_pop_up();
+        }, 1000)
+    }
+</script>
+</html>

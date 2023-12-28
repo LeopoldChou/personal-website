@@ -66,6 +66,7 @@
             background-color: var(--ios-bgc-main);
             color: var(--ios-txtc-lv1);
         }
+
         .main-container {
             width: 100vw;
             /*height: 100vh;*/
@@ -78,11 +79,11 @@
             width: 100%;
             text-align: center;
             font-size: 2.5rem;
-            margin: 2rem 0;
+            margin: 1.5rem 0;
             color: var(--ios-txtc-lv1);
         }
         .subject {
-            margin-top: 2rem;
+            margin-top: 1.5rem;
         }
         .subject-description {
             padding: 0 1rem;
@@ -130,10 +131,11 @@
             position: relative;
             top: -0.4rem
         }
+
         .pop-up-mask {
-            width: 100%;
-            height: 100%;
-            position: absolute;
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
             top: 0;
             left: 0;
             backdrop-filter: blur(1rem);
@@ -141,11 +143,11 @@
             transition-duration: 0.5s;
         }
         .pop-up {
-            width: 80%;
+            width: 80vw;
             background-color: var(--ios-bgc-main);
-            position: absolute;
-            top: 50%;
-            left: 50%;
+            position: fixed;
+            top: 50vh;
+            left: 50vw;
             transform: translate(-50%, -50%);
             border-radius: 0.75rem;
             box-sizing: border-box;
@@ -171,7 +173,7 @@
             justify-content: center;
             cursor: pointer;
         }
-        svg {
+        svg#cross {
             height: 1.2rem;
             fill: var(--ios-txtc-lv2);
         }
@@ -248,7 +250,9 @@
             <div class="pop-up-title">
                 <div class="pop-up-description">选择科目</div>
                 <div class="close-btn" onclick="hide_pop_up()">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M12.12,10l4.07-4.06a1.5,1.5,0,1,0-2.11-2.12L10,7.88,5.94,3.81A1.5,1.5,0,1,0,3.82,5.93L7.88,10,3.81,14.06a1.5,1.5,0,0,0,0,2.12,1.51,1.51,0,0,0,2.13,0L10,12.12l4.06,4.07a1.45,1.45,0,0,0,1.06.44,1.5,1.5,0,0,0,1.06-2.56Z"></path></svg>
+                    <svg id="cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                        <path d="M12.12,10l4.07-4.06a1.5,1.5,0,1,0-2.11-2.12L10,7.88,5.94,3.81A1.5,1.5,0,1,0,3.82,5.93L7.88,10,3.81,14.06a1.5,1.5,0,0,0,0,2.12,1.51,1.51,0,0,0,2.13,0L10,12.12l4.06,4.07a1.45,1.45,0,0,0,1.06.44,1.5,1.5,0,0,0,1.06-2.56Z"></path>
+                    </svg>
                 </div>
             </div>
             <div class="select-options" id="select-options">
@@ -262,8 +266,9 @@
 
 <script type="text/javascript" src="../../js/js.cookie/js.cookie.min.js"></script>
 <script type="text/javascript">
-    const pagePos = window.location.pathname;
-    const projRootPath = pagePos.substring(0, pagePos.lastIndexOf("/") + 1);
+    // const pagePos = window.location.pathname;
+    // const projRootPath = pagePos.substring(0, pagePos.lastIndexOf("/") + 1);
+    const projRootPath = "/personal-website/stand_alone_apps/est_pg_exam/";
 
 
     function setCookie(name, value, exp = 30) {
@@ -310,7 +315,14 @@
                 selectOptions.innerHTML =
                     "<div class='option' onclick='change_subject(301)'>数学一 (301)</div>" +
                     "<div class='option' onclick='change_subject(302)'>数学二 (302)</div>" +
-                    "<div class='option' onclick='change_subject(303)'>数学三 (303)</div>";
+                    "<div class='option' onclick='change_subject(303)'>数学三 (303)</div>" +
+                    "<div class='option option-disabled' onclick='change_subject()'>TEST 4</div>" +
+                    "<div class='option option-disabled' onclick='change_subject()'>TEST 5</div>" +
+                    "<div class='option option-disabled' onclick='change_subject()'>TEST 6</div>" +
+                    "<div class='option option-disabled' onclick='change_subject()'>TEST 7</div>" +
+                    "<div class='option option-disabled' onclick='change_subject()'>TEST 8</div>" +
+                    "<div class='option option-disabled' onclick='change_subject()'>TEST 9</div>" +
+                    "<div class='option option-disabled' onclick='change_subject()'>TEST 10</div>";
                 break;
             default: return;
         }

@@ -37,6 +37,7 @@
 
     --ios-bgc-main: #f2f2f6;
     --ios-bgc-box: #fefefe;
+    --ios-bgc-blury: #fefefebb;
     --ios-txtc-lv1: #000000;
     --ios-txtc-lv2: #85858a;
     --ios-txtc-lv1-inbox: #000000;
@@ -62,6 +63,7 @@
     :root {
         --ios-bgc-main: #000000;
         --ios-bgc-box: #1c1c1e;
+        --ios-bgc-blury: #1c1c1ebb;
         --ios-txtc-lv1: #fefefe;
         --ios-txtc-lv2: #8d8d92;
         --ios-txtc-lv1-inbox: #fefefe;
