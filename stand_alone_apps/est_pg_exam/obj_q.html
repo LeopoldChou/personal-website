@@ -2,7 +2,7 @@
 <html lang="zh-Hans">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, viewport-fit=cover">
     <!--    <link rel="shortcut icon" href="img/favicon.png">-->
     <!--    <link rel="bookmark" href="img/favicon.png">-->
     <title>单项选择题</title>
@@ -78,7 +78,7 @@
             background-color: var(--ios-bgc-blury);
             -webkit-backdrop-filter: blur(1rem);
             display: grid;
-            grid-template-columns: auto 1fr 1.75rem auto 1.75rem 1fr auto;
+            grid-template-columns: auto 1fr 1.75rem auto 1fr auto;
             align-items: center;
             justify-content: center;
             padding: 0 0.75rem;
@@ -92,6 +92,7 @@
             cursor: pointer;
         }
         svg#all {
+            width: 100%;
             fill: none;
             stroke: var(--ios-txtc-lv2-inbox);
             opacity: 0.5;
@@ -110,9 +111,11 @@
             cursor: pointer;
         }
         svg#prev {
+            width: 100%;
             fill: var(--ios-txtc-lv2-inbox);
         }
         svg#next {
+            width: 100%;
             fill: var(--ios-txtc-lv2-inbox);
         }
         /* 主体内容 */
@@ -159,6 +162,7 @@
             z-index: 997;
             display: grid;
             grid-template-columns: 1fr 0.1rem 1fr;
+            padding-bottom: env(safe-area-inset-bottom, 1.5rem);
         }
         .option-wrong {
             display: flex;
@@ -221,7 +225,7 @@
             cursor: pointer;
         }
         svg#cross {
-            height: 1.2rem;
+            width: 60%;
             fill: var(--ios-txtc-lv2);
         }
         .select-questions {
@@ -350,7 +354,6 @@
             </svg>
         </div>
         <div class="title" id="title">第 1 题 (1 分)</div>
-        <div class="blank"></div>
         <div class="blank"></div>
         <div class="prev-next" onclick="change_question(0)">
             <svg id="next" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36">
