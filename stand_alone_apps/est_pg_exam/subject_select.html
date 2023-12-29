@@ -155,12 +155,12 @@
             padding: 1rem;
             transition-duration: 0.5s;
         }
-        .pop-up-title {
+        .pop-up-header {
             display: grid;
             grid-template-columns: 1fr auto;
             margin-bottom: 1rem;
         }
-        .pop-up-description {
+        .pop-up-title {
             font-size: 1.5rem;
         }
         .close-btn {
@@ -178,12 +178,14 @@
             fill: var(--ios-txtc-lv2);
         }
         .select-options {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-gap: 0.5rem;
             max-height: 16rem;
             overflow: hidden auto;
         }
         .option {
             color: var(--ios-txtc-lv1-inbox);
-            margin-top: 0.5rem;
             background-color: var(--ios-bgc-box);
             padding: 0.5rem;
             border-radius: 0.5rem;
@@ -211,7 +213,7 @@
                         <div class="change-subject-btn" onclick="show_pop_up(1)">更改科目</div>
                     </div>
                     <div class="blank"></div>
-                    <a class="score" id="score1" href="#">63</a>
+                    <a class="score" id="score1" href="./obj_q.html">63</a>
                 </div>
             </div>
             <div class="subject">
@@ -252,8 +254,8 @@
 
         <div class="pop-up-mask" id="pop-up-mask" style="display: none"></div>
         <div class="pop-up" id="pop-up" style="display: none">
-            <div class="pop-up-title">
-                <div class="pop-up-description">选择科目</div>
+            <div class="pop-up-header">
+                <div class="pop-up-title">选择科目</div>
                 <div class="close-btn" onclick="hide_pop_up()">
                     <svg id="cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                         <path d="M12.12,10l4.07-4.06a1.5,1.5,0,1,0-2.11-2.12L10,7.88,5.94,3.81A1.5,1.5,0,1,0,3.82,5.93L7.88,10,3.81,14.06a1.5,1.5,0,0,0,0,2.12,1.51,1.51,0,0,0,2.13,0L10,12.12l4.06,4.07a1.45,1.45,0,0,0,1.06.44,1.5,1.5,0,0,0,1.06-2.56Z"></path>
@@ -314,7 +316,7 @@
             case 2:
                 selectOptions.innerHTML =
                     "<div class='option' onclick='change_subject(201)'>英语一 (201)</div>" +
-                    "<div class='option' onclick='change_subject(202)'>英语二 (202)</div>";
+                    "<div class='option' onclick='change_subject(202)'>英语二 (204)</div>";
                 break;
             case 3:
                 selectOptions.innerHTML =

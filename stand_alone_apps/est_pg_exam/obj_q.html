@@ -65,7 +65,6 @@
         body {
             background-color: var(--ios-bgc-main);
             color: var(--ios-txtc-lv1);
-            min-width: 300px;
         }
         /* 屏幕顶部 */
         .header {
@@ -149,6 +148,12 @@
         .correct-choice {
             background-color: #ada;
         }
+        .answer {
+            margin-top: 1rem;
+            padding: 0 1rem;
+            font-size: 1.25rem;
+            color: var(--ios-txtc-lv2);
+        }
         /* 屏幕底部 */
         .footer {
             width: 100%;
@@ -206,12 +211,12 @@
             transition-duration: 0.5s;
             z-index: 999;
         }
-        .pop-up-title {
+        .pop-up-header {
             display: grid;
             grid-template-columns: 1fr auto;
             margin-bottom: 1rem;
         }
-        .pop-up-description {
+        .pop-up-title {
             font-size: 1.5rem;
         }
         .close-btn {
@@ -228,7 +233,12 @@
             width: 60%;
             fill: var(--ios-txtc-lv2);
         }
+        .total-score {
+            color: var(--ios-txtc-lv2);
+        }
         .select-questions {
+            max-height: 16rem;
+            overflow: hidden auto;
             display: grid;
             grid-template-columns: repeat(6, 1fr);
             grid-gap: 0.5rem;
@@ -344,6 +354,7 @@
                 <path d="M21.559,12.062 L15.618,17.984 L21.5221,23.944 C22.105,24.533 22.1021,25.482 21.5131,26.065 C21.2211,26.355 20.8391,26.4999987 20.4571,26.4999987 C20.0711,26.4999987 19.6851,26.352 19.3921,26.056 L12.4351,19.034 C11.8531,18.446 11.8551,17.4999987 12.4411,16.916 L19.4411,9.938 C20.0261,9.353 20.9781,9.354 21.5621,9.941 C22.1471,10.528 22.1451,11.478 21.5591,12.062 L21.559,12.062 Z"></path>
             </svg>
         </div>
+
         <div class="blank"></div>
         <div class="all-questions" onclick="show_pop_up()">
             <svg id="all" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#000000">
@@ -371,22 +382,25 @@
             <div class="single-choice" id="C">选项 C</div>
             <div class="single-choice" id="D">选项 D</div>
         </div>
+        <div class="answer">正确答案：<span id="answer">A</span></div>
     </div>
+
     <div class="footer">
-        <div class="option-wrong">答错了 (未实装)</div>
+        <div class="option-wrong" onclick="answered(false)">答错了</div>
         <div class="blank" style="background-color: var(--ios-bgc-main);"></div>
-        <div class="option-right">答对了 (未实装)</div>
+        <div class="option-right" onclick="answered(true)">答对了</div>
     </div>
 
     <div class="pop-up-mask" id="pop-up-mask"></div>
     <div class="pop-up" id="pop-up" style="display: none">
-        <div class="pop-up-title">
-            <div class="pop-up-description">所有题目</div>
+        <div class="pop-up-header">
+            <div class="pop-up-title">所有题目</div>
             <div class="close-btn" onclick="hide_pop_up()">
                 <svg id="cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                     <path d="M12.12,10l4.07-4.06a1.5,1.5,0,1,0-2.11-2.12L10,7.88,5.94,3.81A1.5,1.5,0,1,0,3.82,5.93L7.88,10,3.81,14.06a1.5,1.5,0,0,0,0,2.12,1.51,1.51,0,0,0,2.13,0L10,12.12l4.06,4.07a1.45,1.45,0,0,0,1.06.44,1.5,1.5,0,0,0,1.06-2.56Z"></path>
                 </svg>
             </div>
+            <div class="total-score">得分：<span id="total-score">0</span></div>
         </div>
         <div class="select-questions" id="select-questions">
             <div class="question-number question-right" id="1" onclick="change_question(1)">1</div>
@@ -435,31 +449,36 @@
 
 
     // 更换显示的题目（需要先引入题库的 js，qLength 在 window.onload 中初始化）
-    let curr_q = 0;
+    let currQ = 0;
     let qLength = 0;
+    const title = document.getElementById("title");
     const questionText = document.getElementById("question-text");
     const choices = [document.getElementById("A"), document.getElementById("B"), document.getElementById("C"), document.getElementById("D")];
-    const title = document.getElementById("title");
+    const answer = document.getElementById("answer");
 
 
     function change_question(number) {
         let obj = undefined;
-        if (number < 0) obj = questions[--curr_q];
-        else if (number == 0) obj = questions[++curr_q];
-        else { curr_q = number - 1; obj = questions[curr_q]; }
+        if (number < 0) obj = questions[--currQ];
+        else if (number == 0) obj = questions[++currQ];
+        else { currQ = number - 1; obj = questions[currQ]; }
         if (!obj) {
-            if (curr_q < 0) curr_q = 0;
-            else if (curr_q >= qLength) curr_q = qLength - 1;
+            if (currQ < 0) currQ = 0;
+            else if (currQ >= qLength) currQ = qLength - 1;
             return;
         }
 
-        title.innerHTML = "第 " + (curr_q + 1) + " 题 (" + obj.score + " 分)";
+        title.innerHTML = "第 " + (currQ + 1) + " 题 (" + obj.score + " 分)";
         let qText = "";
         for(let p of obj.text) qText += "<p>" + p + "</p>";
         questionText.innerHTML = qText;
-        for(let i = 0; i < 4; ++i) choices[i].innerHTML = obj.choice[i];
+        for(let i = 0; i < 4; ++i) choices[i].innerHTML = obj.choice[i]
+        answer.innerHTML = "";
         for(let i = 0; i < 4; ++i) {
-            if (obj.correct[i]) choices[i].setAttribute("class", "single-choice correct-choice");
+            if (obj.correct[i]) {
+                choices[i].setAttribute("class", "single-choice correct-choice");
+                answer.innerHTML += String.fromCharCode(65 + i) + " ";
+            }
             else choices[i].setAttribute("class", "single-choice");
         }
         if (popUpShown) hide_pop_up();
@@ -475,15 +494,48 @@
     }
 
 
+    // 记录每道题对错情况（在 window.onload 中初始化））
+    let finished = undefined;
+
+
     // 初始化
     window.onload = () => {
         qLength = questions.length;
         change_question(1);
         init_select();
+        finished = new Array(qLength);
         setTimeout(() => {
             document.getElementById("loading").remove();
             hide_pop_up();
         }, 1000)
+    }
+
+
+    // 算总分
+    const totalScore = document.getElementById("total-score");
+
+
+    function calc_total_score() {
+        let total = 0;
+        for (let i = 0; i < qLength; ++i)
+            if (finished[i]) total += questions[i].score;
+        return total;
+    }
+
+
+    // 记录每道题对错情况
+    function answered(isCorrect) {
+        const currNum = currQ + 1;
+        if (isCorrect) {
+            finished[currQ] = true;
+            document.getElementById(currNum.toString()).setAttribute("class", "question-number question-right");
+        }
+        else {
+            finished[currQ] = false;
+            document.getElementById(currNum.toString()).setAttribute("class", "question-number question-wrong");
+        }
+        change_question(0);
+        totalScore.innerHTML = calc_total_score().toString();
     }
 </script>
 </html>
