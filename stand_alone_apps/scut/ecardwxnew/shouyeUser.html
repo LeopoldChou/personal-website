@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang=en class=theme-class>
+  <!-- url: https://ecardwxnew.scut.edu.cn/plat/shouyeUser
+    saved date: Tue Dec 31 2024 11:22:42 GMT+0800 (中国标准时间) -->
+  <head>
+    <meta charset=utf-8>
+    <meta http-equiv=X-UA-Compatible content="IE=edge">
+    <meta name=color-scheme content="light dark">
+    <meta http-equiv=Cache-control content=no-cache>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover"
+        name=viewport>
+    <title>首页</title>
+    <link href="./assets/css/animate.css" rel="stylesheet">
+    <style>
+      @font-face {
+        font-weight: 400;
+        font-family: vant-icon;
+        font-style: normal;
+        src: url("./assets/fonts/vant-icon.woff2") format("woff2")
+      }
+      @font-face {
+        font-family: synjones;
+        src: url("./assets/fonts/synjones.woff2") format("woff2");
+        font-weight: 400;
+        font-style: normal
+      }
+      @font-face {
+        font-family: DIN-Medium;
+        src: url("./assets/fonts/DIN-Medium.ttf");
+        font-weight: 400;
+        font-style: normal
+      }
+
+      :root {
+        --swiper-theme-color: #007aff;
+        --swiper-navigation-size: 44px;
+        --size-2: 0.125rem;
+        --size-4: 0.25rem;
+        --size-8: 0.5rem;
+        --size-12: 0.75rem;
+        --size-14: 0.875rem;
+        --size-16: 1rem;
+        --size-20: 1.25rem;
+        --size-24: 1.5rem;
+        --size-32: 2rem;
+        --size-40: 2.5rem;
+        --size-margin-vertical: var(--size-12);
+        --size-margin-horizontal: var(--size-16);
+        --font-size-4: 0.25rem;
+        --font-size-8: 0.5rem;
+        --font-size-12: 0.75rem;
+        --font-size-14: 0.875rem;
+        --font-size-16: 1rem;
+        --font-size-18: 1.125rem;
+        --font-size-20: 1.25rem;
+        --font-size-22: 1.375rem;
+        --font-size-24: 1.5rem;
+        --font-size-32: 2rem;
+        --font-size-40: 2.5rem;
+        --font-size-small: var(--font-size-12);
+        --font-size-default: var(--font-size-14);
+        --font-size-middle: var(--font-size-16);
+        --font-size-title: var(--font-size-16);
+        --font-size-large: var(--font-size-20);
+        --br-4: 0.25rem;
+        --br-8: 0.5rem;
+        --br-12: 0.75rem;
+        --br-16: 1rem;
+        --color-cutline: #e5e5e6;
+        --color-panel-bg: #fff;
+        --color-text: #333;
+        --color-text-light: #666;
+        --color-text-lighter: #999;
+        --color-text-lightest: #ccc;
+        --color-input-bg: #f3f5f7;
+        --animate-duration: 1s;
+        --animate-delay: 1s;
+        --animate-repeat: 1
+      }
+      .theme-class {
+        --mob-primary-hsla: 35.172413793103445, 99.02439024390245%, 59.80392156862745%;
+        --mob-primary: hsla(var(--mob-primary-hsla));
+        --mob-success-hsla: 125.52631578947368, 60.31746031746032%, 50.588235294117645%;
+        --mob-success: hsla(var(--mob-success-hsla));
+        --mob-danger-hsla: 14.563106796116502, 85.12396694214877%, 52.54901960784314%;
+        --mob-danger: hsla(var(--mob-danger-hsla));
+        --mob-warning-hsla: 37.42857142857143, 91.30434782608697%, 54.90196078431373%;
+        --mob-warning: hsla(var(--mob-warning-hsla));
+        --mob-info-hsla: 0, 0%, 60%;
+        --mob-info: hsla(var(--mob-info-hsla));
+        --mob-gradualPrimary-0: #FFA258;
+        --mob-gradualPrimary-1: #FEAA33;
+        --mob-gradualPrimary: linear-gradient(180deg, var(--mob-gradualPrimary-0) 0%, var(--mob-gradualPrimary-1) 100%);
+        --mob-gradualRed-0: #FFA790;
+        --mob-gradualRed-1: #FF6392;
+        --mob-gradualRed: linear-gradient(180deg, var(--mob-gradualRed-0) 0%, var(--mob-gradualRed-1) 100%);
+        --mob-gradualYellow-0: #FCF211;
+        --mob-gradualYellow-1: #FFC030;
+        --mob-gradualYellow: linear-gradient(180deg, var(--mob-gradualYellow-0) 0%, var(--mob-gradualYellow-1) 100%);
+        --mob-gradualBlue-0: #38DCFF;
+        --mob-gradualBlue-1: #4C99FF;
+        --mob-gradualBlue: linear-gradient(180deg, var(--mob-gradualBlue-0) 0%, var(--mob-gradualBlue-1) 100%);
+        --mob-gradualGreen-0: #95F12D;
+        --mob-gradualGreen-1: #1BCC75;
+        --mob-gradualGreen: linear-gradient(180deg, var(--mob-gradualGreen-0) 0%, var(--mob-gradualGreen-1) 100%);
+        --mob-gradualViolet-0: #E88FFF;
+        --mob-gradualViolet-1: #9465FF;
+        --mob-gradualViolet: linear-gradient(180deg, var(--mob-gradualViolet-0) 0%, var(--mob-gradualViolet-1) 100%);
+        --mob-bodyBgColor-hsla: 0, 0%, 98.0392156862745%;
+        --mob-bodyBgColor: hsla(var(--mob-bodyBgColor-hsla));
+        --mob-bodyBgColorDark-hsla: 0, 0%, 9.803921568627452%;
+        --mob-bodyBgColorDark: hsla(var(--mob-bodyBgColorDark-hsla));
+      }
+      * {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none
+      }
+      html {
+        -webkit-tap-highlight-color: transparent
+      }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue, SF Pro Display, Helvetica, Segoe UI, Arial, Roboto,
+            PingFang SC, MiSans, Hiragino Sans GB, Microsoft Yahei, sans-serif;
+        background-color: var(--mob-bodyBgColor);
+        padding: 0;
+        margin: 0;
+        color: #323233;
+        background: var(--mob-bodyBgColor)
+      }
+      img {
+        max-width: 100%
+      }
+      p {
+        margin-top: 0;
+        margin-bottom: 0
+      }
+      [class*=van-]:focus, a:focus, button:focus, input:focus, textarea:focus {
+        outline: none
+      }
+      [class*=van-hairline]:after {
+        position: absolute;
+        box-sizing: border-box;
+        content: " ";
+        pointer-events: none;
+        top: -50%;
+        right: -50%;
+        bottom: -50%;
+        left: -50%;
+        border: 0 solid #ebedf0;
+        -webkit-transform: scale(0.5);
+        transform: scale(0.5)
+      }
+
+      .van-hairline--top-bottom {
+        position: relative
+      }
+      .van-hairline--top-bottom:after, .van-hairline-unset--top-bottom:after {
+        border-width: 1px 0
+      }
+
+      @-webkit-keyframes van-slide-up-enter {
+        0% {
+          -webkit-transform: translate3d(0, 100%, 0);
+          transform: translate3d(0, 100%, 0)
+        }
+      }
+      @keyframes van-slide-up-enter {
+        0% {
+          -webkit-transform: translate3d(0, 100%, 0);
+          transform: translate3d(0, 100%, 0)
+        }
+      }
+      @-webkit-keyframes van-slide-up-leave {
+        to {
+          -webkit-transform: translate3d(0, 100%, 0);
+          transform: translate3d(0, 100%, 0)
+        }
+      }
+      @keyframes van-slide-up-leave {
+        to {
+          -webkit-transform: translate3d(0, 100%, 0);
+          transform: translate3d(0, 100%, 0)
+        }
+      }
+      @-webkit-keyframes van-slide-down-enter {
+        0% {
+          -webkit-transform: translate3d(0, -100%, 0);
+          transform: translate3d(0, -100%, 0)
+        }
+      }
+      @keyframes van-slide-down-enter {
+        0% {
+          -webkit-transform: translate3d(0, -100%, 0);
+          transform: translate3d(0, -100%, 0)
+        }
+      }
+      @-webkit-keyframes van-slide-down-leave {
+        to {
+          -webkit-transform: translate3d(0, -100%, 0);
+          transform: translate3d(0, -100%, 0)
+        }
+      }
+      @keyframes van-slide-down-leave {
+        to {
+          -webkit-transform: translate3d(0, -100%, 0);
+          transform: translate3d(0, -100%, 0)
+        }
+      }
+      @-webkit-keyframes van-slide-left-enter {
+        0% {
+          -webkit-transform: translate3d(-100%, 0, 0);
+          transform: translate3d(-100%, 0, 0)
+        }
+      }
+      @keyframes van-slide-left-enter {
+        0% {
+          -webkit-transform: translate3d(-100%, 0, 0);
+          transform: translate3d(-100%, 0, 0)
+        }
+      }
+      @-webkit-keyframes van-slide-left-leave {
+        to {
+          -webkit-transform: translate3d(-100%, 0, 0);
+          transform: translate3d(-100%, 0, 0)
+        }
+      }
+      @keyframes van-slide-left-leave {
+        to {
+          -webkit-transform: translate3d(-100%, 0, 0);
+          transform: translate3d(-100%, 0, 0)
+        }
+      }
+      @-webkit-keyframes van-slide-right-enter {
+        0% {
+          -webkit-transform: translate3d(100%, 0, 0);
+          transform: translate3d(100%, 0, 0)
+        }
+      }
+      @keyframes van-slide-right-enter {
+        0% {
+          -webkit-transform: translate3d(100%, 0, 0);
+          transform: translate3d(100%, 0, 0)
+        }
+      }
+      @-webkit-keyframes van-slide-right-leave {
+        to {
+          -webkit-transform: translate3d(100%, 0, 0);
+          transform: translate3d(100%, 0, 0)
+        }
+      }
+      @keyframes van-slide-right-leave {
+        to {
+          -webkit-transform: translate3d(100%, 0, 0);
+          transform: translate3d(100%, 0, 0)
+        }
+      }
+      @-webkit-keyframes van-fade-in {
+        0% {
+          opacity: 0
+        }
+        to {
+          opacity: 1
+        }
+      }
+      @keyframes van-fade-in {
+        0% {
+          opacity: 0
+        }
+        to {
+          opacity: 1
+        }
+      }
+      @-webkit-keyframes van-fade-out {
+        0% {
+          opacity: 1
+        }
+        to {
+          opacity: 0
+        }
+      }
+      @keyframes van-fade-out {
+        0% {
+          opacity: 1
+        }
+        to {
+          opacity: 0
+        }
+      }
+
+      @-webkit-keyframes van-rotate {
+        0% {
+          -webkit-transform: rotate(0deg);
+          transform: rotate(0deg)
+        }
+        to {
+          -webkit-transform: rotate(1turn);
+          transform: rotate(1turn)
+        }
+      }
+      @keyframes van-rotate {
+        0% {
+          -webkit-transform: rotate(0deg);
+          transform: rotate(0deg)
+        }
+        to {
+          -webkit-transform: rotate(1turn);
+          transform: rotate(1turn)
+        }
+      }
+
+      .van-icon {
+        position: relative;
+        font: normal normal normal 14px/1 "vant-icon";
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased
+      }
+      .van-icon, .van-icon:before {
+        display: inline-block
+      }
+      .van-icon-setting-o:before {
+        content: ""
+      }
+      .van-icon-arrow:before {
+        content: ""
+      }
+
+      @-webkit-keyframes van-circular {
+        0% {
+          stroke-dasharray: 1, 200;
+          stroke-dashoffset: 0
+        }
+        50% {
+          stroke-dasharray: 90, 150;
+          stroke-dashoffset: -40
+        }
+        to {
+          stroke-dasharray: 90, 150;
+          stroke-dashoffset: -120
+        }
+      }
+      @keyframes van-circular {
+        0% {
+          stroke-dasharray: 1, 200;
+          stroke-dashoffset: 0
+        }
+        50% {
+          stroke-dasharray: 90, 150;
+          stroke-dashoffset: -40
+        }
+        to {
+          stroke-dasharray: 90, 150;
+          stroke-dashoffset: -120
+        }
+      }
+
+      .van-toast {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        display: -webkit-box;
+        display: -webkit-flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        box-sizing: content-box;
+        max-width: 70%;
+        min-height: 88px;
+        padding: 16px;
+        color: #fff;
+        font-size: 14px;
+        line-height: 20;
+        white-space: pre-wrap;
+        text-align: center;
+        word-break: break-all;
+        border-radius: 8px;
+        -webkit-transform: translate3d(-50%, -50%, 0);
+        transform: translate3d(-50%, -50%, 0)
+      }
+      .van-cell {
+        position: relative;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+        box-sizing: border-box;
+        width: 100%;
+        padding: .8125rem 1rem;
+        overflow: hidden;
+        color: #323233;
+        font-size: 14px;
+        line-height: 24px;
+        background-color: #fff
+      }
+      .van-cell:after {
+        position: absolute;
+        box-sizing: border-box;
+        content: " ";
+        pointer-events: none;
+        right: 16px;
+        bottom: 0;
+        left: 16px;
+        border-bottom: 1px solid #ebedf0;
+        -webkit-transform: scaleY(0.5);
+        transform: scaleY(0.5)
+      }
+      .van-cell--borderless:after, .van-cell:last-child:after {
+        display: none
+      }
+      .van-cell__title {
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        flex: 1;
+        font-weight: 500
+      }
+      .van-cell__right-icon {
+        height: 24px;
+        font-size: 16px;
+        line-height: 24px
+      }
+      .van-cell__right-icon {
+        margin-left: 4px;
+        color: #969799
+      }
+      .van-cell--clickable {
+        cursor: pointer
+      }
+      .van-cell--clickable:active {
+        background-color: #f2f3f5
+      }
+      .van-collapse-item {
+        position: relative
+      }
+      .van-collapse-item--border:after {
+        position: absolute;
+        box-sizing: border-box;
+        content: " ";
+        pointer-events: none;
+        top: 0;
+        right: 16px;
+        left: 16px;
+        border-top: 1px solid var(--color-cutline);
+        -webkit-transform: scaleY(0.5);
+        transform: scaleY(0.5)
+      }
+      .van-collapse-item__title .van-cell__right-icon:before {
+        -webkit-transform: rotate(90deg) translateZ(0);
+        transform: rotate(90deg) translateZ(0);
+        -webkit-transition: -webkit-transform .3s;
+        transition: -webkit-transform .3s;
+        transition: transform .3s;
+        transition: transform .3s, -webkit-transform .3s
+      }
+      .van-collapse-item__title:after {
+        right: 16px;
+        display: none
+      }
+      .van-collapse-item__title--expanded .van-cell__right-icon:before {
+        -webkit-transform: rotate(-90deg);
+        transform: rotate(-90deg)
+      }
+      .van-collapse-item__title--expanded:after {
+        display: block
+      }
+      .van-collapse-item__wrapper {
+        overflow: hidden;
+        -webkit-transition: height .3s ease-in-out;
+        transition: height .3s ease-in-out;
+        will-change: height
+      }
+      .van-collapse-item__content {
+        padding: 12px 16px;
+        color: #969799;
+        font-size: 14px;
+        line-height: 1.5;
+        background-color: var(--color-panel-bg);
+        padding-left: 0 !important;
+        padding-right: 0 !important
+      }
+      .van-image {
+        position: relative;
+        display: inline-block
+      }
+      .van-image__img {
+        display: block;
+        width: 100%;
+        height: 100%
+      }
+      .van-swipe {
+        position: relative;
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        overflow: visible;
+        cursor: grab;
+        -webkit-user-select: none;
+        user-select: none
+      }
+      .van-swipe__track {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+        height: 100%;
+        transition-duration: 500ms;
+        transform: translateX(0)
+      }
+      .van-swipe-item {
+        position: relative;
+        -webkit-flex-shrink: 0;
+        flex-shrink: 0;
+        height: 100%
+      }
+
+      @-webkit-keyframes van-skeleton-blink {
+        50% {
+          opacity: .6
+        }
+      }
+      @keyframes van-skeleton-blink {
+        50% {
+          opacity: .6
+        }
+      }
+
+      .van-pull-refresh {
+        overflow: hidden;
+        -webkit-user-select: none;
+        user-select: none
+      }
+      .van-pull-refresh__track {
+        position: relative;
+        height: 100%;
+        -webkit-transition-property: -webkit-transform;
+        transition-property: -webkit-transform;
+        transition-property: transform;
+        transition-property: transform, -webkit-transform
+      }
+      .van-pull-refresh__head {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        overflow: hidden;
+        color: #969799;
+        font-size: 14px;
+        line-height: 50;
+        text-align: center;
+        -webkit-transform: translateY(-100%);
+        transform: translateY(-100%)
+      }
+
+      @-webkit-keyframes van-cursor-flicker {
+        0% {
+          opacity: 0
+        }
+        50% {
+          opacity: 1
+        }
+        to {
+          opacity: 0
+        }
+      }
+      @keyframes van-cursor-flicker {
+        0% {
+          opacity: 0
+        }
+        50% {
+          opacity: 1
+        }
+        to {
+          opacity: 0
+        }
+      }
+
+      .van-grid-item {
+        position: relative;
+        box-sizing: border-box
+      }
+      .van-grid-item__icon-wrapper {
+        position: relative
+      }
+      .van-grid-item__content {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        flex-direction: column;
+        box-sizing: border-box;
+        height: 100%
+      }
+      .van-grid-item__content:after {
+        z-index: 1;
+        border-width: 0 1px 1px 0
+      }
+      .van-grid-item__content--center {
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center
+      }
+      .van-grid {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-wrap: wrap;
+        flex-wrap: wrap
+      }
+
+      @keyframes swiper-preloader-spin {
+        to {
+          transform: rotate(1turn)
+        }
+      }
+
+      .s-hv {
+        margin: var(--size-margin-vertical) var(--size-margin-horizontal)
+      }
+      .margin-bottom-x {
+        margin-bottom: 8px
+      }
+      .ellipsis-width {
+        max-width: 100%;
+        margin: 0 auto
+      }
+
+      @keyframes cursor-blinks {
+        0% {
+          opacity: 1;
+          display: block
+        }
+        50% {
+          opacity: 0;
+          display: none
+        }
+        to {
+          opacity: 1;
+          display: block
+        }
+      }
+
+      .grid-icon-box {
+        margin-bottom: .125rem
+      }
+      .loadingStyle {
+        background-color: #fff;
+        box-shadow: 0 2px 10px 0 rgba(0, 0, 0, .1)
+      }
+      .list-box::-webkit-scrollbar, body::-webkit-scrollbar {
+        width: 0
+      }
+      .van-toast {
+        width: auto !important
+      }
+      .font-number {
+        font-family: DIN-Medium, sans-serif;
+        position: relative;
+        top: 1px
+      }
+      .font-size-20 {
+        font-size: 1.25rem
+      }
+      .font-size-18 {
+        font-size: 1.125rem
+      }
+      .font-size-14 {
+        font-size: .875rem
+      }
+      .text-white {
+        color: #fff
+      }
+      .text-warning {
+        color: var(--mob-warning)
+      }
+      .text-center {
+        text-align: center
+      }
+      .text-ellipsis {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis
+      }
+      .flex-box {
+        display: flex
+      }
+      .vertical-center {
+        align-items: center
+      }
+      .space-between {
+        justify-content: space-between
+      }
+      .bg-transparent {
+        background-color: transparent !important
+      }
+
+      @keyframes fadeOut {
+        0% {
+          opacity: 1
+        }
+        to {
+          opacity: 0
+        }
+      }
+      @keyframes fadeOutLeftBig {
+        0% {
+          opacity: 1
+        }
+        to {
+          opacity: 0;
+          transform: translate3d(-2000, 0, 0)
+        }
+      }
+      @keyframes zoomOut {
+        0% {
+          opacity: 1
+        }
+        50% {
+          opacity: 0;
+          transform: scale3d(.3, .3, .3)
+        }
+        to {
+          opacity: 0
+        }
+      }
+      @keyframes slideInDown {
+        0% {
+          transform: translate3d(0, -100%, 0);
+          visibility: visible
+        }
+        to {
+          transform: translateZ(0)
+        }
+      }
+      @keyframes fadeIn {
+        0% {
+          opacity: 0
+        }
+        to {
+          opacity: 1
+        }
+      }
+
+      .card-code-box {
+        border-radius: .325rem;
+        overflow: hidden
+      }
+      .card {
+        min-height: 10.875rem;
+        background-repeat: no-repeat
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --color-panel-bg: #1e1e1e;
+          --color-text: #fff;
+          --color-text-light: #eee;
+          --color-text-lighter: #ddd;
+          --color-text-lightest: #ccc;
+          --color-input-bg: #666;
+          --color-cutline: #e5e5e630
+        }
+        body {
+          color: #f7f8fa;
+          background: var(--mob-bodyBgColorDark)
+        }
+
+        .text-white {
+          color: var(--mob-bodyBgColorDark)
+        }
+        .van-cell {
+          color: #f7f8fa;
+          background-color: hsla(var(--mob-bodyBgColor-hsla), .02)
+        }
+        .van-cell:after {
+          border-color: hsla(var(--mob-bodyBgColor-hsla), .1)
+        }
+        .van-grid-item__content {
+          background-color: var(--mob-bodyBgColorDark)
+        }
+        .notice-box[card] .card-foot:before, [class*=van-hairline]:after {
+          border-color: var(--mob-bodyBgColor)
+        }
+        .notice-box .van-cell, .notice-box[card] .card-head, .van-action-sheet__cancel:active, .van-action-sheet__item:active, .van-cell--clickable:active {
+          background-color: hsla(var(--mob-bodyBgColor-hsla), .02)
+        }
+        .van-toast {
+          background-color: hsla(var(--mob-bodyBgColor-hsla), .1)
+        }
+        .recommends {
+          background-color: hsla(var(--mob-bodyBgColorDark-hsla), 2%) !important
+        }
+      }
+
+      .van-grid-item__content {
+        background-color: transparent
+      }
+      .base-panel {
+        overflow: hidden
+      }
+      .use-background {
+        background-color: var(--color-panel-bg)
+      }
+      .use-border-radius {
+        border-radius: var(--br-16)
+      }
+      .use-padding {
+        padding: var(--size-16)
+      }
+      .base-panel__content {
+        font-size: var(--font-size-default)
+      }
+
+      #home {
+        background-size: 100% auto;
+        background-repeat: no-repeat;
+        background-position: 0 0
+      }
+
+      .recommends {
+        background-color: #fff;
+        border-radius: 1rem;
+        margin: 0 1rem;
+        overflow: hidden
+      }
+      .user-personal-box {
+        width: 100%;
+        overflow: hidden
+      }
+      .user-personal-box .card {
+        overflow: hidden;
+        background-size: 100% 100%
+      }
+      .card-code-box {
+        margin: 0 0.25rem
+      }
+      .card-code-box .card-header .card-logo {
+        margin-bottom: 0.25rem
+      }
+      .card-code-box .card-header .card-logo img {
+        height: 100%
+      }
+      .card-code-box .card-body {
+        padding-top: .375rem;
+        line-height: 1.375rem
+      }
+
+      .search-bar {
+          padding: 0 .75rem
+      }
+      .fixed-head {
+        height: 3.5rem
+      }
+      .fixed-head .search-bar {
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        position: fixed;
+        left: 0;
+        right: 0;
+        height: inherit;
+        z-index: 10
+      }
+      .user-setting {
+        margin: 0 1rem
+      }
+      .recommends {
+        padding: 0
+      }
+      .recommends .van-grid-item__content {
+        padding: .3125rem 0
+      }
+      .app-name-box {
+        display: flex
+      }
+      .s-icon {
+        width: 2.125rem;
+        height: 2.125rem
+      }
+      .item-one {
+        display: flex;
+        justify-content: center;
+        align-items: center
+      }
+      .item-one .item-name {
+        margin-right: var(--size-12)
+      }
+      .card-body {
+        padding: calc(var(--root-size) * 6) calc(var(--root-size) * 16) calc(var(--root-size) * 6)
+      }
+      .card-content-scut {
+        --root-size: 100vw/375;
+        border-radius: calc(var(--root-size) * 20);
+        overflow: hidden;
+        border-bottom: 2px solid rgba(0, 0, 0, .1882352941);
+        border-right: 2px solid rgba(0, 0, 0, .1882352941)
+      }
+      .card-content-scut .user-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        white-space: nowrap;
+        z-index: 1;
+        color: rgba(0, 0, 0, .6)
+      }
+      .card-content-scut .user-info.is-student {
+        margin-left: calc(var(--root-size) * 48)
+      }
+      .card-content-scut .user-info.is-normal {
+        font-size: calc(var(--root-size) * 12);
+        line-height: calc(var(--root-size) * 17);
+        font-weight: 500
+      }
+      .card-content-scut .card {
+        pointer-events: none;
+        background-color: #fff;
+        border: 1px solid #e4e7ed;
+        position: relative;
+        display: block !important;
+        border-radius: calc(var(--root-size) * 8);
+        height: 100%
+      }
+      .card-content-scut .card .van-image.card-bg {
+        position: absolute;
+        z-index: 0;
+        height: 100%
+      }
+      .card-content-scut .card-footer-info {
+        width: 100%;
+        height: calc(var(--root-size) * 45);
+        position: relative;
+        color: rgba(0, 0, 0, .6)
+      }
+      .card-content-scut .card-footer-info .cn-text {
+        opacity: .7
+      }
+      .card-content-scut .card-footer-info .f-info {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around
+      }
+      .card-content-scut .card-footer-info > * {
+        font-size: calc(var(--root-size) * 12) !important
+      }
+      .card-content-scut .card-footer-info .f-info-right {
+        display: flex;
+        align-items: center
+      }
+      .card-content-scut .card-footer-info .f-info-right .footer-qrcode {
+        width: calc(var(--root-size) * 28.8);
+        height: calc(var(--root-size) * 28.8);
+        background-color: #fff
+      }
+      .card-content-scut .card-header {
+        padding: calc(var(--root-size) * 12) calc(var(--root-size) * 16) 0
+      }
+      .card-content-scut .card-header .card-logo {
+        margin-top: calc(var(--root-size) * 3.2);
+        margin-left: calc(var(--root-size) * 8);
+        width: auto !important;
+        height: calc(var(--root-size) * 35) !important
+      }
+      .card-content-scut .card-header .card-logo .van-image {
+        width: 100%;
+        height: 100%
+      }
+      .card-content-scut .card-header .card-logo .van-image .van-image__img {
+        width: unset
+      }
+      .card-content-scut .card-type-name {
+        width: calc(var(--root-size) * 80);
+        font-size: calc(var(--root-size) * 24);
+        line-height: calc(var(--root-size) * 30);
+        font-weight: 600;
+        white-space: nowrap;
+        color: #1a5aa8;
+        z-index: 1;
+        font-family: 华文中宋, STZhongsong, SimSun-ExtB, 宋体, SimSun, serif;
+        position: absolute;
+        text-align: center;
+        top: calc(var(--root-size) * -40)
+      }
+      .card-content-scut .user-avatar {
+        width: calc(var(--root-size) * 80);
+        margin-right: calc(var(--root-size) * 8);
+        flex-shrink: 0;
+        position: relative
+      }
+      .card-content-scut .user-avatar .van-image {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        aspect-ratio: 2.6/3.2
+      }
+      .card-content-scut .user-avatar .van-image img {
+        -o-object-fit: cover;
+        object-fit: cover
+      }
+      .card-content-scut .is-stu-normal {
+        background-color: #f8f7f3cf
+      }
+      .card-content-scut .card-body {
+        justify-content: space-between
+      }
+    </style>
+    <meta name="referrer" content="no-referrer">
+    <link rel="shortcut icon" href="data:,">
+    <link rel="canonical" href="https://ecardwxnew.scut.edu.cn/plat/shouyeUser">
+    <meta http-equiv="content-security-policy"
+        content="default-src 'none'; font-src 'self' data:; img-src 'self' data:; style-src 'unsafe-inline'; media-src 'self' data:; script-src 'unsafe-inline' data:; object-src 'self' data:; frame-src 'self' data:;">
+  </head>
+
+  <body>
+  <noscript>name:慧新E校.新中新 | version:1.07.fix | date:2024/12/19 16:40:38</noscript>
+  <div id=app>
+    <div id=home style="background-image: url('./assets/images/home_bg.png')">
+      <div class=fixed-head>
+        <div class="search-bar flex-box space-between vertical-center" style="background-image: url('./assets/images/home_bg.png')">
+          <div class=user-setting>
+            <i class="text-white van-icon van-icon-setting-o" style=font-size:28px></i>
+          </div>
+        </div>
+      </div>
+      <div class=van-pull-refresh>
+        <div class=van-pull-refresh__track style=transition-duration:0ms>
+          <div class=van-pull-refresh__head style="height: 90px"></div>
+          <div class=margin-bottom-x></div>
+          <div class=margin-bottom-x>
+            <div class=user-personal-box>
+              <div class="van-swipe" style="margin:0.25rem 0.875rem 0">
+                <div class=van-swipe__track style="width: 402px">
+                  <div class=van-swipe-item style=width:402px>
+                    <div class="card-code-box cn">
+                      <div class="card-content-scut">
+                        <div class=card>
+                          <div class="card-bg van-image">
+                            <img src="./assets/images/card-bg.png" class=van-image__img style="object-fit:cover">
+                          </div>
+                          <div class="card-header flex-box vertical-center space-between">
+                            <div class=card-logo>
+                              <div class=van-image>
+                                <img src="./assets/images/card-logo.png" class=van-image__img>
+                              </div>
+                            </div>
+                          </div>
+                          <div class=card-item>
+                            <div class="card-body bg-transparent flex-box card-body-normal">
+                              <div class="user-info is-normal is-student">
+                                <p>姓名：测试</p>
+                                <p>学号：202030xxxxxx</p>
+                                <p>学院：测试</p>
+                                <p>卡号：xxxxxx</p>
+                                <p>发卡日期：2020年09月</p>
+                                <p>学制：4年</p>
+                              </div>
+                              <div class="user-avatar">
+                                <div class=card-type-name>学生卡</div>
+                                <div class=van-image>
+                                  <img src="./assets/images/user-avatar.jpg" class=van-image__img>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="card-footer-info is-stu-normal">
+                              <div class=f-info>
+                                <div class=f-info-left>
+                                  <span class=cn-text>服务热线：(020-87110228)</span>
+                                </div>
+                                <div class=f-info-right>
+                                  <span class=cn-text>服务二维码：</span>
+                                  <div class=footer-qrcode>
+                                    <div class=van-image>
+                                      <img src="./assets/images/contactmig.png" class=van-image__img style="object-fit:cover">
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class=margin-bottom-x>
+            <div id="finance">
+              <div class="base-panel-content">
+                <div class="base-panel use-border-radius use-padding s-hv use-background">
+                  <div class="base-panel__content">
+                    <div>
+                      <div class=item-one>
+                        <div class="text-gary-light font-size-20 item-name">
+                          <span>校园卡账户余额</span>
+                        </div>
+                        <div>
+                          <strong class="font-size-18 font-number text-warning">0.00</strong>
+                          <span class=font-size-15>元</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class=margin-bottom-x>
+            <div class=comp-collapse>
+              <div class="base-panel-content">
+                <div class="base-panel use-border-radius s-hv use-background">
+                  <div class="base-panel__content">
+                    <div class="van-collapse van-hairline--top-bottom">
+                      <div class=van-collapse-item>
+                        <div role=button tabindex=0 aria-expanded=true
+                           class="van-cell van-cell--clickable van-collapse-item__title van-collapse-item__title--expanded">
+                          <div class=van-cell__title><span>我的校园卡</span></div>
+                          <i class="van-icon van-icon-arrow van-cell__right-icon"></i></div>
+                        <div class=van-collapse-item__wrapper>
+                          <div class=van-collapse-item__content>
+                            <div class=recommends>
+                              <div class=van-grid>
+                                <div class=van-grid-item style="flex-basis:25%">
+                                  <div class="van-grid-item__content van-grid-item__content--center">
+                                    <div class=van-grid-item__icon-wrapper>
+                                      <div class=grid-icon-box>
+                                        <div class="s-icon van-image">
+                                          <img src="./assets/images/appView/pay-code.png" class=van-image__img>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="font-size-14 text-center app-name-box" style="width:calc(91px - 0.5rem)">
+                                      <div class="text-ellipsis ellipsis-width">校园码</div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class=van-grid-item style="flex-basis:25%">
+                                  <div class="van-grid-item__content van-grid-item__content--center">
+                                    <div class=van-grid-item__icon-wrapper>
+                                      <div class=grid-icon-box>
+                                        <div class="s-icon van-image">
+                                          <img src="./assets/images/appView/scan.png" class=van-image__img>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="font-size-14 text-center app-name-box" style="width:calc(91px - 0.5rem)">
+                                      <div class="text-ellipsis ellipsis-width">扫一扫</div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class=van-grid-item style="flex-basis:25%">
+                                  <div class="van-grid-item__content van-grid-item__content--center">
+                                    <div class=van-grid-item__icon-wrapper>
+                                      <div class=grid-icon-box>
+                                        <div class="s-icon van-image">
+                                          <img src="./assets/images/appView/card-recharge.png" class=van-image__img>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="font-size-14 text-center app-name-box" style="width:calc(91px - 0.5rem)">
+                                      <div class="text-ellipsis ellipsis-width">卡片充值</div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class=van-grid-item style="flex-basis:25%">
+                                  <div class="van-grid-item__content van-grid-item__content--center">
+                                    <div class=van-grid-item__icon-wrapper>
+                                      <div class=grid-icon-box>
+                                        <div class="s-icon van-image">
+                                          <img src="./assets/images/appView/card-lost.png" class=van-image__img>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="font-size-14 text-center app-name-box" style="width:calc(91px - 0.5rem)">
+                                      <div class="text-ellipsis ellipsis-width">挂失·解挂</div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class=van-grid-item style="flex-basis:25%">
+                                  <div class="van-grid-item__content van-grid-item__content--center">
+                                    <div class=van-grid-item__icon-wrapper>
+                                      <div class=grid-icon-box>
+                                        <div class="s-icon van-image">
+                                          <img src="./assets/images/appView/change-password.png" class=van-image__img>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="font-size-14 text-center app-name-box" style="width:calc(91px - 0.5rem)">
+                                      <div class="text-ellipsis ellipsis-width">修改密码</div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class=van-grid-item style="flex-basis:25%">
+                                  <div class="van-grid-item__content van-grid-item__content--center">
+                                    <div class=van-grid-item__icon-wrapper>
+                                      <div class=grid-icon-box>
+                                        <div class="s-icon van-image">
+                                          <img src="./assets/images/appView/bill.png" class=van-image__img>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="font-size-14 text-center app-name-box" style="width:calc(91px - 0.5rem)">
+                                      <div class="text-ellipsis ellipsis-width">账单</div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class=van-grid-item style="flex-basis:25%">
+                                  <div class="van-grid-item__content van-grid-item__content--center">
+                                    <div class=van-grid-item__icon-wrapper>
+                                      <div class=grid-icon-box>
+                                        <div class="s-icon van-image">
+                                          <img src="./assets/images/appView/forshe.png" class=van-image__img>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="font-size-14 text-center app-name-box" style="width:calc(91px - 0.5rem)">
+                                      <div class="text-ellipsis ellipsis-width">为TA充值</div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class=van-grid-item style="flex-basis:25%">
+                                  <div class="van-grid-item__content van-grid-item__content--center">
+                                    <div class=van-grid-item__icon-wrapper>
+                                      <div class=grid-icon-box>
+                                        <div class="s-icon van-image">
+                                          <img src="./assets/images/appView/elec5.png" class=van-image__img>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="font-size-14 text-center app-name-box" style="width:calc(91px - 0.5rem)">
+                                      <div class="text-ellipsis ellipsis-width">缴网络服务分摊费</div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class=van-grid-item style="flex-basis:25%">
+                                  <div class="van-grid-item__content van-grid-item__content--center">
+                                    <div class=van-grid-item__icon-wrapper>
+                                      <div class=grid-icon-box>
+                                        <div class="s-icon van-image">
+                                          <img src="./assets/images/appView/default.png" class=van-image__img>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="font-size-14 text-center app-name-box" style="width:calc(91px - 0.5rem)">
+                                      <div class="text-ellipsis ellipsis-width">缴电话费</div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="van-collapse-item van-collapse-item--border">
+                        <div role=button tabindex=0 aria-expanded=false class="van-cell van-cell--clickable van-collapse-item__title">
+                          <div class=van-cell__title><span>五山校区专属</span></div>
+                          <i class="van-icon van-icon-arrow van-cell__right-icon"></i></div>
+                        <div class=van-collapse-item__wrapper style="height:0;display:none"></div>
+                      </div>
+                      <div class="van-collapse-item van-collapse-item--border">
+                        <div role=button tabindex=0 aria-expanded=false class="van-cell van-cell--clickable van-collapse-item__title">
+                          <div class=van-cell__title><span>大学城校区专属</span></div>
+                          <i class="van-icon van-icon-arrow van-cell__right-icon"></i></div>
+                        <div class=van-collapse-item__wrapper style="height:0;display:none"></div>
+                      </div>
+                      <div class="van-collapse-item van-collapse-item--border">
+                        <div role=button tabindex=0 aria-expanded=false class="van-cell van-cell--clickable van-collapse-item__title">
+                          <div class=van-cell__title><span>国际校区专属</span></div>
+                          <i class="van-icon van-icon-arrow van-cell__right-icon"></i></div>
+                        <div class=van-collapse-item__wrapper style="height:0;display:none"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="van-toast van-toast--middle loadingStyle" style="z-index:2002;display:none"></div>
+  </body>
+</html>
