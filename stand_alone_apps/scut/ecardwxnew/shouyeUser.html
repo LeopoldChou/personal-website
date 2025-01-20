@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html lang=en class=theme-class>
+<html lang="zh-Hans" class="theme-class">
   <!-- url: https://ecardwxnew.scut.edu.cn/plat/shouyeUser
     saved date: Tue Dec 31 2024 11:22:42 GMT+0800 (中国标准时间) -->
   <head>
-    <meta charset=utf-8>
-    <meta http-equiv=X-UA-Compatible content="IE=edge">
-    <meta name=color-scheme content="light dark">
-    <meta http-equiv=Cache-control content=no-cache>
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover"
-        name=viewport>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="color-scheme" content="light dark">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover" name="viewport">
     <title>首页</title>
     <link href="./assets/css/animate.css" rel="stylesheet">
     <style>
@@ -506,6 +505,7 @@
         display: -webkit-box;
         display: -webkit-flex;
         display: flex;
+        width: 100%;
         height: 100%;
         transition-duration: 500ms;
         transform: translateX(0)
@@ -514,6 +514,7 @@
         position: relative;
         -webkit-flex-shrink: 0;
         flex-shrink: 0;
+        width: 100%;
         height: 100%
       }
 
@@ -579,7 +580,9 @@
 
       .van-grid-item {
         position: relative;
-        box-sizing: border-box
+        box-sizing: border-box;
+        width: 25%;
+        min-width: 80px;
       }
       .van-grid-item__icon-wrapper {
         position: relative
@@ -878,7 +881,8 @@
         padding: .3125rem 0
       }
       .app-name-box {
-        display: flex
+        display: flex;
+        width: 100%;
       }
       .s-icon {
         width: 2.125rem;
@@ -1021,38 +1025,38 @@
 
   <body>
   <noscript>name:慧新E校.新中新 | version:1.07.fix | date:2024/12/19 16:40:38</noscript>
-  <div id=app>
-    <div id=home style="background-image: url('./assets/images/home_bg.png')">
-      <div class=fixed-head>
+  <div id="app">
+    <div id="home" style="background-image: url('./assets/images/home_bg.png')">
+      <div class="fixed-head">
         <div class="search-bar flex-box space-between vertical-center" style="background-image: url('./assets/images/home_bg.png')">
-          <div class=user-setting>
-            <i class="text-white van-icon van-icon-setting-o" style=font-size:28px></i>
+          <div class="user-setting">
+            <i class="text-white van-icon van-icon-setting-o" style="font-size: 28px"></i>
           </div>
         </div>
       </div>
-      <div class=van-pull-refresh>
-        <div class=van-pull-refresh__track style=transition-duration:0ms>
-          <div class=van-pull-refresh__head style="height: 90px"></div>
-          <div class=margin-bottom-x></div>
-          <div class=margin-bottom-x>
-            <div class=user-personal-box>
+      <div class="van-pull-refresh">
+        <div class="van-pull-refresh__track" style="transition-duration: 0ms">
+          <div class="van-pull-refresh__head" style="height: 90px"></div>
+          <div class="margin-bottom-x"></div>
+          <div class="margin-bottom-x">
+            <div class="user-personal-box">
               <div class="van-swipe" style="margin:0.25rem 0.875rem 0">
-                <div class=van-swipe__track style="width: 402px">
-                  <div class=van-swipe-item style=width:402px>
+                <div class="van-swipe__track">
+                  <div class="van-swipe-item">
                     <div class="card-code-box cn">
                       <div class="card-content-scut">
-                        <div class=card>
+                        <div class="card">
                           <div class="card-bg van-image">
-                            <img src="./assets/images/card-bg.png" class=van-image__img style="object-fit:cover">
+                            <img src="./assets/images/card-bg.png" class="van-image__img" style="object-fit: cover">
                           </div>
                           <div class="card-header flex-box vertical-center space-between">
-                            <div class=card-logo>
-                              <div class=van-image>
-                                <img src="./assets/images/card-logo.png" class=van-image__img>
+                            <div class="card-logo">
+                              <div class="van-image">
+                                <img src="./assets/images/card-logo.png" class="van-image__img">
                               </div>
                             </div>
                           </div>
-                          <div class=card-item>
+                          <div class="card-item">
                             <div class="card-body bg-transparent flex-box card-body-normal">
                               <div class="user-info is-normal is-student">
                                 <p>姓名：测试</p>
@@ -1063,22 +1067,22 @@
                                 <p>学制：4年</p>
                               </div>
                               <div class="user-avatar">
-                                <div class=card-type-name>学生卡</div>
-                                <div class=van-image>
-                                  <img src="./assets/images/user-avatar.jpg" class=van-image__img>
+                                <div class="card-type-name">学生卡</div>
+                                <div class="van-image">
+                                  <img src="./assets/images/user-avatar.jpg" class="van-image__img">
                                 </div>
                               </div>
                             </div>
                             <div class="card-footer-info is-stu-normal">
-                              <div class=f-info>
-                                <div class=f-info-left>
-                                  <span class=cn-text>服务热线：(020-87110228)</span>
+                              <div class="f-info">
+                                <div class="f-info-left">
+                                  <span class="cn-text">服务热线：(020-87110228)</span>
                                 </div>
-                                <div class=f-info-right>
-                                  <span class=cn-text>服务二维码：</span>
-                                  <div class=footer-qrcode>
-                                    <div class=van-image>
-                                      <img src="./assets/images/contactmig.png" class=van-image__img style="object-fit:cover">
+                                <div class="f-info-right">
+                                  <span class="cn-text">服务二维码：</span>
+                                  <div class="footer-qrcode">
+                                    <div class="van-image">
+                                      <img src="./assets/images/contactmig.png" class="van-image__img" style="object-fit: cover">
                                     </div>
                                   </div>
                                 </div>
@@ -1093,19 +1097,19 @@
               </div>
             </div>
           </div>
-          <div class=margin-bottom-x>
+          <div class="margin-bottom-x">
             <div id="finance">
               <div class="base-panel-content">
                 <div class="base-panel use-border-radius use-padding s-hv use-background">
                   <div class="base-panel__content">
                     <div>
-                      <div class=item-one>
+                      <div class="item-one">
                         <div class="text-gary-light font-size-20 item-name">
                           <span>校园卡账户余额</span>
                         </div>
                         <div>
                           <strong class="font-size-18 font-number text-warning">0.00</strong>
-                          <span class=font-size-15>元</span>
+                          <span class="font-size-15">元</span>
                         </div>
                       </div>
                     </div>
@@ -1114,143 +1118,142 @@
               </div>
             </div>
           </div>
-          <div class=margin-bottom-x>
-            <div class=comp-collapse>
+          <div class="margin-bottom-x">
+            <div class="comp-collapse">
               <div class="base-panel-content">
                 <div class="base-panel use-border-radius s-hv use-background">
                   <div class="base-panel__content">
                     <div class="van-collapse van-hairline--top-bottom">
-                      <div class=van-collapse-item>
-                        <div role=button tabindex=0 aria-expanded=true
-                           class="van-cell van-cell--clickable van-collapse-item__title van-collapse-item__title--expanded">
-                          <div class=van-cell__title><span>我的校园卡</span></div>
+                      <div class="van-collapse-item">
+                        <div role="button" tabindex="0" aria-expanded="true" class="van-cell van-cell--clickable van-collapse-item__title van-collapse-item__title--expanded">
+                          <div class="van-cell__title"><span>我的校园卡</span></div>
                           <i class="van-icon van-icon-arrow van-cell__right-icon"></i></div>
-                        <div class=van-collapse-item__wrapper>
-                          <div class=van-collapse-item__content>
-                            <div class=recommends>
-                              <div class=van-grid>
-                                <div class=van-grid-item style="flex-basis:25%">
+                        <div class="van-collapse-item__wrapper">
+                          <div class="van-collapse-item__content">
+                            <div class="recommends">
+                              <div class="van-grid">
+                                <div class="van-grid-item">
                                   <div class="van-grid-item__content van-grid-item__content--center">
-                                    <div class=van-grid-item__icon-wrapper>
-                                      <div class=grid-icon-box>
+                                    <div class="van-grid-item__icon-wrapper">
+                                      <div class="grid-icon-box">
                                         <div class="s-icon van-image">
-                                          <img src="./assets/images/appView/pay-code.png" class=van-image__img>
+                                          <img src="./assets/images/appView/pay-code.png" class="van-image__img">
                                         </div>
                                       </div>
                                     </div>
-                                    <div class="font-size-14 text-center app-name-box" style="width:calc(91px - 0.5rem)">
+                                    <div class="font-size-14 text-center app-name-box">
                                       <div class="text-ellipsis ellipsis-width">校园码</div>
                                     </div>
                                   </div>
                                 </div>
-                                <div class=van-grid-item style="flex-basis:25%">
+                                <div class="van-grid-item">
                                   <div class="van-grid-item__content van-grid-item__content--center">
-                                    <div class=van-grid-item__icon-wrapper>
-                                      <div class=grid-icon-box>
+                                    <div class="van-grid-item__icon-wrapper">
+                                      <div class="grid-icon-box">
                                         <div class="s-icon van-image">
-                                          <img src="./assets/images/appView/scan.png" class=van-image__img>
+                                          <img src="./assets/images/appView/scan.png" class="van-image__img">
                                         </div>
                                       </div>
                                     </div>
-                                    <div class="font-size-14 text-center app-name-box" style="width:calc(91px - 0.5rem)">
+                                    <div class="font-size-14 text-center app-name-box">
                                       <div class="text-ellipsis ellipsis-width">扫一扫</div>
                                     </div>
                                   </div>
                                 </div>
-                                <div class=van-grid-item style="flex-basis:25%">
+                                <div class="van-grid-item">
                                   <div class="van-grid-item__content van-grid-item__content--center">
-                                    <div class=van-grid-item__icon-wrapper>
-                                      <div class=grid-icon-box>
+                                    <div class="van-grid-item__icon-wrapper">
+                                      <div class="grid-icon-box">
                                         <div class="s-icon van-image">
-                                          <img src="./assets/images/appView/card-recharge.png" class=van-image__img>
+                                          <img src="./assets/images/appView/card-recharge.png" class="van-image__img">
                                         </div>
                                       </div>
                                     </div>
-                                    <div class="font-size-14 text-center app-name-box" style="width:calc(91px - 0.5rem)">
+                                    <div class="font-size-14 text-center app-name-box">
                                       <div class="text-ellipsis ellipsis-width">卡片充值</div>
                                     </div>
                                   </div>
                                 </div>
-                                <div class=van-grid-item style="flex-basis:25%">
+                                <div class="van-grid-item">
                                   <div class="van-grid-item__content van-grid-item__content--center">
-                                    <div class=van-grid-item__icon-wrapper>
-                                      <div class=grid-icon-box>
+                                    <div class="van-grid-item__icon-wrapper">
+                                      <div class="grid-icon-box">
                                         <div class="s-icon van-image">
-                                          <img src="./assets/images/appView/card-lost.png" class=van-image__img>
+                                          <img src="./assets/images/appView/card-lost.png" class="van-image__img">
                                         </div>
                                       </div>
                                     </div>
-                                    <div class="font-size-14 text-center app-name-box" style="width:calc(91px - 0.5rem)">
+                                    <div class="font-size-14 text-center app-name-box">
                                       <div class="text-ellipsis ellipsis-width">挂失·解挂</div>
                                     </div>
                                   </div>
                                 </div>
-                                <div class=van-grid-item style="flex-basis:25%">
+                                <div class="van-grid-item">
                                   <div class="van-grid-item__content van-grid-item__content--center">
-                                    <div class=van-grid-item__icon-wrapper>
-                                      <div class=grid-icon-box>
+                                    <div class="van-grid-item__icon-wrapper">
+                                      <div class="grid-icon-box">
                                         <div class="s-icon van-image">
-                                          <img src="./assets/images/appView/change-password.png" class=van-image__img>
+                                          <img src="./assets/images/appView/change-password.png" class="van-image__img">
                                         </div>
                                       </div>
                                     </div>
-                                    <div class="font-size-14 text-center app-name-box" style="width:calc(91px - 0.5rem)">
+                                    <div class="font-size-14 text-center app-name-box">
                                       <div class="text-ellipsis ellipsis-width">修改密码</div>
                                     </div>
                                   </div>
                                 </div>
-                                <div class=van-grid-item style="flex-basis:25%">
+                                <div class="van-grid-item">
                                   <div class="van-grid-item__content van-grid-item__content--center">
-                                    <div class=van-grid-item__icon-wrapper>
-                                      <div class=grid-icon-box>
+                                    <div class="van-grid-item__icon-wrapper">
+                                      <div class="grid-icon-box">
                                         <div class="s-icon van-image">
-                                          <img src="./assets/images/appView/bill.png" class=van-image__img>
+                                          <img src="./assets/images/appView/bill.png" class="van-image__img">
                                         </div>
                                       </div>
                                     </div>
-                                    <div class="font-size-14 text-center app-name-box" style="width:calc(91px - 0.5rem)">
+                                    <div class="font-size-14 text-center app-name-box">
                                       <div class="text-ellipsis ellipsis-width">账单</div>
                                     </div>
                                   </div>
                                 </div>
-                                <div class=van-grid-item style="flex-basis:25%">
+                                <div class="van-grid-item">
                                   <div class="van-grid-item__content van-grid-item__content--center">
-                                    <div class=van-grid-item__icon-wrapper>
-                                      <div class=grid-icon-box>
+                                    <div class="van-grid-item__icon-wrapper">
+                                      <div class="grid-icon-box">
                                         <div class="s-icon van-image">
-                                          <img src="./assets/images/appView/forshe.png" class=van-image__img>
+                                          <img src="./assets/images/appView/forshe.png" class="van-image__img">
                                         </div>
                                       </div>
                                     </div>
-                                    <div class="font-size-14 text-center app-name-box" style="width:calc(91px - 0.5rem)">
+                                    <div class="font-size-14 text-center app-name-box">
                                       <div class="text-ellipsis ellipsis-width">为TA充值</div>
                                     </div>
                                   </div>
                                 </div>
-                                <div class=van-grid-item style="flex-basis:25%">
+                                <div class="van-grid-item">
                                   <div class="van-grid-item__content van-grid-item__content--center">
-                                    <div class=van-grid-item__icon-wrapper>
-                                      <div class=grid-icon-box>
+                                    <div class="van-grid-item__icon-wrapper">
+                                      <div class="grid-icon-box">
                                         <div class="s-icon van-image">
-                                          <img src="./assets/images/appView/elec5.png" class=van-image__img>
+                                          <img src="./assets/images/appView/elec5.png" class="van-image__img">
                                         </div>
                                       </div>
                                     </div>
-                                    <div class="font-size-14 text-center app-name-box" style="width:calc(91px - 0.5rem)">
+                                    <div class="font-size-14 text-center app-name-box">
                                       <div class="text-ellipsis ellipsis-width">缴网络服务分摊费</div>
                                     </div>
                                   </div>
                                 </div>
-                                <div class=van-grid-item style="flex-basis:25%">
+                                <div class="van-grid-item">
                                   <div class="van-grid-item__content van-grid-item__content--center">
-                                    <div class=van-grid-item__icon-wrapper>
-                                      <div class=grid-icon-box>
+                                    <div class="van-grid-item__icon-wrapper">
+                                      <div class="grid-icon-box">
                                         <div class="s-icon van-image">
-                                          <img src="./assets/images/appView/default.png" class=van-image__img>
+                                          <img src="./assets/images/appView/default.png" class="van-image__img">
                                         </div>
                                       </div>
                                     </div>
-                                    <div class="font-size-14 text-center app-name-box" style="width:calc(91px - 0.5rem)">
+                                    <div class="font-size-14 text-center app-name-box">
                                       <div class="text-ellipsis ellipsis-width">缴电话费</div>
                                     </div>
                                   </div>
@@ -1261,22 +1264,22 @@
                         </div>
                       </div>
                       <div class="van-collapse-item van-collapse-item--border">
-                        <div role=button tabindex=0 aria-expanded=false class="van-cell van-cell--clickable van-collapse-item__title">
-                          <div class=van-cell__title><span>五山校区专属</span></div>
+                        <div role="button" tabindex="0" aria-expanded="false" class="van-cell van-cell--clickable van-collapse-item__title">
+                          <div class="van-cell__title"><span>五山校区专属</span></div>
                           <i class="van-icon van-icon-arrow van-cell__right-icon"></i></div>
-                        <div class=van-collapse-item__wrapper style="height:0;display:none"></div>
+                        <div class="van-collapse-item__wrapper" style="height:0; display:none"></div>
                       </div>
                       <div class="van-collapse-item van-collapse-item--border">
-                        <div role=button tabindex=0 aria-expanded=false class="van-cell van-cell--clickable van-collapse-item__title">
-                          <div class=van-cell__title><span>大学城校区专属</span></div>
+                        <div role="button" tabindex="0" aria-expanded="false" class="van-cell van-cell--clickable van-collapse-item__title">
+                          <div class="van-cell__title"><span>大学城校区专属</span></div>
                           <i class="van-icon van-icon-arrow van-cell__right-icon"></i></div>
-                        <div class=van-collapse-item__wrapper style="height:0;display:none"></div>
+                        <div class="van-collapse-item__wrapper" style="height:0; display:none"></div>
                       </div>
                       <div class="van-collapse-item van-collapse-item--border">
-                        <div role=button tabindex=0 aria-expanded=false class="van-cell van-cell--clickable van-collapse-item__title">
-                          <div class=van-cell__title><span>国际校区专属</span></div>
+                        <div role="button" tabindex="0" aria-expanded="false" class="van-cell van-cell--clickable van-collapse-item__title">
+                          <div class="van-cell__title"><span>国际校区专属</span></div>
                           <i class="van-icon van-icon-arrow van-cell__right-icon"></i></div>
-                        <div class=van-collapse-item__wrapper style="height:0;display:none"></div>
+                        <div class="van-collapse-item__wrapper" style="height:0; display:none"></div>
                       </div>
                     </div>
                   </div>
@@ -1288,6 +1291,6 @@
       </div>
     </div>
   </div>
-  <div class="van-toast van-toast--middle loadingStyle" style="z-index:2002;display:none"></div>
+  <div class="van-toast van-toast--middle loadingStyle" style="z-index:2002; display:none"></div>
   </body>
 </html>
