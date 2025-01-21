@@ -475,13 +475,12 @@
         will-change: height
       }
       .van-collapse-item__content {
-        padding: 12px 16px;
+        padding: 12px 1rem;
         color: #969799;
         font-size: 14px;
         line-height: 1.5;
         background-color: var(--color-panel-bg);
-        padding-left: 0 !important;
-        padding-right: 0 !important
+        overflow: hidden
       }
       .van-image {
         position: relative;
@@ -596,7 +595,9 @@
         -webkit-flex-direction: column;
         flex-direction: column;
         box-sizing: border-box;
-        height: 100%
+        height: 100%;
+        padding: 0.3125rem 0;
+        background-color: transparent
       }
       .van-grid-item__content:after {
         z-index: 1;
@@ -783,10 +784,7 @@
           background-color: hsla(var(--mob-bodyBgColor-hsla), .02)
         }
         .van-cell:after {
-          border-color: hsla(var(--mob-bodyBgColor-hsla), .1)
-        }
-        .van-grid-item__content {
-          background-color: var(--mob-bodyBgColorDark)
+          border-color: hsla(var(--mob-bodyBgColor-hsla), 0.1)
         }
         .notice-box[card] .card-foot:before, [class*=van-hairline]:after {
           border-color: var(--mob-bodyBgColor)
@@ -795,16 +793,10 @@
           background-color: hsla(var(--mob-bodyBgColor-hsla), .02)
         }
         .van-toast {
-          background-color: hsla(var(--mob-bodyBgColor-hsla), .1)
-        }
-        .recommends {
-          background-color: hsla(var(--mob-bodyBgColorDark-hsla), 2%) !important
+          background-color: hsla(var(--mob-bodyBgColor-hsla), 0.1)
         }
       }
 
-      .van-grid-item__content {
-        background-color: transparent
-      }
       .base-panel {
         overflow: hidden
       }
@@ -827,12 +819,6 @@
         background-position: 0 0
       }
 
-      .recommends {
-        background-color: #fff;
-        border-radius: 1rem;
-        margin: 0 1rem;
-        overflow: hidden
-      }
       .user-personal-box {
         width: 100%;
         overflow: hidden
@@ -873,12 +859,6 @@
       }
       .user-setting {
         margin: 0 1rem
-      }
-      .recommends {
-        padding: 0
-      }
-      .recommends .van-grid-item__content {
-        padding: .3125rem 0
       }
       .app-name-box {
         display: flex;
@@ -1125,137 +1105,140 @@
                   <div class="base-panel__content">
                     <div class="van-collapse van-hairline--top-bottom">
                       <div class="van-collapse-item">
-                        <div role="button" tabindex="0" aria-expanded="true" class="van-cell van-cell--clickable van-collapse-item__title van-collapse-item__title--expanded">
+                        <div
+                          role="button" tabindex="0" aria-expanded="true"
+                          id="van-collapse-item-0"
+                          class="van-cell van-cell--clickable van-collapse-item__title"
+                          onclick="vanCollapseItemClicked(0)"
+                        >
                           <div class="van-cell__title"><span>我的校园卡</span></div>
                           <i class="van-icon van-icon-arrow van-cell__right-icon"></i></div>
                         <div class="van-collapse-item__wrapper">
                           <div class="van-collapse-item__content">
-                            <div class="recommends">
-                              <div class="van-grid">
-                                <div class="van-grid-item">
-                                  <div class="van-grid-item__content van-grid-item__content--center">
-                                    <div class="van-grid-item__icon-wrapper">
-                                      <div class="grid-icon-box">
-                                        <div class="s-icon van-image">
-                                          <img src="./assets/images/appView/pay-code.png" class="van-image__img">
-                                        </div>
+                            <div class="van-grid">
+                              <div class="van-grid-item">
+                                <div class="van-grid-item__content van-grid-item__content--center">
+                                  <div class="van-grid-item__icon-wrapper">
+                                    <div class="grid-icon-box">
+                                      <div class="s-icon van-image">
+                                        <img src="./assets/images/appView/pay-code.png" class="van-image__img">
                                       </div>
-                                    </div>
-                                    <div class="font-size-14 text-center app-name-box">
-                                      <div class="text-ellipsis ellipsis-width">校园码</div>
                                     </div>
                                   </div>
-                                </div>
-                                <div class="van-grid-item">
-                                  <div class="van-grid-item__content van-grid-item__content--center">
-                                    <div class="van-grid-item__icon-wrapper">
-                                      <div class="grid-icon-box">
-                                        <div class="s-icon van-image">
-                                          <img src="./assets/images/appView/scan.png" class="van-image__img">
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="font-size-14 text-center app-name-box">
-                                      <div class="text-ellipsis ellipsis-width">扫一扫</div>
-                                    </div>
+                                  <div class="font-size-14 text-center app-name-box">
+                                    <div class="text-ellipsis ellipsis-width">校园码</div>
                                   </div>
                                 </div>
-                                <div class="van-grid-item">
-                                  <div class="van-grid-item__content van-grid-item__content--center">
-                                    <div class="van-grid-item__icon-wrapper">
-                                      <div class="grid-icon-box">
-                                        <div class="s-icon van-image">
-                                          <img src="./assets/images/appView/card-recharge.png" class="van-image__img">
-                                        </div>
+                              </div>
+                              <div class="van-grid-item">
+                                <div class="van-grid-item__content van-grid-item__content--center">
+                                  <div class="van-grid-item__icon-wrapper">
+                                    <div class="grid-icon-box">
+                                      <div class="s-icon van-image">
+                                        <img src="./assets/images/appView/scan.png" class="van-image__img">
                                       </div>
-                                    </div>
-                                    <div class="font-size-14 text-center app-name-box">
-                                      <div class="text-ellipsis ellipsis-width">卡片充值</div>
                                     </div>
                                   </div>
-                                </div>
-                                <div class="van-grid-item">
-                                  <div class="van-grid-item__content van-grid-item__content--center">
-                                    <div class="van-grid-item__icon-wrapper">
-                                      <div class="grid-icon-box">
-                                        <div class="s-icon van-image">
-                                          <img src="./assets/images/appView/card-lost.png" class="van-image__img">
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="font-size-14 text-center app-name-box">
-                                      <div class="text-ellipsis ellipsis-width">挂失·解挂</div>
-                                    </div>
+                                  <div class="font-size-14 text-center app-name-box">
+                                    <div class="text-ellipsis ellipsis-width">扫一扫</div>
                                   </div>
                                 </div>
-                                <div class="van-grid-item">
-                                  <div class="van-grid-item__content van-grid-item__content--center">
-                                    <div class="van-grid-item__icon-wrapper">
-                                      <div class="grid-icon-box">
-                                        <div class="s-icon van-image">
-                                          <img src="./assets/images/appView/change-password.png" class="van-image__img">
-                                        </div>
+                              </div>
+                              <div class="van-grid-item">
+                                <div class="van-grid-item__content van-grid-item__content--center">
+                                  <div class="van-grid-item__icon-wrapper">
+                                    <div class="grid-icon-box">
+                                      <div class="s-icon van-image">
+                                        <img src="./assets/images/appView/card-recharge.png" class="van-image__img">
                                       </div>
-                                    </div>
-                                    <div class="font-size-14 text-center app-name-box">
-                                      <div class="text-ellipsis ellipsis-width">修改密码</div>
                                     </div>
                                   </div>
-                                </div>
-                                <div class="van-grid-item">
-                                  <div class="van-grid-item__content van-grid-item__content--center">
-                                    <div class="van-grid-item__icon-wrapper">
-                                      <div class="grid-icon-box">
-                                        <div class="s-icon van-image">
-                                          <img src="./assets/images/appView/bill.png" class="van-image__img">
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="font-size-14 text-center app-name-box">
-                                      <div class="text-ellipsis ellipsis-width">账单</div>
-                                    </div>
+                                  <div class="font-size-14 text-center app-name-box">
+                                    <div class="text-ellipsis ellipsis-width">卡片充值</div>
                                   </div>
                                 </div>
-                                <div class="van-grid-item">
-                                  <div class="van-grid-item__content van-grid-item__content--center">
-                                    <div class="van-grid-item__icon-wrapper">
-                                      <div class="grid-icon-box">
-                                        <div class="s-icon van-image">
-                                          <img src="./assets/images/appView/forshe.png" class="van-image__img">
-                                        </div>
+                              </div>
+                              <div class="van-grid-item">
+                                <div class="van-grid-item__content van-grid-item__content--center">
+                                  <div class="van-grid-item__icon-wrapper">
+                                    <div class="grid-icon-box">
+                                      <div class="s-icon van-image">
+                                        <img src="./assets/images/appView/card-lost.png" class="van-image__img">
                                       </div>
-                                    </div>
-                                    <div class="font-size-14 text-center app-name-box">
-                                      <div class="text-ellipsis ellipsis-width">为TA充值</div>
                                     </div>
                                   </div>
-                                </div>
-                                <div class="van-grid-item">
-                                  <div class="van-grid-item__content van-grid-item__content--center">
-                                    <div class="van-grid-item__icon-wrapper">
-                                      <div class="grid-icon-box">
-                                        <div class="s-icon van-image">
-                                          <img src="./assets/images/appView/elec5.png" class="van-image__img">
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="font-size-14 text-center app-name-box">
-                                      <div class="text-ellipsis ellipsis-width">缴网络服务分摊费</div>
-                                    </div>
+                                  <div class="font-size-14 text-center app-name-box">
+                                    <div class="text-ellipsis ellipsis-width">挂失·解挂</div>
                                   </div>
                                 </div>
-                                <div class="van-grid-item">
-                                  <div class="van-grid-item__content van-grid-item__content--center">
-                                    <div class="van-grid-item__icon-wrapper">
-                                      <div class="grid-icon-box">
-                                        <div class="s-icon van-image">
-                                          <img src="./assets/images/appView/default.png" class="van-image__img">
-                                        </div>
+                              </div>
+                              <div class="van-grid-item">
+                                <div class="van-grid-item__content van-grid-item__content--center">
+                                  <div class="van-grid-item__icon-wrapper">
+                                    <div class="grid-icon-box">
+                                      <div class="s-icon van-image">
+                                        <img src="./assets/images/appView/change-password.png" class="van-image__img">
                                       </div>
                                     </div>
-                                    <div class="font-size-14 text-center app-name-box">
-                                      <div class="text-ellipsis ellipsis-width">缴电话费</div>
+                                  </div>
+                                  <div class="font-size-14 text-center app-name-box">
+                                    <div class="text-ellipsis ellipsis-width">修改密码</div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="van-grid-item">
+                                <div class="van-grid-item__content van-grid-item__content--center">
+                                  <div class="van-grid-item__icon-wrapper">
+                                    <div class="grid-icon-box">
+                                      <div class="s-icon van-image">
+                                        <img src="./assets/images/appView/bill.png" class="van-image__img">
+                                      </div>
                                     </div>
+                                  </div>
+                                  <div class="font-size-14 text-center app-name-box">
+                                    <div class="text-ellipsis ellipsis-width">账单</div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="van-grid-item">
+                                <div class="van-grid-item__content van-grid-item__content--center">
+                                  <div class="van-grid-item__icon-wrapper">
+                                    <div class="grid-icon-box">
+                                      <div class="s-icon van-image">
+                                        <img src="./assets/images/appView/forshe.png" class="van-image__img">
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="font-size-14 text-center app-name-box">
+                                    <div class="text-ellipsis ellipsis-width">为TA充值</div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="van-grid-item">
+                                <div class="van-grid-item__content van-grid-item__content--center">
+                                  <div class="van-grid-item__icon-wrapper">
+                                    <div class="grid-icon-box">
+                                      <div class="s-icon van-image">
+                                        <img src="./assets/images/appView/elec5.png" class="van-image__img">
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="font-size-14 text-center app-name-box">
+                                    <div class="text-ellipsis ellipsis-width">缴网络服务分摊费</div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="van-grid-item">
+                                <div class="van-grid-item__content van-grid-item__content--center">
+                                  <div class="van-grid-item__icon-wrapper">
+                                    <div class="grid-icon-box">
+                                      <div class="s-icon van-image">
+                                        <img src="./assets/images/appView/default.png" class="van-image__img">
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="font-size-14 text-center app-name-box">
+                                    <div class="text-ellipsis ellipsis-width">缴电话费</div>
                                   </div>
                                 </div>
                               </div>
@@ -1264,22 +1247,166 @@
                         </div>
                       </div>
                       <div class="van-collapse-item van-collapse-item--border">
-                        <div role="button" tabindex="0" aria-expanded="false" class="van-cell van-cell--clickable van-collapse-item__title">
+                        <div
+                          role="button" tabindex="0" aria-expanded="false"
+                          id="van-collapse-item-1"
+                          class="van-cell van-cell--clickable van-collapse-item__title"
+                          onclick="vanCollapseItemClicked(1)"
+                        >
                           <div class="van-cell__title"><span>五山校区专属</span></div>
                           <i class="van-icon van-icon-arrow van-cell__right-icon"></i></div>
-                        <div class="van-collapse-item__wrapper" style="height:0; display:none"></div>
+                        <div class="van-collapse-item__wrapper" style="height:0; display:none">
+                          <div class="van-collapse-item__content">
+                            <div class="van-grid">
+                              <div class="van-grid-item">
+                                <div class="van-grid-item__content van-grid-item__content--center">
+                                  <div class="van-grid-item__icon-wrapper">
+                                    <div class="grid-icon-box">
+                                      <div class="s-icon van-image">
+                                        <img src="./assets/images/appView/elec7.png" class="van-image__img">
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="font-size-14 text-center app-name-box">
+                                    <div class="text-ellipsis ellipsis-width">(五)学生宿舍用电电费</div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="van-grid-item">
+                                <div class="van-grid-item__content van-grid-item__content--center">
+                                  <div class="van-grid-item__icon-wrapper">
+                                    <div class="grid-icon-box">
+                                      <div class="s-icon van-image">
+                                        <img src="./assets/images/appView/elec6.png" class="van-image__img">
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="font-size-14 text-center app-name-box">
+                                    <div class="text-ellipsis ellipsis-width">(五)空调缴费</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                       <div class="van-collapse-item van-collapse-item--border">
-                        <div role="button" tabindex="0" aria-expanded="false" class="van-cell van-cell--clickable van-collapse-item__title">
+                        <div
+                          role="button" tabindex="0" aria-expanded="false"
+                          id="van-collapse-item-2"
+                          class="van-cell van-cell--clickable van-collapse-item__title"
+                          onclick="vanCollapseItemClicked(2)"
+                        >
                           <div class="van-cell__title"><span>大学城校区专属</span></div>
                           <i class="van-icon van-icon-arrow van-cell__right-icon"></i></div>
-                        <div class="van-collapse-item__wrapper" style="height:0; display:none"></div>
+                        <div class="van-collapse-item__wrapper" style="height:0; display:none">
+                          <div class="van-collapse-item__content">
+                            <div class="van-grid">
+                              <div class="van-grid-item">
+                                <div class="van-grid-item__content van-grid-item__content--center">
+                                  <div class="van-grid-item__icon-wrapper">
+                                    <div class="grid-icon-box">
+                                      <div class="s-icon van-image">
+                                        <img src="./assets/images/appView/elec4.png" class="van-image__img">
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="font-size-14 text-center app-name-box">
+                                    <div class="text-ellipsis ellipsis-width">(大)空调缴费</div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="van-grid-item">
+                                <div class="van-grid-item__content van-grid-item__content--center">
+                                  <div class="van-grid-item__icon-wrapper">
+                                    <div class="grid-icon-box">
+                                      <div class="s-icon van-image">
+                                        <img src="./assets/images/appView/elec7.png" class="van-image__img">
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="font-size-14 text-center app-name-box">
+                                    <div class="text-ellipsis ellipsis-width">预存电费</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                       <div class="van-collapse-item van-collapse-item--border">
-                        <div role="button" tabindex="0" aria-expanded="false" class="van-cell van-cell--clickable van-collapse-item__title">
+                        <div
+                          role="button" tabindex="0" aria-expanded="false"
+                          id="van-collapse-item-3"
+                          class="van-cell van-cell--clickable van-collapse-item__title"
+                          onclick="vanCollapseItemClicked(3)"
+                        >
                           <div class="van-cell__title"><span>国际校区专属</span></div>
                           <i class="van-icon van-icon-arrow van-cell__right-icon"></i></div>
-                        <div class="van-collapse-item__wrapper" style="height:0; display:none"></div>
+                        <div class="van-collapse-item__wrapper" style="height:0; display:none">
+
+                          <div class="van-collapse-item__content">
+                            <div class="van-grid">
+                              <div class="van-grid-item">
+                                <div class="van-grid-item__content van-grid-item__content--center">
+                                  <div class="van-grid-item__icon-wrapper">
+                                    <div class="grid-icon-box">
+                                      <div class="s-icon van-image">
+                                        <img src="./assets/images/appView/elec3.png" class="van-image__img">
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="font-size-14 text-center app-name-box">
+                                    <div class="text-ellipsis ellipsis-width">(国)冷水水控充值</div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="van-grid-item">
+                                <div class="van-grid-item__content van-grid-item__content--center">
+                                  <div class="van-grid-item__icon-wrapper">
+                                    <div class="grid-icon-box">
+                                      <div class="s-icon van-image">
+                                        <img src="./assets/images/appView/elec2.png" class="van-image__img">
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="font-size-14 text-center app-name-box">
+                                    <div class="text-ellipsis ellipsis-width">(国)空调缴费</div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="van-grid-item">
+                                <div class="van-grid-item__content van-grid-item__content--center">
+                                  <div class="van-grid-item__icon-wrapper">
+                                    <div class="grid-icon-box">
+                                      <div class="s-icon van-image">
+                                        <img src="./assets/images/appView/elec1.png" class="van-image__img">
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="font-size-14 text-center app-name-box">
+                                    <div class="text-ellipsis ellipsis-width">(国)电控缴费</div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="van-grid-item">
+                                <div class="van-grid-item__content van-grid-item__content--center">
+                                  <div class="van-grid-item__icon-wrapper">
+                                    <div class="grid-icon-box">
+                                      <div class="s-icon van-image">
+                                        <img src="./assets/images/appView/auth-code.png" class="van-image__img">
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="font-size-14 text-center app-name-box">
+                                    <div class="text-ellipsis ellipsis-width">认证码</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -1293,4 +1420,29 @@
   </div>
   <div class="van-toast van-toast--middle loadingStyle" style="z-index:2002; display:none"></div>
   </body>
+  <script>
+    let isCollapsed = [true, false, false, false];
+    const classnamePrefix = "van-cell van-cell--clickable van-collapse-item__title";
+    function update_collapse_status() {
+      isCollapsed.forEach((item, index) => {
+        if (item) {
+          // console.log(document.getElementsByClassName("van-collapse-item__wrapper")[index].style);
+          document.getElementById("van-collapse-item-" + index).className = classnamePrefix + " van-collapse-item__title--expanded";
+          document.getElementsByClassName("van-collapse-item__wrapper")[index].setAttribute("style", "");
+        }
+        else {
+          // console.log(document.getElementsByClassName("van-collapse-item__wrapper")[index].style);
+          document.getElementById("van-collapse-item-" + index).className = classnamePrefix;
+          document.getElementsByClassName("van-collapse-item__wrapper")[index].setAttribute("style", "height:0;");
+        }
+      });
+    }
+    function vanCollapseItemClicked(index) {
+      isCollapsed[index] = !isCollapsed[index];
+      for (let i = 0; i < 4; ++i) if (i !== index) isCollapsed[i] = false;
+      update_collapse_status();
+    }
+
+    window.onload = update_collapse_status;
+  </script>
 </html>
