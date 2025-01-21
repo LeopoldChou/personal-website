@@ -36,8 +36,6 @@
       }
 
       :root {
-        --swiper-theme-color: #007aff;
-        --swiper-navigation-size: 44px;
         --size-2: 0.125rem;
         --size-4: 0.25rem;
         --size-8: 0.5rem;
@@ -131,7 +129,6 @@
         padding: 0;
         margin: 0;
         color: #323233;
-        background: var(--mob-bodyBgColor)
       }
       img {
         max-width: 100%
@@ -160,36 +157,6 @@
         content: ""
       }
 
-      .van-toast {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        display: -webkit-box;
-        display: -webkit-flex;
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
-        -webkit-flex-direction: column;
-        flex-direction: column;
-        -webkit-box-align: center;
-        -webkit-align-items: center;
-        align-items: center;
-        -webkit-box-pack: center;
-        -webkit-justify-content: center;
-        justify-content: center;
-        box-sizing: content-box;
-        max-width: 70%;
-        min-height: 88px;
-        padding: 16px;
-        color: #fff;
-        font-size: 14px;
-        line-height: 20;
-        white-space: pre-wrap;
-        text-align: center;
-        word-break: break-all;
-        border-radius: 8px;
-        -webkit-transform: translate3d(-50%, -50%, 0);
-        transform: translate3d(-50%, -50%, 0)
-      }
       .van-cell {
         position: relative;
         display: -webkit-box;
@@ -409,15 +376,8 @@
       .grid-icon-box {
         margin-bottom: 0.125rem
       }
-      .loadingStyle {
-        background-color: #fff;
-        box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1)
-      }
       .list-box::-webkit-scrollbar, body::-webkit-scrollbar {
         width: 0
-      }
-      .van-toast {
-        width: auto !important
       }
       .font-number {
         font-family: DIN-Medium, sans-serif;
@@ -603,7 +563,7 @@
         justify-content: space-around
       }
       .card-content-scut .card-footer-info > * {
-        font-size: calc(var(--root-size) * 12) !important
+        font-size: calc(var(--root-size) * 12);
       }
       .card-content-scut .card-footer-info .f-info-right {
         display: flex;
@@ -676,7 +636,7 @@
           --color-text-lighter: #ddd;
           --color-text-lightest: #ccc;
           --color-input-bg: #666;
-          --color-cutline: #e5e5e630
+          --color-cutline: #e5e5e630;
         }
         body {
           color: #f7f8fa;
@@ -696,9 +656,101 @@
         .notice-box .van-cell, .notice-box[card] .card-head, .van-action-sheet__cancel:active, .van-action-sheet__item:active, .van-cell--clickable:active {
           background-color: hsla(var(--mob-bodyBgColor-hsla), .02)
         }
-        .van-toast {
-          background-color: hsla(var(--mob-bodyBgColor-hsla), 0.1)
+
+        /* 以下为点击校园卡后弹出卡片的样式 */
+        .van-popup .van-cell, .van-popup .van-nav-bar, .van-popup:not(.van-notify--success,.van-notify--danger,.van-notify--primary,.van-notify--warning) {
+          background-color: var(--mob-bodyBgColorDark)
         }
+      }
+
+      /* 以下为点击校园卡后弹出卡片的样式 */
+      .van-popup {
+        position: fixed;
+        max-height: 100%;
+        overflow-y: auto;
+        -webkit-transition: opacity 0.3s;
+        transition: opacity 0.3s;
+        -webkit-overflow-scrolling: touch
+      }
+      .van-popup--center {
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate3d(-50%, -50%, 0);
+        transform: translate3d(-50%, -50%, 0)
+      }
+      .scut-popup.van-popup {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #f4f5f5;
+        width: 100%;
+        height: 100%;
+        z-index: 2547;
+      }
+      .van-popup.scut-popup .t-90 {
+        transform: rotate(90deg)
+      }
+      .van-popup.scut-popup .t-90 .tick_item {
+        font-size: calc(var(--root-size) * 13)
+      }
+      .van-popup.scut-popup .card-with-flip-clock {
+        position: relative
+      }
+      .van-popup.scut-popup .flip-clock-r {
+        --root-size: 100vw/375;
+        position: absolute;
+        bottom: calc(var(--root-size) * -50);
+        left: calc(var(--root-size) * -135);
+      }
+      .clone-card-scut {
+        border-radius: calc(var(--root-size) * 14);
+        overflow: hidden;
+        position: relative;
+        width: 90vw;
+        height: calc(100% + var(--root-size) * 32);
+        transform:rotate(90deg) scale(1.63387);
+      }
+      .clone-card-scut .card-footer-info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: calc(var(--root-size) * 16)
+      }
+      .clone-card-scut .card-footer-info .f-info {
+        margin-left: calc(var(--root-size) * -32);
+        justify-content: left;
+        width: 50%;
+        font-size: calc(var(--root-size) * 12);
+        transform: scale(.6);
+        white-space: nowrap
+      }
+      .clone-card-scut .card-footer-info .f-info-left {
+        margin-right: calc(var(--root-size) * 16)
+      }
+      .tick {
+        display: flex;
+        z-index: 1;
+        width: 100%;
+        justify-content: center
+      }
+      .tick .tick_item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 0.3125rem;
+        padding: 0.3125rem;
+        background-image: linear-gradient(0deg, #680c0c, #b93434 46%, red);
+        border-radius: 0.3125rem;
+        color: #fff;
+        font-weight: 900
+      }
+      .date-cut, .date-dot {
+        background-image: none !important;
+        padding: 0 !important;
+        width: 0 !important;
+      }
+      .date-dot {
+        color: #000 !important
       }
     </style>
   </head>
@@ -725,7 +777,7 @@
                   <div class="van-swipe-item">
                     <div class="card-code-box cn">
                       <div class="card-content-scut">
-                        <div class="card">
+                        <div class="card" onclick="trigger_card_popup(true)">
                           <div class="card-bg van-image">
                             <img src="./assets/images/card-bg.png" class="van-image__img" style="object-fit: cover">
                           </div>
@@ -1113,9 +1165,69 @@
         </div>
       </div>
     </div>
+
+    <div class="scut-popup van-popup van-popup--center" id="card-popup" style="display: none" onclick="trigger_card_popup(false)">
+      <div class="card-with-flip-clock">
+        <div class="tick flip-clock-r t-90">
+          <div class="tick_item">2025</div>
+          <div class="tick_item">01</div>
+          <div class="tick_item">25</div>
+          <div class="tick_item date-cut"></div>
+          <div class="tick_item">17</div>
+          <div class="tick_item date-dot">:</div>
+          <div class="tick_item">25</div>
+          <div class="tick_item date-dot">:</div>
+          <div class="tick_item">47</div>
+        </div>
+        <div class="card-content-scut clone-card-scut is-normal">
+          <div class="card">
+            <div class="card-bg van-image">
+              <img src="./assets/images/card-bg.png" class="van-image__img" style="object-fit: cover">
+            </div>
+            <div class="card-header flex-box vertical-center space-between">
+              <div class="card-logo">
+                <div class="van-image">
+                  <img src="./assets/images/card-logo.png" class="van-image__img">
+                </div>
+              </div>
+            </div>
+            <div class="card-item">
+              <div class="card-body bg-transparent flex-box card-body-normal">
+                <div class="user-info is-normal is-student">
+                  <p id="popup-student-name">姓名：(请先设置学号)</p>
+                  <p id="popup-student-id">学号：(请先设置学号)</p>
+                  <p>学院：计算机科学与技术学院</p>
+                  <p>卡号：201710</p>
+                  <p>发卡日期：2020年09月</p>
+                  <p>学制：4年</p>
+                </div>
+                <div class="user-avatar">
+                  <div class="card-type-name">学生卡</div>
+                  <div class="van-image">
+                    <img id="popup-profile-photo" src="./assets/images/user_avatar.jpg" class="van-image__img" alt="profile-photo">
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer-info is-stu-normal">
+                <div class="f-info">
+                  <div class="f-info-left"><span class="cn-text">服务热线：(020-87110228)</span></div>
+                  <div class="f-info-right"><span class="cn-text">服务二维码：</span>
+                    <div class="footer-qrcode">
+                      <div class="van-image">
+                        <img src="./assets/images/contactmig.png" class="van-image__img" style="object-fit: cover">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="van-toast van-toast--middle loadingStyle" style="z-index:2002; display:none"></div>
   </body>
+
   <script type="text/javascript" src="../../../js/js.cookie/js.cookie.min.js"></script>
   <script type="text/javascript" src="../js/id_mapping.js"></script>
   <script type="text/javascript">
@@ -1149,11 +1261,30 @@
       document.getElementById("student-id").innerText = "学号：202030" + id.substr(2, 7);
       document.getElementById("student-name").innerText = "姓名：" + studentName[id];
       document.getElementById("profile-photo").setAttribute("src", "https://s11.ax1x.com/2023/" + imageURL[id] + ".jpg");
+      document.getElementById("popup-student-id").innerText = "学号：202030" + id.substr(2, 7);
+      document.getElementById("popup-student-name").innerText = "姓名：" + studentName[id];
+      document.getElementById("popup-profile-photo").setAttribute("src", "https://s11.ax1x.com/2023/" + imageURL[id] + ".jpg");
     }
 
 
     function redirect_to(url) {
       window.location.href = url;
+    }
+
+
+    function trigger_card_popup(status) {
+      if (status) {
+        document.getElementById("card-popup").setAttribute("style", "opacity: 0;");
+        setTimeout(() => {
+          document.getElementById("card-popup").setAttribute("style", "");
+        }, 50);  // 如果 display: none 不先改为 opacity: 0，会导致不显示过渡到 opacity: 1 的动画
+      }
+      else {
+        document.getElementById("card-popup").setAttribute("style", "opacity: 0;");
+        setTimeout(() => {
+          document.getElementById("card-popup").setAttribute("style", "display: none;");
+        }, 300);  // 设置的 transition: opacity 0.3s 所以等待 0.3s
+      }
     }
   </script>
 </html>
