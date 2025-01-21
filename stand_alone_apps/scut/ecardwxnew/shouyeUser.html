@@ -205,7 +205,7 @@
       .van-cell:after {
         position: absolute;
         box-sizing: border-box;
-        content: " ";
+        content: "";
         pointer-events: none;
         right: 16px;
         bottom: 0;
@@ -244,8 +244,7 @@
       .van-collapse-item--border:after {
         position: absolute;
         box-sizing: border-box;
-        content: " ";
-        pointer-events: none;
+        content: "";
         top: 0;
         right: 16px;
         left: 16px;
@@ -258,7 +257,6 @@
         transform: rotate(90deg) translateZ(0);
         -webkit-transition: -webkit-transform 0.3s;
         transition: -webkit-transform 0.3s;
-        transition: transform 0.3s;
         transition: transform 0.3s, -webkit-transform 0.3s
       }
       .van-collapse-item__title:after {
@@ -575,11 +573,9 @@
         font-weight: 500
       }
       .card-content-scut .card {
-        pointer-events: none;
         background-color: #fff;
         border: 1px solid #e4e7ed;
         position: relative;
-        display: block !important;
         border-radius: calc(var(--root-size) * 8);
         height: 100%
       }
@@ -659,7 +655,9 @@
       }
       .card-content-scut .user-avatar .van-image img {
         -o-object-fit: cover;
-        object-fit: cover
+        object-fit: cover;
+        -o-object-position: top center;
+        object-position: top center;
       }
       .card-content-scut .is-stu-normal {
         background-color: #f8f7f3cf
@@ -709,7 +707,7 @@
     <div id="home" style="background-image: url('./assets/images/home_bg.png')">
       <div class="fixed-head">
         <div class="search-bar flex-box space-between vertical-center" style="background-image: url('./assets/images/home_bg.png')">
-          <div class="user-setting">
+          <div class="user-setting" onclick="redirect_to('/personal-website/stand_alone_apps/scut/scut_settings.html')">
             <i class="text-white van-icon van-icon-setting-o" style="font-size: 28px"></i>
           </div>
         </div>
@@ -739,17 +737,17 @@
                           <div class="card-item">
                             <div class="card-body bg-transparent flex-box card-body-normal">
                               <div class="user-info is-normal is-student">
-                                <p>姓名：测试</p>
-                                <p>学号：202030xxxxxx</p>
-                                <p>学院：测试</p>
-                                <p>卡号：xxxxxx</p>
+                                <p id="student-name">姓名：(请先设置学号)</p>
+                                <p id="student-id">学号：(请先设置学号)</p>
+                                <p>学院：计算机科学与技术学院</p>
+                                <p>卡号：201710</p>
                                 <p>发卡日期：2020年09月</p>
                                 <p>学制：4年</p>
                               </div>
                               <div class="user-avatar">
                                 <div class="card-type-name">学生卡</div>
                                 <div class="van-image">
-                                  <img src="./assets/images/user-avatar.jpg" class="van-image__img">
+                                  <img id="profile-photo" src="./assets/images/user_avatar.jpg" class="van-image__img" alt="profile-photo">
                                 </div>
                               </div>
                             </div>
@@ -1116,29 +1114,44 @@
   </div>
   <div class="van-toast van-toast--middle loadingStyle" style="z-index:2002; display:none"></div>
   </body>
-  <script>
+  <script type="text/javascript" src="../../../js/js.cookie/js.cookie.min.js"></script>
+  <script type="text/javascript" src="../js/id_mapping.js"></script>
+  <script type="text/javascript">
     let isCollapsed = [true, false, false, false];
     const classnamePrefix = "van-cell van-cell--clickable van-collapse-item__title";
     function update_collapse_status() {
       isCollapsed.forEach((item, index) => {
-        console.log(document.getElementsByClassName("van-collapse-item__wrapper")[index].getBoundingClientRect());
         if (item) {
           document.getElementById("van-collapse-item-" + index).className = classnamePrefix + " van-collapse-item__title--expanded";
           document.getElementsByClassName("van-collapse-item__wrapper")[index].setAttribute("style", "");
         }
         else {
-          // console.log(document.getElementsByClassName("van-collapse-item__wrapper")[index].style);
           document.getElementById("van-collapse-item-" + index).className = classnamePrefix;
           document.getElementsByClassName("van-collapse-item__wrapper")[index].setAttribute("style", "height:0;");
         }
       });
     }
+
+
     function vanCollapseItemClicked(index) {
       isCollapsed[index] = !isCollapsed[index];
       for (let i = 0; i < 4; ++i) if (i !== index) isCollapsed[i] = false;
       update_collapse_status();
     }
 
-    window.onload = update_collapse_status;
+
+    window.onload = function () {
+      update_collapse_status();
+      const id = Cookies.get("identity");
+      if (!id || !parseInt(id) || parseInt(id) < 20171001 || parseInt(id) > 20171054) return;
+      document.getElementById("student-id").innerText = "学号：202030" + id.substr(2, 7);
+      document.getElementById("student-name").innerText = "姓名：" + studentName[id];
+      document.getElementById("profile-photo").setAttribute("src", "https://s11.ax1x.com/2023/" + imageURL[id] + ".jpg");
+    }
+
+
+    function redirect_to(url) {
+      window.location.href = url;
+    }
   </script>
 </html>

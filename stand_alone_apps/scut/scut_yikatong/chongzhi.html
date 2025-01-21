@@ -160,7 +160,7 @@
     </div>
 </body>
 <script type="text/javascript" src="../../../js/js.cookie/js.cookie.min.js"></script>
-<script type="text/javascript" src="js/id_mapping.js"></script>
+<script type="text/javascript" src="../js/id_mapping.js"></script>
 <script type="text/javascript">
     window.onload = function () {
         const id = Cookies.get("identity");
@@ -170,6 +170,7 @@
         // document.getElementById("profile-photo").setAttribute("src", "img/profile_photos/" + id + ".jpg");
         document.getElementById("profile-photo").setAttribute("src", "https://s11.ax1x.com/2023/" + imageURL[id] + ".jpg");
     }
+
 
     function showApps(element) {
         document.getElementById("jk_" + element.id).setAttribute("style", "");
