@@ -1169,15 +1169,15 @@
     <div class="scut-popup van-popup van-popup--center" id="card-popup" style="display: none" onclick="trigger_card_popup(false)">
       <div class="card-with-flip-clock">
         <div class="tick flip-clock-r t-90">
-          <div class="tick_item">2025</div>
-          <div class="tick_item">01</div>
-          <div class="tick_item">25</div>
+          <div class="tick_item" id="YYYY">2025</div>
+          <div class="tick_item" id="MO">03</div>
+          <div class="tick_item" id="DD">28</div>
           <div class="tick_item date-cut"></div>
-          <div class="tick_item">17</div>
+          <div class="tick_item" id="hh">09</div>
           <div class="tick_item date-dot">:</div>
-          <div class="tick_item">25</div>
+          <div class="tick_item" id="mi">25</div>
           <div class="tick_item date-dot">:</div>
-          <div class="tick_item">47</div>
+          <div class="tick_item" id="ss">47</div>
         </div>
         <div class="card-content-scut clone-card-scut is-normal">
           <div class="card">
@@ -1245,12 +1245,32 @@
         }
       });
     }
-
-
     function vanCollapseItemClicked(index) {
       isCollapsed[index] = !isCollapsed[index];
       for (let i = 0; i < 4; ++i) if (i !== index) isCollapsed[i] = false;
       update_collapse_status();
+    }
+
+
+    let tickingInterval = undefined;
+    const elemYYYY = document.getElementById("YYYY"), elemMO = document.getElementById("MO"), elemDD = document.getElementById("DD"),
+          elemHh = document.getElementById("hh"), elemMi = document.getElementById("mi"), elemSs = document.getElementById("ss");
+    function render_time() {
+      let date = new Date();
+      elemYYYY.innerHTML = date.getFullYear().toString();
+      elemMO.innerHTML = (date.getMonth() + 1).toString().padStart(2, "0");
+      elemDD.innerHTML = date.getDate().toString().padStart(2, "0");
+      elemHh.innerHTML = date.getHours().toString().padStart(2, "0");
+      elemMi.innerHTML = date.getMinutes().toString().padStart(2, "0");
+      elemSs.innerHTML = date.getSeconds().toString().padStart(2, "0");
+    }
+    function stop_ticking() {
+      clearInterval(tickingInterval);
+    }
+    function start_ticking() {
+      clearInterval(tickingInterval);
+      render_time();
+      tickingInterval = setInterval(render_time, 1000);
     }
 
 
@@ -1274,6 +1294,7 @@
 
     function trigger_card_popup(status) {
       if (status) {
+        start_ticking();
         document.getElementById("card-popup").setAttribute("style", "opacity: 0;");
         setTimeout(() => {
           document.getElementById("card-popup").setAttribute("style", "");
@@ -1283,6 +1304,7 @@
         document.getElementById("card-popup").setAttribute("style", "opacity: 0;");
         setTimeout(() => {
           document.getElementById("card-popup").setAttribute("style", "display: none;");
+          stop_ticking();
         }, 300);  // 设置的 transition: opacity 0.3s 所以等待 0.3s
       }
     }
