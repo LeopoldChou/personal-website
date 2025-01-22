@@ -130,6 +130,11 @@
         margin: 0;
         color: #323233;
       }
+      #home {
+        background-size: 100% auto;
+        background-repeat: no-repeat;
+        background-position: 0 0
+      }
       img {
         max-width: 100%
       }
@@ -139,6 +144,78 @@
       }
       [class*=van-]:focus, a:focus, button:focus, input:focus, textarea:focus {
         outline: none
+      }
+
+      .margin-vh {
+        margin: var(--size-margin-vertical) var(--size-margin-horizontal)
+      }
+      .margin-bottom-x {
+        margin-bottom: 8px
+      }
+      .ellipsis-width {
+        max-width: 100%;
+        margin: 0 auto
+      }
+      .grid-icon-box {
+        margin-bottom: 0.125rem
+      }
+      .list-box::-webkit-scrollbar, body::-webkit-scrollbar {
+        width: 0
+      }
+      .font-number {
+        font-family: DIN-Medium, sans-serif;
+        position: relative;
+        top: 1px
+      }
+      .font-size-20 {
+        font-size: 1.25rem
+      }
+      .font-size-18 {
+        font-size: 1.125rem
+      }
+      .font-size-14 {
+        font-size: 0.875rem
+      }
+      .text-white {
+        color: #fff
+      }
+      .text-warning {
+        color: var(--mob-warning)
+      }
+      .text-center {
+        text-align: center
+      }
+      .text-ellipsis {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis
+      }
+      .flex-box {
+        display: flex
+      }
+      .vertical-center {
+        align-items: center
+      }
+      .space-between {
+        justify-content: space-between
+      }
+      .bg-transparent {
+        background-color: transparent
+      }
+      .base-panel {
+        overflow: hidden
+      }
+      .use-background {
+        background-color: var(--color-panel-bg)
+      }
+      .use-border-radius {
+        border-radius: var(--br-16)
+      }
+      .use-padding {
+        padding: var(--size-16)
+      }
+      .base-panel__content {
+        font-size: var(--font-size-default)
       }
 
       .van-icon {
@@ -362,64 +439,6 @@
         flex-wrap: wrap
       }
 
-      .s-hv {
-        margin: var(--size-margin-vertical) var(--size-margin-horizontal)
-      }
-      .margin-bottom-x {
-        margin-bottom: 8px
-      }
-      .ellipsis-width {
-        max-width: 100%;
-        margin: 0 auto
-      }
-
-      .grid-icon-box {
-        margin-bottom: 0.125rem
-      }
-      .list-box::-webkit-scrollbar, body::-webkit-scrollbar {
-        width: 0
-      }
-      .font-number {
-        font-family: DIN-Medium, sans-serif;
-        position: relative;
-        top: 1px
-      }
-      .font-size-20 {
-        font-size: 1.25rem
-      }
-      .font-size-18 {
-        font-size: 1.125rem
-      }
-      .font-size-14 {
-        font-size: 0.875rem
-      }
-      .text-white {
-        color: #fff
-      }
-      .text-warning {
-        color: var(--mob-warning)
-      }
-      .text-center {
-        text-align: center
-      }
-      .text-ellipsis {
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis
-      }
-      .flex-box {
-        display: flex
-      }
-      .vertical-center {
-        align-items: center
-      }
-      .space-between {
-        justify-content: space-between
-      }
-      .bg-transparent {
-        background-color: transparent !important
-      }
-
       .card-code-box {
         border-radius: 0.325rem;
         overflow: hidden
@@ -427,28 +446,6 @@
       .card {
         min-height: 10.875rem;
         background-repeat: no-repeat
-      }
-
-      .base-panel {
-        overflow: hidden
-      }
-      .use-background {
-        background-color: var(--color-panel-bg)
-      }
-      .use-border-radius {
-        border-radius: var(--br-16)
-      }
-      .use-padding {
-        padding: var(--size-16)
-      }
-      .base-panel__content {
-        font-size: var(--font-size-default)
-      }
-
-      #home {
-        background-size: 100% auto;
-        background-repeat: no-repeat;
-        background-position: 0 0
       }
 
       .user-personal-box {
@@ -580,8 +577,8 @@
       .card-content-scut .card-header .card-logo {
         margin-top: calc(var(--root-size) * 3.2);
         margin-left: calc(var(--root-size) * 8);
-        width: auto !important;
-        height: calc(var(--root-size) * 35) !important
+        width: auto;
+        height: calc(var(--root-size) * 35)
       }
       .card-content-scut .card-header .card-logo .van-image {
         width: 100%;
@@ -626,41 +623,6 @@
       }
       .card-content-scut .card-body {
         justify-content: space-between
-      }
-
-      @media (prefers-color-scheme: dark) {
-        :root {
-          --color-panel-bg: #1e1e1e;
-          --color-text: #fff;
-          --color-text-light: #eee;
-          --color-text-lighter: #ddd;
-          --color-text-lightest: #ccc;
-          --color-input-bg: #666;
-          --color-cutline: #e5e5e630;
-        }
-        body {
-          color: #f7f8fa;
-          background: var(--mob-bodyBgColorDark)
-        }
-
-        .text-white {
-          color: var(--mob-bodyBgColorDark)
-        }
-        .van-cell {
-          color: #f7f8fa;
-          background-color: hsla(var(--mob-bodyBgColor-hsla), .02)
-        }
-        .van-cell:after {
-          border-color: hsla(var(--mob-bodyBgColor-hsla), 0.1)
-        }
-        .notice-box .van-cell, .notice-box[card] .card-head, .van-action-sheet__cancel:active, .van-action-sheet__item:active, .van-cell--clickable:active {
-          background-color: hsla(var(--mob-bodyBgColor-hsla), .02)
-        }
-
-        /* 以下为点击校园卡后弹出卡片的样式 */
-        .van-popup .van-cell, .van-popup .van-nav-bar, .van-popup:not(.van-notify--success,.van-notify--danger,.van-notify--primary,.van-notify--warning) {
-          background-color: var(--mob-bodyBgColorDark)
-        }
       }
 
       /* 以下为点击校园卡后弹出卡片的样式 */
@@ -733,7 +695,7 @@
         width: 100%;
         justify-content: center
       }
-      .tick .tick_item {
+      .tick_item {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -745,12 +707,42 @@
         font-weight: 900
       }
       .date-cut, .date-dot {
-        background-image: none !important;
-        padding: 0 !important;
-        width: 0 !important;
+        padding: 0;
+        background-image: none;
+        width: 0;
       }
       .date-dot {
-        color: #000 !important
+        color: #000
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --color-panel-bg: #1e1e1e;
+          --color-text: #fff;
+          --color-text-light: #eee;
+          --color-text-lighter: #ddd;
+          --color-text-lightest: #ccc;
+          --color-input-bg: #666;
+          --color-cutline: #e5e5e630;
+        }
+        body {
+          color: #f7f8fa;
+          background: var(--mob-bodyBgColorDark)
+        }
+
+        .text-white {
+          color: var(--mob-bodyBgColorDark)
+        }
+        .van-cell {
+          color: #f7f8fa;
+          background-color: hsla(var(--mob-bodyBgColor-hsla), .02)
+        }
+        .van-cell:after {
+          border-color: hsla(var(--mob-bodyBgColor-hsla), 0.1)
+        }
+        .notice-box .van-cell, .notice-box[card] .card-head, .van-action-sheet__cancel:active, .van-action-sheet__item:active, .van-cell--clickable:active {
+          background-color: hsla(var(--mob-bodyBgColor-hsla), .02)
+        }
       }
     </style>
   </head>
@@ -832,7 +824,7 @@
           <div class="margin-bottom-x">
             <div id="finance">
               <div class="base-panel-content">
-                <div class="base-panel use-border-radius use-padding s-hv use-background">
+                <div class="base-panel use-border-radius use-padding margin-vh use-background">
                   <div class="base-panel__content">
                     <div>
                       <div class="item-one">
@@ -853,13 +845,13 @@
           <div class="margin-bottom-x">
             <div class="comp-collapse">
               <div class="base-panel-content">
-                <div class="base-panel use-border-radius s-hv use-background">
+                <div class="base-panel use-border-radius margin-vh use-background">
                   <div class="base-panel__content">
                     <div class="van-collapse-item">
                       <div
                         role="button" tabindex="0" aria-expanded="true"
                         id="van-collapse-item-0"
-                        class="van-cell van-cell--clickable van-collapse-item__title"
+                        class="van-cell van-cell--clickable van-collapse-item__title van-collapse-item__title--expanded"
                         onclick="vanCollapseItemClicked(0)"
                       >
                         <div class="van-cell__title"><span>我的校园卡</span></div>
