@@ -129,7 +129,7 @@
         }
         .bar-input {
             background-color: transparent;
-            border:none;
+            border: none;
             outline: none;
             width: 100%;
             height: 100%;
@@ -144,6 +144,103 @@
             line-height: 18px;
             color: var(--ios-txtc-lv2);
         }
+
+        .pop-up-mask {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            transition: opacity 0.5s;
+            z-index: 998;
+        }
+        .pop-up {
+            width: 85vw;
+            max-width: 360px;
+            position: fixed;
+            top: 50vh;
+            left: 50vw;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.5s;
+            z-index: 999;
+        }
+        .popup-title {
+            width: 100%;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            user-select: none;
+        }
+        .password-dots-box {
+            width: 100%;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 16px 0 24px;
+        }
+        .password-dot {
+            width: 12px;
+            height: 12px;
+            margin: 12px;
+            border-radius: 50%;
+            border: solid 1px var(--ios-txtc-lv1);
+            box-sizing: border-box;
+            flex: 0 0 auto;
+            transition: background-color 0.25s;
+        }
+        .dot-empty {
+            background-color: transparent;
+        }
+        .dot-full {
+            background-color: var(--ios-txtc-lv1);
+        }
+        .password-keyboard {
+            width: 248px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 16px;
+        }
+        .number-key {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background-color: var(--ios-bgc-box);
+            color: var(--ios-txtc-lv1-inbox);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            user-select: none;
+            cursor: pointer;
+        }
+        .key-number {
+            font-size: 28px;
+            line-height: 30px;
+        }
+        .key-letters {
+            font-size: 10px;
+        }
+        .number-key-placeholder {
+            background-color: transparent;
+            font-size: 20px;
+            color: var(--ios-txtc-lv2-inbox);
+        }
+
+        @keyframes shake-x {
+            from, to { transform: translate(0, 0); }
+            16% { transform: translate(-10%, 0); }
+            32% { transform: translate(8%, 0); }
+            48% { transform: translate(-6%, 0); }
+            64% { transform: translate(4%, 0); }
+            80% { transform: translate(-2%, 0); }
+        }
+        .animation-shake-x {
+            animation: shake-x 0.5s ease-out;
+        }
     </style>
 </head>
 
@@ -152,7 +249,6 @@
     <div class="main-container">
         <div class="title">SCUT 应用设置</div>
 <!--        <div class="subtitle" onclick="activateEditing()">id 设置</div>-->
-
         <div class="option-bar bar-top" id="dynamic-bar">
             <div class="bar-name">当前 id</div>
             <div id="dynamic-bar-content">
@@ -161,33 +257,55 @@
                 </label>
             </div>
         </div>
-        <div class="option-bar bar-bottom btn-bar" id="dynamic-btn-bar-change" onclick="setID()">
+        <div class="option-bar bar-bottom btn-bar" id="dynamic-btn-bar-change" onclick="set_id_clicked()">
             <div class="btn-bar-name-blue">设置 id</div>
         </div>
         <div class="description">
             注意：id 为 8 位的高中学号。<br/>
-            <span onclick="activateEditing()">My Pass</span> 页面的姓名和学号、校园一卡通页面的个人信息由该 id 决定。<br/>
+            <span id="MyPass">MyPass</span> 页面的姓名和学号、校园一卡通页面的个人信息由该 id 决定。<br/>
             id 会自动过期，设置好的 id 在 7 天后会因过期而被移除。
         </div>
-
         <div class="option-bar bar-single btn-bar" id="dynamic-btn-bar-remove" onclick="removeID()" style="display: none;">
             <div class="btn-bar-name-red">移除 id</div>
         </div>
+    </div>
+</div>
 
+<div class="pop-up-mask" id="pop-up-mask" style="display: none"></div>
+<div class="pop-up" id="pop-up" style="display: none">
+    <div class="popup-title">输入密码</div>
+    <div class="password-dots-box" id="password-dots-box">
+        <div class="password-dot dot-empty"></div>
+        <div class="password-dot dot-empty"></div>
+        <div class="password-dot dot-empty"></div>
+        <div class="password-dot dot-empty"></div>
+        <div class="password-dot dot-empty"></div>
+        <div class="password-dot dot-empty"></div>
+    </div>
+    <div class="password-keyboard">
+        <div class="number-key"><div class="key-number">1</div><div class="key-letters">&nbsp;</div></div>
+        <div class="number-key"><div class="key-number">2</div><div class="key-letters">A B C</div></div>
+        <div class="number-key"><div class="key-number">3</div><div class="key-letters">D E F</div></div>
+        <div class="number-key"><div class="key-number">4</div><div class="key-letters">G H I</div></div>
+        <div class="number-key"><div class="key-number">5</div><div class="key-letters">J K L</div></div>
+        <div class="number-key"><div class="key-number">6</div><div class="key-letters">M N O</div></div>
+        <div class="number-key"><div class="key-number">7</div><div class="key-letters">P Q R S</div></div>
+        <div class="number-key"><div class="key-number">8</div><div class="key-letters">T U V</div></div>
+        <div class="number-key"><div class="key-number">9</div><div class="key-letters">W X Y Z</div></div>
+        <div class="number-key number-key-placeholder"></div>
+        <div class="number-key"><div class="key-number">0</div></div>
+        <div class="number-key number-key-placeholder" id="cancel-button" onclick="cancel_button_clicked()">取消</div>
     </div>
 </div>
 </body>
 
 <script src="../../js/js.cookie/js.cookie.min.js"></script>
+<script src="./js/sha256.js"></script>
 <script type="text/javascript">
     const scutRootPath = "/personal-website/stand_alone_apps/scut/";
-
-
     function setCookie(name, value, exp = 7) {
         Cookies.set(name, value, { expires: exp, path: scutRootPath });
     }
-
-
     function removeCookie(name) {
         if (!name) {
             let cookies = Cookies.get();
@@ -198,8 +316,6 @@
         }
         Cookies.remove(name, { path: scutRootPath });
     }
-
-
     function showCookie() {
         console.log(Cookies.get());
     }
@@ -214,33 +330,23 @@
         document.getElementById("dynamic-btn-bar-change").setAttribute("style", "display: none;");
         document.getElementById("dynamic-btn-bar-remove").setAttribute("style", "display: none;");
     }
-
-
-    window.onload = function () {
-        readID();
-    }
-
-
     function setID() {
-        const newID = document.getElementById("bar-input-identity").value;
-        if (!newID) {
+        const newId = document.getElementById("bar-input-identity").value;
+        if (!newId) {
             window.alert("id 不能更改为空，请重试");
             return;
         }
-        if (!parseInt(newID) || parseInt(newID) < 20171001 || parseInt(newID) > 20171054) {
+        if (!parseInt(newId) || parseInt(newId) < 20171001 || parseInt(newId) > 20171054) {
             window.alert("输入内容有误，请输入 8 位的学号（例如 20171025）");
             return;
         }
-        if (window.confirm("确定要将 id 更改为 " + newID + " 吗？")) {
-            setCookie("identity", newID);
-            // window.alert("成功更改 id");
+        if (window.confirm("确定要将 id 更改为 " + newId + " 吗？")) {
+            setCookie("identity", newId);
             document.getElementById("bar-input-identity").value = "";
             readID();
         }
         showCookie();
     }
-
-
     function showChangeID() {
         let id = Cookies.get("identity");
         if (!id) id = "未设置";
@@ -250,8 +356,6 @@
         document.getElementById("dynamic-btn-bar-change").setAttribute("style", "");
         document.getElementById("dynamic-btn-bar-remove").setAttribute("style", "");
     }
-
-
     function removeID() {
         if (window.confirm("确定要移除 id？")) {
             removeCookie();
@@ -261,12 +365,107 @@
     }
 
 
-    let clicked = 0;
+    window.onload = function () {
+        document.getElementById("MyPass").onclick = activateEditing;
+        init_password_function();
+        readID();
+    }
+
+
+    let spanClicked = 0;
     function activateEditing() {
-        if (++clicked >= 10) {
+        if (++spanClicked >= 10) {
             showChangeID();
-            clicked = 0;
+            spanClicked = 0;
         }
+    }
+
+
+    function init_password_function() {
+        const numberKeys = document.getElementsByClassName("number-key");
+        numberKeys[10].onclick = () => { number_key_clicked("0") };  // 数字键 0
+        for (let i = 0; i < numberKeys.length; ++i) {
+            if (i >= 0 && i < 9) numberKeys[i].onclick = () => { number_key_clicked((i + 1).toString()) };
+        }
+    }
+    const passwordEncoded = "ccba0fc6bb90afa906dcd241b7fac6c6f9e7a64fe5f10ab90628005d56c49891";
+    let passwordEntered = "";
+    const passwordDots = document.getElementsByClassName("password-dot");
+    const cancelButton = document.getElementById("cancel-button");
+    function update_password_control() {
+        let passwordLength = passwordEntered.length;
+        if (passwordLength === 0) cancelButton.innerHTML = "取消";
+        else cancelButton.innerHTML = "删除";
+        for (let i = 0; i < passwordLength; ++i) passwordDots[i].className = "password-dot dot-full";
+        for (let i = passwordLength; i < 6; ++i) passwordDots[i].className = "password-dot dot-empty";
+    }
+
+
+    const popUpMask = document.getElementById("pop-up-mask");
+    const popUpWindow = document.getElementById("pop-up");
+    let popUpShown = false;
+    function show_pop_up() {
+        passwordEntered = "";
+        update_password_control();
+        popUpShown = true;
+        popUpMask.setAttribute("style", "opacity: 0");
+        popUpWindow.setAttribute("style", "opacity: 0");
+        setTimeout(() => {
+            popUpMask.setAttribute("style", "opacity: 100");
+            popUpWindow.setAttribute("style", "opacity: 100");
+        }, 10)
+    }
+    function hide_pop_up() {
+        popUpShown = false;
+        popUpMask.setAttribute("style", "opacity: 0");
+        popUpWindow.setAttribute("style", "opacity: 0");
+        setTimeout(() => {
+            popUpMask.setAttribute("style", "display: none");
+            popUpWindow.setAttribute("style", "display: none");
+        }, 510)
+    }
+
+
+    const passwordDotsBox = document.getElementById("password-dots-box");
+    function number_key_clicked(number) {
+        if (!number) return;
+        passwordEntered += number;
+        update_password_control();
+        if (passwordEntered.length >= 6) {
+            let temp = passwordEntered;
+            passwordEntered = "";
+            setTimeout(update_password_control, 250);
+            if (sha256(temp) === passwordEncoded) {
+                hide_pop_up();
+                setID();
+            }
+            else {
+                const originalClassName = passwordDotsBox.className;
+                passwordDotsBox.className += " animation-shake-x";
+                setTimeout(() => { passwordDotsBox.className = originalClassName; }, 500);
+            }
+        }
+    }
+    function cancel_button_clicked() {
+        if (passwordEntered.length === 0) hide_pop_up();
+        else {
+            passwordEntered = passwordEntered.slice(0, -1);
+            update_password_control();
+        }
+    }
+
+
+    function set_id_clicked() {
+        const newId = document.getElementById("bar-input-identity").value;
+        if (!newId) {
+            window.alert("id 不能更改为空，请重试");
+            return;
+        }
+        if (!parseInt(newId) || parseInt(newId) < 20171001 || parseInt(newId) > 20171054) {
+            window.alert("输入内容有误，请输入 8 位的学号（例如 20171025）");
+            return;
+        }
+        show_pop_up();
     }
 </script>
 </html>
