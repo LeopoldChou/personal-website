@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover">
-    <link rel="shortcut icon" href="img/favicon.png">
-    <link rel="bookmark" href="img/favicon.png">
+    <link rel="shortcut icon" href="./images/favicon.png">
+    <link rel="bookmark" href="./images/favicon.png">
     <title>SCUT 应用设置</title>
     <style>
         @import "../../css/global.css";
@@ -400,7 +400,7 @@
             if (i >= 0 && i < 9) numberKeys[i].onclick = () => { number_key_clicked((i + 1).toString()) };
         }
     }
-    const passwordEncoded = "ccba0fc6bb90afa906dcd241b7fac6c6f9e7a64fe5f10ab90628005d56c49891";
+    const passwordEncrypted = "ccba0fc6bb90afa906dcd241b7fac6c6f9e7a64fe5f10ab90628005d56c49891";
     let passwordEntered = "";
     const passwordDots = document.getElementsByClassName("password-dot");
     const cancelButton = document.getElementById("cancel-button");
@@ -447,7 +447,7 @@
             let temp = passwordEntered;
             passwordEntered = "";
             setTimeout(update_password_control, 250);
-            if (sha256(temp) === passwordEncoded) {
+            if (sha256(temp) === passwordEncrypted) {
                 hide_pop_up();
                 setTimeout(setID, 500);
             }
