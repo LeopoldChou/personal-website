@@ -1233,7 +1233,7 @@
         }
         else {
           document.getElementById("van-collapse-item-" + index).className = classnamePrefix;
-          document.getElementsByClassName("van-collapse-item__wrapper")[index].setAttribute("style", "height:0;");
+          document.getElementsByClassName("van-collapse-item__wrapper")[index].setAttribute("style", "height: 0");
         }
       });
     }
@@ -1287,15 +1287,15 @@
     function trigger_card_popup(status) {
       if (status) {
         start_ticking();
-        document.getElementById("card-popup").setAttribute("style", "opacity: 0;");
+        document.getElementById("card-popup").setAttribute("style", "opacity: 0");
         setTimeout(() => {
           document.getElementById("card-popup").setAttribute("style", "");
         }, 50);  // 如果 display: none 不先改为 opacity: 0，会导致不显示过渡到 opacity: 1 的动画
       }
       else {
-        document.getElementById("card-popup").setAttribute("style", "opacity: 0;");
+        document.getElementById("card-popup").setAttribute("style", "opacity: 0");
         setTimeout(() => {
-          document.getElementById("card-popup").setAttribute("style", "display: none;");
+          document.getElementById("card-popup").setAttribute("style", "display: none");
           stop_ticking();
         }, 300);  // 设置的 transition: opacity 0.3s 所以等待 0.3s
       }
