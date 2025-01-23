@@ -157,7 +157,6 @@
             z-index: 998;
         }
         .pop-up {
-            width: 85vw;
             max-width: 360px;
             position: fixed;
             top: 50vh;
@@ -179,7 +178,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 16px 0 24px;
+            margin: 12px 0 48px;
         }
         .password-dot {
             width: 12px;
@@ -198,15 +197,13 @@
             background-color: var(--ios-txtc-lv1);
         }
         .password-keyboard {
-            width: 248px;
-            margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            grid-gap: 16px;
+            grid-gap: 24px;
         }
         .number-key {
-            width: 72px;
-            height: 72px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             background-color: var(--ios-bgc-box);
             color: var(--ios-txtc-lv1-inbox);
@@ -227,11 +224,11 @@
             }
         }
         .key-number {
-            font-size: 28px;
-            line-height: 30px;
+            font-size: 30px;
+            line-height: 32px;
         }
         .key-letters {
-            font-size: 10px;
+            font-size: 12px;
         }
         .number-key-placeholder {
             background-color: transparent;
@@ -449,7 +446,7 @@
             setTimeout(update_password_control, 250);
             if (sha256(temp) === passwordEncrypted) {
                 hide_pop_up();
-                setTimeout(setID, 500);
+                setTimeout(setID, 250);  // pop-up 和 pop-up-mask 的实际动画时间是 500ms，但走完动画才显示确认的视觉效果太拖沓
             }
             else {
                 const originalClassName = passwordDotsBox.className;
