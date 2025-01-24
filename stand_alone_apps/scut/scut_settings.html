@@ -217,6 +217,7 @@
         }
         .number-key:active {
             background-color: #ddd;
+            transition: none;
         }
         @media (prefers-color-scheme: dark) {
             .number-key:active {
@@ -234,6 +235,7 @@
             background-color: transparent;
             font-size: 20px;
             color: var(--ios-txtc-lv2-inbox);
+            cursor: default;
         }
         .number-key-placeholder:active {
             background-color: transparent;
@@ -257,7 +259,7 @@
 <div class="page-container">
     <div class="main-container">
         <div class="title">SCUT 应用设置</div>
-<!--        <div class="subtitle" onclick="activateEditing()">id 设置</div>-->
+<!--        <div class="subtitle" onclick="">id 设置</div>-->
         <div class="option-bar bar-top" id="dynamic-bar">
             <div class="bar-name">当前 id</div>
             <div id="dynamic-bar-content">
@@ -271,7 +273,7 @@
         </div>
         <div class="description">
             注意：id 为 8 位的高中学号。<br/>
-            <span id="MyPass">MyPass</span> 页面的姓名和学号、校园一卡通页面的个人信息由该 id 决定。<br/>
+            <span>MyPass</span> 页面的姓名和学号、校园一卡通页面的个人信息由该 id 决定。<br/>
             id 会自动过期，设置好的 id 在 7 天后会因过期而被移除。
         </div>
         <div class="option-bar bar-single btn-bar" id="dynamic-btn-bar-remove" onclick="removeID()" style="display: none;">
@@ -375,14 +377,14 @@
 
 
     window.onload = function () {
-        document.getElementById("MyPass").onclick = activateEditing;
+        document.getElementsByTagName("span")[0].onclick = span_clicked;
         init_password_function();
         readID();
     }
 
 
     let spanClicked = 0;
-    function activateEditing() {
+    function span_clicked() {
         if (++spanClicked >= 10) {
             showChangeID();
             spanClicked = 0;
@@ -410,12 +412,18 @@
     }
 
 
+    function keydown_handler(event) {
+        if (event.key >= "0" && event.key <= '9') number_key_clicked(parseInt(event.key));
+    }
+
+
     const popUpMask = document.getElementById("pop-up-mask");
     const popUpWindow = document.getElementById("pop-up");
     let popUpShown = false;
     function show_pop_up() {
         passwordEntered = "";
         update_password_control();
+        document.addEventListener("keydown", keydown_handler);
         popUpShown = true;
         popUpMask.setAttribute("style", "opacity: 0");
         popUpWindow.setAttribute("style", "opacity: 0");
@@ -425,6 +433,7 @@
         }, 10)
     }
     function hide_pop_up() {
+        document.removeEventListener("keydown", keydown_handler);
         popUpShown = false;
         popUpMask.setAttribute("style", "opacity: 0");
         popUpWindow.setAttribute("style", "opacity: 0");
